@@ -54,7 +54,13 @@ const Navbar = () => {
           </button>
 
           {/* Nombre módulo */}
-          <Chip label={data.currentPage} color='primary' />
+          <Chip
+            label={data.currentPage}
+            color='primary'
+            sx={{
+              fontWeight: 'bold',
+            }}
+          />
 
           {/* Acciones módulo */}
           <Stack direction='row'></Stack>
