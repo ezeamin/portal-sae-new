@@ -1,14 +1,17 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Layout from "./Layout/Layout"
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import routes from '../constants/routes';
+import { Layout, Home } from './';
 
 const Router = () => {
   return (
     <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Layout />}></Route>
-        </Routes>
-      </BrowserRouter>
-  )
-}
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route path={routes.HOME} element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default Router
+export default Router;

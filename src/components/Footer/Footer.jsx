@@ -1,5 +1,6 @@
-import { Chip, Paper, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
+
+import { Chip, Paper, Stack } from '@mui/material';
 
 const Footer = () => {
   const [version, setVersion] = useState('');
@@ -15,13 +16,13 @@ const Footer = () => {
   return (
     <Paper
       elevation={0}
-      color='primary'
       square
       sx={{
         position: 'fixed',
         bottom: 0,
         width: '100%',
         height: '3rem',
+        backgroundColor: "dark.light"
       }}
     >
       <Stack
@@ -37,14 +38,14 @@ const Footer = () => {
           label='2022 - Direccion de Sistemas'
           color='light'
           sx={{
-            fontWeight: 'bold',
+            fontWeight: "bold",
           }}
         />
         <Chip
           label={`v${version}`}
           color='light'
           sx={{
-            fontWeight: 'bold',
+            fontWeight: "bold",
           }}
         />
       </Stack>

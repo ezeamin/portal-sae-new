@@ -27,7 +27,7 @@ const App = () => {
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches
     ) {
-      dispatch(setTheme(themes.DARK));
+      // dispatch(setTheme(themes.DARK));
     }
 
     return () => {

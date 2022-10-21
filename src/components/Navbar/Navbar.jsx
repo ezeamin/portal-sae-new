@@ -1,42 +1,132 @@
+import { useState } from 'react';
+
 import {
   AppBar,
   Avatar,
   Chip,
+  Drawer,
   IconButton,
   Stack,
   Typography,
+  Container,
+  Divider,
 } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
+import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
+import SegmentRoundedIcon from '@mui/icons-material/SegmentRounded';
 
 import { themes } from '../../constants/constants';
 import { setTheme } from '../../features/globalData';
-
-// Traer de redux actualPage, accionesRap, etc
+import { RoundedButton } from '../../styled';
 
 const Navbar = () => {
+  const [drawerOpened, setDrawerOpened] = useState(false);
   const data = useSelector((state) => state.globalData);
 
   const dispatch = useDispatch();
-
-  if (data.isPortrait) {
-    return <>Hola</>;
-  }
-
-  const userColors = {
-    name: data.theme === themes.LIGHT ? '#474747' : '#fff',
-    number: data.theme === themes.LIGHT ? '#8a8a8a' : '#c4c4c4',
-  };
 
   const handleChangeTheme = () => {
     const newValue = data.theme === themes.LIGHT ? themes.DARK : themes.LIGHT;
 
     dispatch(setTheme(newValue));
   };
+
+  if (data.isPortrait) {
+    return (
+      <>
+        <AppBar position='fixed' color='white' sx={{ px: 1 }}>
+          <Stack direction='row' justifyContent='space-between'>
+            {/* ------ LEFT ------ */}
+            <Stack direction='row' alignItems='center'>
+              {/* Logo portal */}
+              <button style={{ marginRight: '0.5rem', height: '65px' }}>
+                <img
+                  src='/assets/img/logos/logo-57.png'
+                  alt='Portal del SAE'
+                  height={45}
+                  width={42}
+                />
+              </button>
+
+              {/* Nombre módulo */}
+              <Chip
+                label={data.currentPage}
+                color='primary'
+                sx={{
+                  fontWeight: 'bold',
+                }}
+              />
+            </Stack>
+
+            {/* ------ RIGHT ------ */}
+            <IconButton onClick={() => setDrawerOpened((state) => !state)}>
+              <SegmentRoundedIcon />
+            </IconButton>
+          </Stack>
+        </AppBar>
+        <Drawer
+          anchor='top'
+          open={drawerOpened}
+          onClose={() => setDrawerOpened(false)}
+        >
+          <Container sx={{ pt: 4, pb: 3 }}>
+            {/* Perfil */}
+            <Stack direction='row' justifyContent='space-between'>
+              <Avatar alt={data.user.name} src={data.user?.avatar || '/'} />
+              <Stack sx={{ textAlign: 'right' }}>
+                <Typography
+                  variant='body1'
+                  component='p'
+                  color='light.contrastText'
+                  fontWeight='bold'
+                  sx={{
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {data.user.name}
+                </Typography>
+                <Typography
+                  variant='body2'
+                  component='p'
+                  color='light.secondaryContrastText'
+                  sx={{
+                    lineHeight: 1,
+                  }}
+                >
+                  {data.user.number}
+                </Typography>
+              </Stack>
+            </Stack>
+            <Stack sx={{mt: 3}} direction='row' justifyContent='space-evenly'>
+              <RoundedButton variant='outlined' color="error">Cerrar sesión</RoundedButton>
+              <RoundedButton variant='outlined'>Mi perfil</RoundedButton>
+            </Stack>
+            <Divider sx={{my: 2}}/>
+            <Stack direction='row' justifyContent='space-evenly' sx={{ mr: 2 }}>
+              <IconButton onClick={handleChangeTheme}>
+                {data.theme === themes.LIGHT ? (
+                  <DarkModeRoundedIcon />
+                ) : (
+                  <LightModeRoundedIcon />
+                )}
+              </IconButton>
+              <IconButton>
+                <DashboardRoundedIcon />
+              </IconButton>
+              <IconButton>
+                <NotificationsRoundedIcon />
+              </IconButton>
+            </Stack>
+          </Container>
+        </Drawer>
+      </>
+    );
+  }
 
   return (
     <AppBar position='fixed' color='white' sx={{ px: 1 }}>
@@ -72,7 +162,11 @@ const Navbar = () => {
           {/* Accesos rápidos */}
           <Stack direction='row' sx={{ mr: 2 }}>
             <IconButton onClick={handleChangeTheme}>
-              <DarkModeRoundedIcon />
+              {data.theme === themes.LIGHT ? (
+                <DarkModeRoundedIcon />
+              ) : (
+                <LightModeRoundedIcon />
+              )}
             </IconButton>
             <IconButton>
               <DashboardRoundedIcon />
@@ -87,10 +181,10 @@ const Navbar = () => {
             <Typography
               variant='body1'
               component='p'
+              color='light.contrastText'
+              fontWeight='bold'
               sx={{
-                fontWeight: 500,
                 lineHeight: 1.5,
-                color: userColors.name,
               }}
             >
               {data.user.name}
@@ -98,9 +192,9 @@ const Navbar = () => {
             <Typography
               variant='body2'
               component='p'
+              color='light.secondaryContrastText'
               sx={{
                 lineHeight: 1,
-                color: userColors.number,
               }}
             >
               {data.user.number}
