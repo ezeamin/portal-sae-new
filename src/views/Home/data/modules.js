@@ -11,7 +11,7 @@ import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded
 
 const iconsConfig = {
   sx: {
-    fontSize: '2.5rem',
+    fontSize: '3rem',
   },
 };
 
@@ -27,12 +27,6 @@ const modules = [
     description: 'Casillero virtual',
     color: '#b3b3b3',
     icon: <MoveToInboxRoundedIcon {...iconsConfig} />,
-  },
-  {
-    name: 'Notificaciones en la oficina',
-    description: 'Mensajes',
-    color: '#d9cf5f',
-    icon: <EventAvailableRoundedIcon {...iconsConfig} />,
   },
   {
     name: 'Pagos judiciales',
