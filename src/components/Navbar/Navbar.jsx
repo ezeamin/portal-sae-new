@@ -41,6 +41,7 @@ const Navbar = () => {
       <>
         <AppBar position='fixed' color='white' sx={{ px: 1 }}>
           <Stack direction='row' justifyContent='space-between'>
+            
             {/* ------ LEFT ------ */}
             <Stack direction='row' alignItems='center'>
               {/* Logo portal */}
@@ -69,6 +70,8 @@ const Navbar = () => {
             </IconButton>
           </Stack>
         </AppBar>
+
+        {/* Drawer tras toque en boton */}
         <Drawer
           anchor='top'
           open={drawerOpened}
@@ -102,12 +105,18 @@ const Navbar = () => {
                 </Typography>
               </Stack>
             </Stack>
-            <Stack sx={{mt: 3}} direction='row' justifyContent='space-evenly'>
-              <RoundedButton variant='outlined' color="error">Cerrar sesión</RoundedButton>
+
+            {/* Botones de accion de perfil */}
+            <Stack sx={{ mt: 3 }} direction='row' justifyContent='space-evenly'>
+              <RoundedButton variant='outlined' color='error'>
+                Cerrar sesión
+              </RoundedButton>
               <RoundedButton variant='outlined'>Mi perfil</RoundedButton>
             </Stack>
-            <Divider sx={{my: 2}}/>
-            <Stack direction='row' justifyContent='space-evenly' sx={{ mr: 2 }}>
+            <Divider sx={{ my: 2 }} />
+
+            {/* Botones de acceso rápido */}
+            <Stack direction='row' justifyContent='space-evenly'>
               <IconButton onClick={handleChangeTheme}>
                 {data.theme === themes.LIGHT ? (
                   <DarkModeRoundedIcon />
@@ -131,6 +140,7 @@ const Navbar = () => {
   return (
     <AppBar position='fixed' color='white' sx={{ px: 1 }}>
       <Stack direction='row' justifyContent='space-between'>
+
         {/* ------ LEFT ------ */}
         <Stack direction='row' alignItems='center'>
           {/* Logo portal */}
@@ -155,7 +165,6 @@ const Navbar = () => {
           {/* Acciones módulo */}
           <Stack direction='row'></Stack>
         </Stack>
-        {/* ----------------------- */}
 
         {/* ------ RIGHT ------ */}
         <Stack direction='row' alignItems='center'>

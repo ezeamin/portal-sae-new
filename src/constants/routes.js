@@ -1,5 +1,11 @@
+import { Home } from "../views";
+
 const routes = {
-  HOME: '/',
+  HOME: {
+    path: '/',
+    component: Home, 
+  },
 };
 
 export default routes;
+
