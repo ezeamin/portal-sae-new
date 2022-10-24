@@ -1,15 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {
   AppBar,
   Avatar,
   Chip,
-  Drawer,
   IconButton,
   Stack,
   Typography,
-  Container,
-  Divider,
 } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,13 +20,19 @@ import SegmentRoundedIcon from '@mui/icons-material/SegmentRounded';
 
 import { themes } from '../../constants/constants';
 import { setTheme } from '../../features/globalData';
-import { RoundedButton } from '../../styled';
+
+import routes from '../../constants/routes';
+import DrawerMenu from './DrawerMenu';
+import ModuleChip from './ModuleChip';
+import ProfileInfo from './ProfileInfo';
+import PortalLogo from './PortalLogo';
 
 const Navbar = () => {
   const [drawerOpened, setDrawerOpened] = useState(false);
   const data = useSelector((state) => state.globalData);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChangeTheme = () => {
     const newValue = data.theme === themes.LIGHT ? themes.DARK : themes.LIGHT;
@@ -36,32 +40,23 @@ const Navbar = () => {
     dispatch(setTheme(newValue));
   };
 
+  const navigateProfile = () => {
+    setDrawerOpened(false);
+    navigate(routes.MY_PROFILE.path);
+  };
+
   if (data.isPortrait) {
     return (
       <>
         <AppBar position='fixed' color='white' sx={{ px: 1 }}>
           <Stack direction='row' justifyContent='space-between'>
-            
             {/* ------ LEFT ------ */}
             <Stack direction='row' alignItems='center'>
               {/* Logo portal */}
-              <button style={{ marginRight: '0.5rem', height: '65px' }}>
-                <img
-                  src='/assets/img/logos/logo-57.png'
-                  alt='Portal del SAE'
-                  height={45}
-                  width={42}
-                />
-              </button>
+              <PortalLogo />
 
               {/* Nombre módulo */}
-              <Chip
-                label={data.currentPage}
-                color='primary'
-                sx={{
-                  fontWeight: 'bold',
-                }}
-              />
+              <ModuleChip currentModule={data.currentModule} />
             </Stack>
 
             {/* ------ RIGHT ------ */}
@@ -72,67 +67,13 @@ const Navbar = () => {
         </AppBar>
 
         {/* Drawer tras toque en boton */}
-        <Drawer
-          anchor='top'
-          open={drawerOpened}
-          onClose={() => setDrawerOpened(false)}
-        >
-          <Container sx={{ pt: 4, pb: 3 }}>
-            {/* Perfil */}
-            <Stack direction='row' justifyContent='space-between'>
-              <Avatar alt={data.user.name} src={data.user?.avatar || '/'} />
-              <Stack sx={{ textAlign: 'right' }}>
-                <Typography
-                  variant='body1'
-                  component='p'
-                  color='light.contrastText'
-                  fontWeight='bold'
-                  sx={{
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {data.user.name}
-                </Typography>
-                <Typography
-                  variant='body2'
-                  component='p'
-                  color='light.secondaryContrastText'
-                  sx={{
-                    lineHeight: 1,
-                  }}
-                >
-                  {data.user.number}
-                </Typography>
-              </Stack>
-            </Stack>
-
-            {/* Botones de accion de perfil */}
-            <Stack sx={{ mt: 3 }} direction='row' justifyContent='space-evenly'>
-              <RoundedButton variant='outlined' color='error'>
-                Cerrar sesión
-              </RoundedButton>
-              <RoundedButton variant='outlined'>Mi perfil</RoundedButton>
-            </Stack>
-            <Divider sx={{ my: 2 }} />
-
-            {/* Botones de acceso rápido */}
-            <Stack direction='row' justifyContent='space-evenly'>
-              <IconButton onClick={handleChangeTheme}>
-                {data.theme === themes.LIGHT ? (
-                  <DarkModeRoundedIcon />
-                ) : (
-                  <LightModeRoundedIcon />
-                )}
-              </IconButton>
-              <IconButton>
-                <DashboardRoundedIcon />
-              </IconButton>
-              <IconButton>
-                <NotificationsRoundedIcon />
-              </IconButton>
-            </Stack>
-          </Container>
-        </Drawer>
+        <DrawerMenu
+          data={data}
+          drawerOpened={drawerOpened}
+          setDrawerOpened={setDrawerOpened}
+          navigateProfile={navigateProfile}
+          handleChangeTheme={handleChangeTheme}
+        />
       </>
     );
   }
@@ -140,27 +81,13 @@ const Navbar = () => {
   return (
     <AppBar position='fixed' color='white' sx={{ px: 1 }}>
       <Stack direction='row' justifyContent='space-between'>
-
         {/* ------ LEFT ------ */}
         <Stack direction='row' alignItems='center'>
           {/* Logo portal */}
-          <button style={{ marginRight: '0.5rem', height: '65px' }}>
-            <img
-              src='/assets/img/logos/logo-57.png'
-              alt='Portal del SAE'
-              height={45}
-              width={42}
-            />
-          </button>
+          <PortalLogo />
 
           {/* Nombre módulo */}
-          <Chip
-            label={data.currentPage}
-            color='primary'
-            sx={{
-              fontWeight: 'bold',
-            }}
-          />
+          <ModuleChip currentModule={data.currentModule} />
 
           {/* Acciones módulo */}
           <Stack direction='row'></Stack>
@@ -186,34 +113,8 @@ const Navbar = () => {
           </Stack>
 
           {/* Perfil */}
-          <Stack sx={{ mr: 2, textAlign: 'right' }}>
-            <Typography
-              variant='body1'
-              component='p'
-              color='light.contrastText'
-              fontWeight='bold'
-              sx={{
-                lineHeight: 1.5,
-              }}
-            >
-              {data.user.name}
-            </Typography>
-            <Typography
-              variant='body2'
-              component='p'
-              color='light.secondaryContrastText'
-              sx={{
-                lineHeight: 1,
-              }}
-            >
-              {data.user.number}
-            </Typography>
-          </Stack>
-          <button>
-            <Avatar alt={data.user.name} src={data.user?.avatar || '/'} />
-          </button>
+          <ProfileInfo user={data.user} navigateProfile={navigateProfile} />
         </Stack>
-        {/* ----------------------- */}
       </Stack>
     </AppBar>
   );

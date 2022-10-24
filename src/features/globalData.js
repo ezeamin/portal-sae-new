@@ -4,7 +4,10 @@ import { themes } from '../constants/constants';
 const defaultPortraitValue = window.innerWidth < 600;
 
 const initialState = {
-  currentPage: 'Inicio',
+  currentModule: {
+    name: 'Inicio',
+    color: "primary"
+  },
   user: {
     name: 'Ezequiel Amin',
     number: 20437063932,
@@ -20,8 +23,8 @@ const globalDataSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
-    setCurrentPage: (state, action) => {
-      state.currentPage = action.payload;
+    setCurrentModule: (state, action) => {
+      state.currentModule = action.payload;
     },
     setIsPortrait: (state, action) => {
       if (state.isPortrait !== action.payload)
@@ -42,7 +45,7 @@ const globalDataSlice = createSlice({
   },
 });
 
-export const { setUser, setCurrentPage, setIsPortrait, setTheme } =
+export const { setUser, setCurrentModule, setIsPortrait, setTheme } =
   globalDataSlice.actions;
 
 export default globalDataSlice.reducer;

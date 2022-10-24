@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import {
   Avatar,
   Container,
@@ -8,10 +10,15 @@ import {
 
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
+
 import { RoundedButton } from '../../styled';
+
+import routes from '../../constants/routes';
 
 const Header = (props) => {
   const { user } = props;
+
+  const navigate = useNavigate();
 
   const notificationNumber = 5;
 
@@ -64,6 +71,7 @@ const Header = (props) => {
             sx={{
               marginTop: { xs: 2, md: 0 },
             }}
+            onClick={()=>navigate(routes.MY_PROFILE.path)}
           >
             Mi perfil
           </RoundedButton>
