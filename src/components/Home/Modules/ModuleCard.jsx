@@ -26,6 +26,8 @@ const ModuleCard = (props) => {
                 sx={{
                   width: '5rem',
                   height: '5rem',
+                  color: module.color,
+                  backgroundColor: "#fff"
                 }}
               >
                 {module.icon}
