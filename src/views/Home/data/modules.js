@@ -29,12 +29,6 @@ const modules = [
     icon: <MoveToInboxRoundedIcon {...iconsConfig} />,
   },
   {
-    name: 'Notificaciones en la oficina',
-    description: 'Mensajes',
-    color: '#d9cf5f',
-    icon: <EventAvailableRoundedIcon {...iconsConfig} />,
-  },
-  {
     name: 'Pagos judiciales',
     description: 'Online/Presencial',
     color: '#ce6cd9',
