@@ -11,7 +11,7 @@ import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded
 
 const iconsConfig = {
   sx: {
-    fontSize: '2.5rem',
+    fontSize: '3rem',
   },
 };
 
