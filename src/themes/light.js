@@ -25,7 +25,7 @@ const lightTheme = {
     main: "#8a8a8a"
   },
   white: {
-    contrastText: '#000',
+    contrastText: '#3f3f3f',
     main: '#fff',
   },
   whiteDarkMode: {
