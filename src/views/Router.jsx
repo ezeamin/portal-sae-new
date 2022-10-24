@@ -1,17 +1,28 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Layout,Home } from './';
+import { Layout } from './';
 
-// import routes from '../constants/routes';
+import routes from '../constants/routes';
+
+// TODO: implementar 
+const PrivateRoute = ({ component: Component }) => {
+  return <Component />;
+  // return isJwtTokenStored() ? <Component /> : <Login />
+};
 
 const Router = () => {
-  // console.log(Object.values(routes));
+  const routesArray = Object.values(routes);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout />}>
-          {/* {Object.values(routes).forEach(route => <Route path={route.path} element={route.component} />)} */}
-          <Route path='/' element={<Home />} />
+          {routesArray.map((route) => (
+            <Route
+              path={route.path}
+              key={route.path}
+              element={<PrivateRoute component={route.component} />}
+            />
+          ))}
         </Route>
       </Routes>
     </BrowserRouter>

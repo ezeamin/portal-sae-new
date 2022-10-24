@@ -49,13 +49,13 @@ const modules = [
   {
     name: 'Consulta a la unidad judicial',
     description: 'Mensajes',
-    color: '#d9cf5f',
+    color: '#ded559',
     icon: <EmailRoundedIcon {...iconsConfig} />,
   },
   {
     name: 'Jurisprudencia',
     description: 'Online/Presencial',
-    color: '#8c6d4d',
+    color: '#b58c53',
     icon: <BookmarkRoundedIcon {...iconsConfig} />,
   },
   {
