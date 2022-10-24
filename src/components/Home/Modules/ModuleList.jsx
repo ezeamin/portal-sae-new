@@ -1,9 +1,10 @@
 import { Container, Grid } from '@mui/material';
 import ModuleCard from './ModuleCard';
 
-import modules from '../../../views/Home/data/modules';
+const ModuleList = (props) => {
 
-const ModuleList = () => {
+  const { modules } = props;
+
   return (
     <Container sx={{ my: 5 }}>
       <Grid container spacing={2} alignItems="stretch" justifyContent="space-evenly">

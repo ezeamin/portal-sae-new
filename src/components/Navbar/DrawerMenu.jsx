@@ -2,24 +2,17 @@ import {
   Container,
   Divider,
   Drawer,
-  IconButton,
   Stack,
 } from '@mui/material';
 
 import { RoundedButton } from '../../styled';
 
-import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
-import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
-import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
-import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
-
-import { themes } from '../../constants/constants';
 import ProfileInfo from './ProfileInfo';
+import QuickAccessIcons from './QuickAccessIcons';
 
 const DrawerMenu = (props) => {
   const {
     navigateProfile,
-    handleChangeTheme,
     data,
     drawerOpened,
     setDrawerOpened,
@@ -50,21 +43,7 @@ const DrawerMenu = (props) => {
         <Divider sx={{ my: 2 }} />
 
         {/* Botones de acceso rápido */}
-        <Stack direction='row' justifyContent='space-evenly'>
-          <IconButton onClick={handleChangeTheme}>
-            {data.theme === themes.LIGHT ? (
-              <DarkModeRoundedIcon />
-            ) : (
-              <LightModeRoundedIcon />
-            )}
-          </IconButton>
-          <IconButton>
-            <DashboardRoundedIcon />
-          </IconButton>
-          <IconButton>
-            <NotificationsRoundedIcon />
-          </IconButton>
-        </Stack>
+        <QuickAccessIcons theme={data.theme} isPortrait />
       </Container>
     </Drawer>
   );

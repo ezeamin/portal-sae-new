@@ -1,7 +1,19 @@
-const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
-}
+import { useSelector } from 'react-redux';
 
-export default Profile
+import Header from '../../components/Commons/Header/Header';
+import ModuleList from '../../components/Home/Modules/ModuleList';
+
+import profileModules from './profileModules';
+
+const Profile = () => {
+  const user = useSelector((state) => state.globalData.user);
+
+  return (
+    <>
+      <Header user={user} page='PROFILE' />
+      <ModuleList modules={profileModules} />
+    </>
+  );
+};
+
+export default Profile;

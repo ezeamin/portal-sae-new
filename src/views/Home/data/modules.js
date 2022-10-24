@@ -1,6 +1,5 @@
 import CreateRoundedIcon from '@mui/icons-material/CreateRounded';
 import MoveToInboxRoundedIcon from '@mui/icons-material/MoveToInboxRounded';
-import EventAvailableRoundedIcon from '@mui/icons-material/EventAvailableRounded';
 import DescriptionRoundedIcon from '@mui/icons-material/DescriptionRounded';
 import WorkHistoryRoundedIcon from '@mui/icons-material/WorkHistoryRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';

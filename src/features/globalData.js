@@ -11,6 +11,7 @@ const initialState = {
   user: {
     name: 'Ezequiel Amin',
     number: 20437063932,
+    notifications: 5,
   },
   isPortrait: defaultPortraitValue,
   theme: themes.LIGHT,

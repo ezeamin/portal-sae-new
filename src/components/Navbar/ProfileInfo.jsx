@@ -1,4 +1,4 @@
-import { Avatar, Stack, Typography } from '@mui/material';
+import { Avatar, Stack, Tooltip, Typography } from '@mui/material';
 
 const ProfileInfo = (props) => {
   const { user, navigateProfile, isPortrait } = props;
@@ -33,9 +33,11 @@ const ProfileInfo = (props) => {
           {user.number}
         </Typography>
       </Stack>
-      <button onClick={navigateProfile}>
-        <Avatar alt={user.name} src={user?.avatar || '/'} />
-      </button>
+      <Tooltip title='Mi perfil'>
+        <button onClick={navigateProfile}>
+          <Avatar alt={user.name} src={user?.avatar || '/'} />
+        </button>
+      </Tooltip>
     </Stack>
   );
 };
