@@ -2,7 +2,7 @@ import { Container, Grid } from '@mui/material';
 import React from 'react';
 import ModuleCard from './ModuleCard';
 
-import modules from '../data/modules';
+import modules from '../../../views/Home/data/modules';
 
 const ModuleList = () => {
   return (
