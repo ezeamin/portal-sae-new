@@ -6,12 +6,15 @@ import { AppBar, IconButton, Stack } from '@mui/material';
 
 import SegmentRoundedIcon from '@mui/icons-material/SegmentRounded';
 
-import routes from '../../constants/routes';
 import DrawerMenu from './DrawerMenu';
 import ModuleChip from './ModuleChip';
 import ProfileInfo from './ProfileInfo';
 import PortalLogo from './PortalLogo';
 import QuickAccessIcons from './QuickAccessIcons';
+
+import routes from '../../constants/routes';
+
+import getModuleInfo from '../../helpers/getModuleInfo';
 
 const Navbar = () => {
   const [drawerOpened, setDrawerOpened] = useState(false);
@@ -19,9 +22,11 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
+  const module = getModuleInfo(data.currentModule);
+
   const navigateProfile = () => {
     setDrawerOpened(false);
-    navigate(routes.MY_PROFILE.path);
+    navigate(routes.PROFILE.path);
   };
 
   if (data.isPortrait) {
@@ -32,7 +37,7 @@ const Navbar = () => {
             {/* ------ LEFT ------ */}
             <Stack direction='row' alignItems='center'>
               <PortalLogo />
-              <ModuleChip currentModule={data.currentModule} />
+              <ModuleChip currentModule={module} />
             </Stack>
 
             {/* ------ RIGHT ------ */}
@@ -60,7 +65,7 @@ const Navbar = () => {
         {/* ------ LEFT ------ */}
         <Stack direction='row' alignItems='center'>
           <PortalLogo />
-          <ModuleChip currentModule={data.currentModule} />
+          <ModuleChip currentModule={module} />
 
           {/* Acciones módulo */}
           <Stack direction='row'></Stack>

@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&family=Roboto:wght@300;400;500&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', Roboto, sans-serif !important;
 }
 
-main{
-    min-height: 100vh;
-    display: flex;
+main {
+  min-height: 100vh;
+  display: flex;
 }
 
-button{
-    outline: none;
-    border: none;
-    background-color: transparent;
-    cursor: pointer
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }

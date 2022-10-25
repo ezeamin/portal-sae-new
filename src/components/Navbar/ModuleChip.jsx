@@ -7,8 +7,10 @@ const ModuleChip = (props) => {
     <Chip
       label={currentModule.name}
       color={currentModule.color}
+      icon={currentModule.icon}
       sx={{
         fontWeight: 'bold',
+        lineHeight: '10',
       }}
     />
   );

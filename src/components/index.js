@@ -1,4 +1,18 @@
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
+import ModuleList from './Home/Modules/ModuleList';
+import ProfileForm from './Profile/ProfileForm/ProfileForm';
+import Header from './Commons/Header/Header';
+import Profile from '../views/Profile/Profile';
 
-export { Navbar, Footer };
+import CustomContainer from './Commons/CustomContainer/CustomContainer';
+
+export {
+  Navbar,
+  Footer,
+  ModuleList,
+  ProfileForm,
+  Header,
+  CustomContainer,
+  Profile,
+};

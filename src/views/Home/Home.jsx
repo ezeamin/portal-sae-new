@@ -1,9 +1,8 @@
 import { useSelector } from 'react-redux';
 
-import Header from '../../components/Commons/Header/Header';
-import ModuleList from '../../components/Home/Modules/ModuleList';
+import { Header, ModuleList } from '../../components';
 
-import modules from './data/modules';
+import modules from '../../constants/modules';
 
 const Home = () => {
   const user = useSelector((state) => state.globalData.user);
@@ -11,7 +10,7 @@ const Home = () => {
   return (
     <>
       <Header user={user} page="HOME"/>
-      <ModuleList modules={modules}/>
+      <ModuleList modules={modules.HOME}/>
     </>
   );
 };

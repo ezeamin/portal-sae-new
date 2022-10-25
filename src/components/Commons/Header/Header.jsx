@@ -6,8 +6,9 @@ import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 
 import { RoundedButton } from '../../../styled';
 
-import routes from '../../../constants/routes';
 import WelcomeMessage from './WelcomeMessage';
+
+import routes from '../../../constants/routes';
 
 const Header = (props) => {
   const { user, page } = props;
@@ -21,7 +22,11 @@ const Header = (props) => {
     <Paper
       square
       elevation={0}
-      sx={{ py: { md: 5, xs: 3 }, backgroundColor: 'whiteDarkMode.main' }}
+      sx={{
+        pb: { md: 5, xs: 3 },
+        pt: 5,
+        backgroundColor: 'whiteDarkMode.main',
+      }}
     >
       <Container>
         <Stack
@@ -47,7 +52,7 @@ const Header = (props) => {
               sx={{
                 marginTop: { xs: 2, md: 0 },
               }}
-              onClick={() => navigate(routes.MY_PROFILE.path)}
+              onClick={() => navigate(routes.PROFILE.path)}
             >
               Mi perfil
             </RoundedButton>

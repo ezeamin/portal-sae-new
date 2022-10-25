@@ -14,6 +14,14 @@ const useTheme = () => {
       mode: themeOption,
       ...(themeOption === themes.LIGHT ? lightTheme : darkTheme),
     },
+    typography:{
+      h5: {
+        // fontSize
+      },
+      body1:{
+        fontSize: "1.1rem"
+      }
+    }
   });
 };
 

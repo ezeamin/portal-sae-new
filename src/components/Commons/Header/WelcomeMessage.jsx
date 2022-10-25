@@ -29,8 +29,8 @@ const WelcomeMessage = (props) => {
         {`Bienvenido, ${user.name}`}
       </Typography>
       {user.notifications && (
-        <Stack direction='row' alignItems='center'>
-          <NotificationsRoundedIcon color='dark' sx={{ marginLeft: -0.5 }} />
+        <Stack direction='row' alignItems='flex-start'>
+          <NotificationsRoundedIcon color='dark' sx={{ ml: -0.5, mr: 1 }} />
           <Typography color='light.secondaryContrastText'>
             {`Tenés ${user.notifications} notificaciones nuevas`}{' '}
           </Typography>

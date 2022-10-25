@@ -4,10 +4,7 @@ import { themes } from '../constants/constants';
 const defaultPortraitValue = window.innerWidth < 600;
 
 const initialState = {
-  currentModule: {
-    name: 'Inicio',
-    color: "primary"
-  },
+  currentModule: 1000,
   user: {
     name: 'Ezequiel Amin',
     number: 20437063932,
