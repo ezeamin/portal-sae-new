@@ -37,7 +37,7 @@ const DrawerMenu = (props) => {
           <RoundedButton variant='outlined' color='error'>
             Cerrar sesión
           </RoundedButton>
-          <RoundedButton variant='outlined'>Mi perfil</RoundedButton>
+          <RoundedButton variant='outlined' onClick={navigateProfile}>Mi perfil</RoundedButton>
         </Stack>
 
         <Divider sx={{ my: 2 }} />

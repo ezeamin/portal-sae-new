@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Layout } from './';
+import { Layout } from '..';
 
-import routes from '../constants/routes';
-import PrivateRoute from './Router/PrivateRoute';
+import routes from '../../constants/routes';
+import PrivateRoute from './PrivateRoute';
 
 const Router = () => {
   const routesArray = Object.values(routes);

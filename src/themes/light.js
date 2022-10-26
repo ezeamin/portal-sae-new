@@ -1,14 +1,8 @@
-/*
-  primary: {
-    main: '#80a5d7',
-    dark: '#7593be',
-    contrastText: '#fff',
-  },
-*/
+import modulesColors from '../constants/modulesColors';
 
 const lightTheme = {
   primary: {
-    light: "#8192f7",
+    light: '#8192f7',
     main: '#5c7aea',
     contrastText: '#fff',
   },
@@ -20,9 +14,9 @@ const lightTheme = {
     secondaryContrastText: '#8a8a8a',
     main: '#e6e6e6',
   },
-  dark:{
-    light: "#c4c4c4",
-    main: "#8a8a8a"
+  dark: {
+    light: '#c4c4c4',
+    main: '#8a8a8a',
   },
   white: {
     contrastText: '#3f3f3f',
@@ -35,6 +29,9 @@ const lightTheme = {
   background: {
     default: '#e6e6e6',
   },
+
+  // Modules
+  ...modulesColors,
 };
 
 export default lightTheme;

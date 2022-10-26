@@ -1,10 +1,4 @@
-/* 
-  primary: {
-    main: '#80a5d7',
-    dark: '#7593be',
-    contrastText: '#fff',
-  }
-*/
+import modulesColors from "../constants/modulesColors";
 
 const darkTheme = {
   primary: {
@@ -36,6 +30,18 @@ const darkTheme = {
   background: {
     default: '#3a3a3a',
   },
+
+  // Modules
+  ...modulesColors
+  // ESCRITOS: modulesColors.ESCRITOS.DARK,
+  // NOTIFICACIONES: modulesColors.NOTIFICACIONES.DARK,
+  // PAGOS: modulesColors.PAGOS.DARK,
+  // TURNOS: modulesColors.TURNOS.DARK,
+  // CONSULTA_EXPEDIENTES: modulesColors.CONSULTA_EXPEDIENTES.DARK,
+  // UNIDADES: modulesColors.UNIDADES.DARK,
+  // JURISPRUDENCIA: modulesColors.JURISPRUDENCIA.DARK,
+  // INICIO_EXPEDIENTES: modulesColors.INICIO_EXPEDIENTES.DARK,
+  // OGA: modulesColors.OGA.DARK,
 };
 
 export default darkTheme;

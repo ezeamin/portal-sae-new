@@ -13,11 +13,11 @@ const ProfileForm = () => {
 
   return (
     <CustomContainer>
-      <Paper sx={{ p: 3 }}>
+      <Paper sx={{ p: 3, backgroundColor: 'whiteDarkMode.main' }}>
         <Typography variant='h4' component='h3'>
           Editar datos
         </Typography>
-        <Divider sx={{my: 2}} /> 
+        <Divider sx={{ my: 2 }} />
         <form onSubmit={submitRHF(handleSubmit)}>
           <Stack direction='row' justifyContent='space-between'>
             <TextField

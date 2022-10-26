@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 
 import { IconButton, Stack } from '@mui/material';
 
-import { themes } from '../../constants/constants';
+import themes from '../../constants/themes';
 import { setTheme } from '../../features/globalData';
 
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';

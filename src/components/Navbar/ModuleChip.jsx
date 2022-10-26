@@ -6,8 +6,8 @@ const ModuleChip = (props) => {
   return (
     <Chip
       label={currentModule.name}
-      color={currentModule.color}
-      icon={currentModule.icon}
+      color={currentModule.routeInfo.color}
+      icon={currentModule.routeInfo.icon}
       sx={{
         fontWeight: 'bold',
         lineHeight: '10',

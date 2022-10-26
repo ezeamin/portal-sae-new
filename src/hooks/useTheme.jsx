@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { createTheme } from '@mui/material/styles';
 
-import { themes } from '../constants/constants';
+import themes from '../constants/themes';
 import lightTheme from '../themes/light';
 import darkTheme from '../themes/dark';
 

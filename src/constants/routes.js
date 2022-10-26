@@ -2,40 +2,25 @@ import Home from '../views/Home/Home';
 import viewList from '../views/Profile/data/viewList';
 import Profile from '../views/Profile/Profile';
 
-import { routesModules } from './constants';
-
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
+import { mainRoutes, modules } from './constants';
 
 const routes = {
   HOME: {
-    id: routesModules.MAIN.id,
-    name: 'Inicio',
-    description: '',
-    color: 'primary',
-    icon: <HomeRoundedIcon />,
-    path: routesModules.MAIN.path,
+    id: mainRoutes.HOME.id,
+    path: mainRoutes.HOME.path,
     component: Home,
   },
   PROFILE: {
-    id: routesModules.PROFILE.MAIN.id,
-    name: 'Perfil',
-    description: '',
-    color: 'primary',
-    icon: <PersonRoundedIcon />,
-    path: routesModules.PROFILE.MAIN.path,
+    id: mainRoutes.PROFILE.id,
+    path: mainRoutes.PROFILE.path,
     args: {
       view: viewList.MAIN,
     },
     component: Profile,
   },
   PROFILE_DATA_FORM: {
-    id: routesModules.PROFILE.DATA_FORM.id,
-    name: 'Perfil',
-    description: 'dataForm',
-    color: 'primary',
-    icon: <PersonRoundedIcon />,
-    path: routesModules.PROFILE.DATA_FORM.path,
+    id: modules.PROFILE.DATA_FORM.id,
+    path: modules.PROFILE.DATA_FORM.path,
     args: {
       view: viewList.FORM,
     },
@@ -44,40 +29,49 @@ const routes = {
 
   //   Modules
   ESCRITOS: {
-    id: routesModules.HOME.ESCRITOS.id,
-    path: routesModules.HOME.ESCRITOS.path,
+    id: modules.HOME.ESCRITOS.id,
+    path: modules.HOME.ESCRITOS.path,
+    component: Profile
   },
   NOTIFICACIONES: {
-    id: routesModules.HOME.NOTIFICACIONES.id,
-    path: routesModules.HOME.NOTIFICACIONES.path,
+    id: modules.HOME.NOTIFICACIONES.id,
+    path: modules.HOME.NOTIFICACIONES.path,
+    component: Profile
   },
   PAGOS: {
-    id: routesModules.HOME.PAGOS.id,
-    path: routesModules.HOME.PAGOS.path,
+    id: modules.HOME.PAGOS.id,
+    path: modules.HOME.PAGOS.path,
+    component: Profile
   },
   TURNOS: {
-    id: routesModules.HOME.TURNOS.id,
-    path: routesModules.HOME.TURNOS.path,
+    id: modules.HOME.TURNOS.id,
+    path: modules.HOME.TURNOS.path,
+    component: Profile
   },
   CONSULTA_EXPEDIENTES: {
-    id: routesModules.HOME.CONSULTA_EXPEDIENTES.id,
-    path: routesModules.HOME.CONSULTA_EXPEDIENTES.path,
+    id: modules.HOME.CONSULTA_EXPEDIENTES.id,
+    path: modules.HOME.CONSULTA_EXPEDIENTES.path,
+    component: Profile
   },
   UNIDADES: {
-    id: routesModules.HOME.UNIDADES.id,
-    path: routesModules.HOME.UNIDADES.path,
+    id: modules.HOME.UNIDADES.id,
+    path: modules.HOME.UNIDADES.path,
+    component: Profile
   },
   JURISPRUDENCIA: {
-    id: routesModules.HOME.JURISPRUDENCIA.id,
-    path: routesModules.HOME.JURISPRUDENCIA.path,
+    id: modules.HOME.JURISPRUDENCIA.id,
+    path: modules.HOME.JURISPRUDENCIA.path,
+    component: Profile
   },
   INICIO_EXPEDIENTES: {
-    id: routesModules.HOME.INICIO_EXPEDIENTES.id,
-    path: routesModules.HOME.INICIO_EXPEDIENTES.path,
+    id: modules.HOME.INICIO_EXPEDIENTES.id,
+    path: modules.HOME.INICIO_EXPEDIENTES.path,
+    component: Profile
   },
   OGA: {
-    id: routesModules.HOME.OGA.id,
-    path: routesModules.HOME.OGA.path,
+    id: modules.HOME.OGA.id,
+    path: modules.HOME.OGA.path,
+    component: Profile
   },
 };
 

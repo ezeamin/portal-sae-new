@@ -1,21 +1,26 @@
-import modules from '../constants/modules';
-import routes from '../constants/routes';
+import { modules, mainRoutes, ids } from '../constants/constants';
 
 const getModuleInfo = (id) => {
   let module;
 
-  if (id < 100) {
+  if (id < ids.MAX.MODULES_HOME) {
     //modulos
-    module = modules.HOME.find((mod) => mod.id === id);
-  } else if (id < 200) {
+    module = Object.values(modules.HOME).find((mod) => mod.id === id);
+  } else if (id < ids.MAX.MODULES_PROFILES) {
     // modulos del perfil
-    module = modules.PROFILE.find((mod) => mod.id === id);
+    module = Object.values(modules.PROFILE).find((mod) => mod.id === id);
   } else {
-    // rutas extras
-    module = Object.values(routes).find((route) => route.id === id);
+    // rutas principales
+    module = Object.values(mainRoutes).find((route) => route.id === id);
   }
 
-  return module;
+  // valores especificos para el enrutado
+  return {
+    ...module,
+    color: module.routeInfo.color,
+    name: module.routeInfo.name ?? module.name,
+    icon: module.routeInfo.icon,
+  };
 };
 
 export default getModuleInfo;
