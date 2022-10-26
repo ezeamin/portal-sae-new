@@ -1,9 +1,4 @@
-import {
-  Container,
-  Divider,
-  Drawer,
-  Stack,
-} from '@mui/material';
+import { Container, Divider, Drawer, Stack } from '@mui/material';
 
 import { RoundedButton } from '../../styled';
 
@@ -11,18 +6,16 @@ import ProfileInfo from './ProfileInfo';
 import QuickAccessIcons from './QuickAccessIcons';
 
 const DrawerMenu = (props) => {
-  const {
-    navigateProfile,
-    data,
-    drawerOpened,
-    setDrawerOpened,
-  } = props;
+  const { navigateProfile, data, drawerOpened, setDrawerOpened } = props;
 
   return (
     <Drawer
       anchor='top'
       open={drawerOpened}
       onClose={() => setDrawerOpened(false)}
+      PaperProps={{
+        variant: 'roundedBottom',
+      }}
     >
       <Container sx={{ pt: 4, pb: 3 }}>
         {/* Perfil */}
@@ -37,7 +30,9 @@ const DrawerMenu = (props) => {
           <RoundedButton variant='outlined' color='error'>
             Cerrar sesión
           </RoundedButton>
-          <RoundedButton variant='outlined' onClick={navigateProfile}>Mi perfil</RoundedButton>
+          <RoundedButton variant='outlined' onClick={navigateProfile}>
+            Mi perfil
+          </RoundedButton>
         </Stack>
 
         <Divider sx={{ my: 2 }} />

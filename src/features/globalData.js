@@ -6,7 +6,9 @@ const defaultPortraitValue = window.innerWidth < 600;
 const initialState = {
   currentModule: 1000,
   user: {
-    name: 'Ezequiel Amin',
+    name: 'Ezequiel',
+    lastname: 'Amin',
+    email: 'ezequielamin@outlook.com',
     number: 20437063932,
     notifications: 5,
   },

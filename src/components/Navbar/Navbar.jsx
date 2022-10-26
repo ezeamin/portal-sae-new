@@ -32,7 +32,7 @@ const Navbar = () => {
   if (data.isPortrait) {
     return (
       <>
-        <AppBar position='fixed' color='white' sx={{ px: 1 }}>
+        <AppBar  position='fixed' color='white' sx={{ px: 1 }}>
           <Stack direction='row' justifyContent='space-between'>
             {/* ------ LEFT ------ */}
             <Stack direction='row' alignItems='center'>

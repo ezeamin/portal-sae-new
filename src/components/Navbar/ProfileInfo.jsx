@@ -20,7 +20,7 @@ const ProfileInfo = (props) => {
             lineHeight: 1.5,
           }}
         >
-          {user.name}
+          {`${user.name} ${user.lastname}`}
         </Typography>
         <Typography
           variant='body2'
