@@ -11,7 +11,10 @@ import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
+
 import modulesColors from './modulesColors';
+
+import logout from '../actions/logout';
 
 const iconsConfig = {
   sx: {
@@ -197,7 +200,7 @@ export const modules = {
       id: 103,
       name: 'Cerrar sesión',
       description: 'Salir de la sesión actual',
-      path: '1565165165',
+      path: '',
       color: modulesColors.PROFILE.LOGOUT.main,
       routeInfo: {
         color: 'primary',
@@ -205,9 +208,7 @@ export const modules = {
         icon: <PersonRoundedIcon />,
       },
       icon: <LogoutRoundedIcon {...iconsConfig} />,
-      action: () => {
-        console.log('LOG OUT');
-      },
+      action: logout,
     },
   },
 };

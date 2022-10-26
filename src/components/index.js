@@ -1,6 +1,6 @@
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
-import ModuleList from './Home/Modules/ModuleList';
+import ModuleList from './Commons/Modules/ModuleList';
 import ProfileForm from './Profile/ProfileForm/ProfileForm';
 import Header from './Commons/Header/Header';
 import Profile from '../views/Profile/Profile';

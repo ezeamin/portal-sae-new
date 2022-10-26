@@ -26,6 +26,14 @@ const routes = {
     },
     component: Profile,
   },
+  PROFILE_PASSWORD: {
+    id: modules.PROFILE.PASSWORD.id,
+    path: modules.PROFILE.PASSWORD.path,
+    args: {
+      view: viewList.PASS,
+    },
+    component: Profile,
+  },
 
   //   Modules
   ESCRITOS: {

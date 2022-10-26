@@ -15,7 +15,8 @@ const ModuleCard = (props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(module.path);
+    if(module.path) navigate(module.path);
+    else module.action();
   };
 
   return (
