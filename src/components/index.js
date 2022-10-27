@@ -6,6 +6,8 @@ import Header from './Commons/Header/Header';
 import Profile from '../views/Profile/Profile';
 
 import CustomContainer from './Commons/CustomContainer/CustomContainer';
+import CustomPaper from './Commons/CustomPaper/CustomPaper';
+import CustomAlert from './Commons/CustomAlert/CustomAlert';
 
 export {
   Navbar,
@@ -13,6 +15,8 @@ export {
   ModuleList,
   ProfileForm,
   Header,
+  CustomAlert,
   CustomContainer,
+  CustomPaper,
   Profile,
 };

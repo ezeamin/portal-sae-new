@@ -5,6 +5,7 @@ import { ModuleList, ProfileForm } from '../../components';
 
 import { modules } from '../../constants/constants';
 import viewList from './data/viewList';
+import ChangePassword from '../../components/Profile/ChangePassword/ChangePassword';
 
 const Profile = (props) => {
   const { view } = props;
@@ -22,6 +23,10 @@ const Profile = (props) => {
     }
     case viewList.FORM: {
       renderedComp = <ProfileForm />;
+      break;
+    }
+    case viewList.PASS: {
+      renderedComp = <ChangePassword />;
       break;
     }
     default: {

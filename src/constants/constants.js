@@ -205,8 +205,8 @@ export const modules = {
       name: 'Cambiar contraseña',
       description: 'Cambiar contraseña de ingreso',
       dataTestId: 'button-cambiar-contraseña',
-      path: '/perfil/contraseña',
-      color: modulesColors.PROFILE.CONTRASEÑA.main,
+      path: '/perfil/password',
+      color: modulesColors.PROFILE.PASSWORD.main,
       routeInfo: {
         color: 'primary',
         name: 'Perfil',
