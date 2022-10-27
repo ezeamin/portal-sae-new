@@ -9,18 +9,25 @@ import {
   Typography,
 } from '@mui/material';
 
+import useTestId from '../../../hooks/useTestId';
+
 const ModuleCard = (props) => {
   const { module } = props;
+
+  const cardDTI = useTestId(module.dataTestId);
 
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if(module.path) navigate(module.path);
+    if (module.path) navigate(module.path);
     else module.action();
   };
 
   return (
-    <Card sx={{ height: '100%', backgroundColor: 'whiteDarkMode.main' }}>
+    <Card
+      sx={{ height: '100%', backgroundColor: 'whiteDarkMode.main' }}
+      {...cardDTI}
+    >
       <CardActionArea sx={{ height: '100%' }} onClick={handleClick}>
         <Stack sx={{ height: '100%' }} direction='row'>
           <Box
