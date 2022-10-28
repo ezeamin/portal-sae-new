@@ -24,6 +24,7 @@ const WelcomeMessage = (props) => {
           component='h1'
           fontWeight='bold'
           color='light.contrastText'
+          className='animate-in-right'
         >
           {`${user.name} ${user.lastname}`}
         </Typography>
@@ -34,6 +35,7 @@ const WelcomeMessage = (props) => {
           startIcon={<HomeRoundedIcon />}
           sx={{ width: { md: '50%' }, mt: 1 }}
           size='small'
+          className='animate-in-right'
         >
           Inicio
         </RoundedButton>
@@ -48,11 +50,13 @@ const WelcomeMessage = (props) => {
         component='h1'
         fontWeight='bold'
         color='light.contrastText'
+        className='animate-in-right'
       >
         {`Bienvenido, ${user.name} ${user.lastname}`}
       </Typography>
       {user.notifications && (
-        <Stack direction='row' alignItems='flex-start'>
+        <Stack direction='row' alignItems='flex-start'
+        className='animate-in-right' sx={{animationDelay: "100ms"}}>
           <NotificationsRoundedIcon color='dark' sx={{ ml: -0.5, mr: 1 }} />
           <Typography color='light.secondaryContrastText'>
             {`Tenés ${user.notifications} notificaciones nuevas`}{' '}

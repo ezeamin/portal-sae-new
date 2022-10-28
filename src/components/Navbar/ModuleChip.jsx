@@ -8,6 +8,7 @@ const ModuleChip = (props) => {
       label={currentModule.name}
       color={currentModule.routeInfo.color}
       icon={currentModule.routeInfo.icon}
+      className='animate-in-right'
       sx={{
         fontWeight: 'bold',
         lineHeight: '10',

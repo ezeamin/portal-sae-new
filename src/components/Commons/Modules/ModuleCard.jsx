@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 
 const ModuleCard = (props) => {
-  const { module } = props;
+  const { module, delay } = props;
 
   const navigate = useNavigate();
 
@@ -21,7 +21,12 @@ const ModuleCard = (props) => {
 
   return (
     <Card
-      sx={{ height: '100%', backgroundColor: 'whiteDarkMode.main' }}
+      sx={{
+        height: '100%',
+        backgroundColor: 'whiteDarkMode.main',
+        animationDelay: `${delay}ms`,
+      }}
+      className='animate-in'
     >
       <CardActionArea sx={{ height: '100%' }} onClick={handleClick}>
         <Stack sx={{ height: '100%' }} direction='row'>

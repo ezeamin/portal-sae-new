@@ -4,7 +4,7 @@ import { Footer, Navbar } from '../../components';
 const Layout = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* Tamaños navbar y footer */}
       <div style={{ marginTop: '65px', marginBottom: '60px' }}>
         <Outlet />

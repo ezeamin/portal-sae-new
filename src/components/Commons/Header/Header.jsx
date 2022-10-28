@@ -22,10 +22,12 @@ const Header = (props) => {
     <Paper
       square
       elevation={0}
+      className='animate-in-top'
       sx={{
         pb: { md: 5, xs: 3 },
         pt: 5,
         backgroundColor: 'whiteDarkMode.main',
+        overflowX: 'hidden',
       }}
     >
       <Container>
@@ -49,6 +51,7 @@ const Header = (props) => {
               variant='contained'
               color='primary'
               startIcon={<SettingsRoundedIcon />}
+              className='animate-in'
               sx={{
                 marginTop: { xs: 2, md: 0 },
               }}

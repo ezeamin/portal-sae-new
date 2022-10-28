@@ -33,3 +33,50 @@ button {
 .swal2-container {
   z-index: 999998 !important;
 }
+
+/*  Animation  */
+
+@keyframes in-keyframes {
+  0% {
+    opacity: 0;
+    translate: 0 50%;
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes in-keyframes-right {
+  0% {
+    opacity: 0;
+    translate: 30% 0;
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes in-keyframes-top {
+  0% {
+    opacity: 0;
+    translate: 0 -25%;
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.animate-in {
+  animation: in-keyframes 0.5s both;
+}
+
+.animate-in-right {
+  animation: in-keyframes-right 0.75s both;
+}
+
+.animate-in-top {
+  animation: in-keyframes-top 0.5s both;
+}
