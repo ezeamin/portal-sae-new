@@ -1,8 +1,19 @@
 import { Box } from '@mui/material';
+import { useSelector } from 'react-redux';
+import themes from '../../constants/themes';
 
 const Waves = () => {
+  const theme = useSelector((state) => state.globalData.theme);
+
+  const color = theme === themes.LIGHT
+    ? 'rgba(200,200,200, 0.2)'
+    : 'rgba(200,200,200, 0.05)';
+
   return (
-    <Box className="animate-in" sx={{ position: 'fixed', bottom: 0, width: '100%', zIndex: -1 }}>
+    <Box
+      className='animate-in'
+      sx={{ position: 'fixed', bottom: 0, width: '100%', zIndex: -1 }}
+    >
       <svg
         className='waves'
         xmlns='http://www.w3.org/2000/svg'
@@ -21,13 +32,13 @@ const Waves = () => {
             xlinkHref='#gentle-wave'
             x='48'
             y='0'
-            fill='rgba(200,200,200,0.1)'
+            fill={color}
           />
           <use
             xlinkHref='#gentle-wave'
             x='48'
             y='3'
-            fill='rgba(200,200,200,0.1)'
+            fill={color}
           />
         </g>
       </svg>

@@ -92,15 +92,14 @@ button {
 }
 
 .parallax > use {
-  animation: move-forever 30s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  animation: move-forever 35s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
 }
 .parallax > use:nth-child(1) {
-  animation-delay: -2s;
-  animation-duration: 10s;
+  animation-duration: 9s;
 }
 .parallax > use:nth-child(2) {
-  animation-delay: -7s;
-  animation-duration: 14s;
+  animation-delay: -10s;
+  animation-duration: 20s;
 }
 
 @keyframes move-forever {
