@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
       <Header user={user} page='HOME' />
-      <ModuleList modules={modulesList} />
+      <ModuleList modules={modulesList} sx={{mb: 10}}/>
       <Waves />
     </>
   );
