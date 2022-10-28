@@ -30,16 +30,20 @@ const ModulesModal = () => {
             Cerrar
           </RoundedButton>
         </Container>
-        <Box sx={{overflow: "scroll"}}>
-          <ModuleList modules={modulesList} sx={{mt: 0}} />
+        <Box sx={{ overflow: 'scroll' }}>
+          <ModuleList modules={modulesList} sx={{ mt: 0 }} />
         </Box>
       </Drawer>
     );
   }
 
   return (
-    <Dialog open={opened} onClose={handleClose} maxWidth='lg'>
-      <ModuleList modules={modulesList} />
+    <Dialog
+      open={opened}
+      onClose={handleClose}
+      maxWidth='lg'
+    >
+      <ModuleList modules={modulesList} sx={{ overflowY: 'hidden', py: 1 }}/>
     </Dialog>
   );
 };

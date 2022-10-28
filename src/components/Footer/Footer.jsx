@@ -22,7 +22,7 @@ const Footer = () => {
         bottom: 0,
         width: '100%',
         height: '3rem',
-        backgroundColor: "dark.light"
+        backgroundColor: "dark.light",
       }}
     >
       <Stack
