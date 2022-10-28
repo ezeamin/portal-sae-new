@@ -1,10 +1,11 @@
-import { Tooltip } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import routes from '../../constants/routes';
+
+import { Tooltip } from '@mui/material';
+
+import { routes } from '../../constants/routes';
 
 const PortalLogo = () => {
   const navigate = useNavigate();
-
   return (
     <Tooltip title='Portal del SAE'>
       <button

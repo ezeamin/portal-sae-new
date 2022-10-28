@@ -1,18 +1,19 @@
-import Navbar from './Navbar/Navbar';
-import Footer from './Footer/Footer';
-import ModuleList from './Commons/Modules/ModuleList';
-import ProfileForm from './Profile/ProfileForm/ProfileForm';
-import Header from './Commons/Header/Header';
-import Profile from '../views/Profile/Profile';
-
+import Background from './Login/Background/Background';
 import CustomContainer from './Commons/CustomContainer/CustomContainer';
+import Footer from './Footer/Footer';
+import Header from './Commons/Header/Header';
+import ModuleList from './Commons/Modules/ModuleList';
+import Navbar from './Navbar/Navbar';
+import Profile from '../views/Profile/Profile';
+import ProfileForm from './Profile/ProfileForm/ProfileForm';
 
 export {
-  Navbar,
-  Footer,
-  ModuleList,
-  ProfileForm,
-  Header,
+  Background,
   CustomContainer,
+  Footer,
+  Header,
+  ModuleList,
+  Navbar,
   Profile,
+  ProfileForm,
 };

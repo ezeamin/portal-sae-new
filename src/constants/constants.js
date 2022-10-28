@@ -25,7 +25,7 @@ const iconsConfig = {
 const routeIconsConfig = {
   sx: {
     fontSize: '1.2rem',
-    ml: "12px !important"
+    ml: '12px !important',
   },
 };
 
@@ -34,17 +34,52 @@ export const ids = {
     ROUTES: 1000,
     MODULES_HOME: 0,
     MODULES_PROFILES: 100,
+    AUTH: 200,
   },
   MAX: {
     ROUTES: 2000,
-    MODULES_HOME: 100,
-    MODULES_PROFILES: 200,
+    MODULES_HOME: 99,
+    MODULES_PROFILES: 199,
+    AUTH: 299,
+  },
+};
+
+export const authRoutesRouter = {
+  RESET_PASSWORD: {
+    id: 200,
+    name: 'Blanqueo contraseña',
+    path: '/auth/reset-password',
+    color: 'primary',
+    routeInfo: {
+      color: 'primary',
+      icon: <></>,
+    },
+  },
+  RESTORE_PASSWORD: {
+    id: 201,
+    name: 'Solicitud blanqueo de contraseña',
+    path: '/auth/restore-password',
+    color: 'primary',
+    routeInfo: {
+      color: 'primary',
+      icon: <></>,
+    },
   },
 };
 
 export const mainRoutes = {
-  HOME: {
+  AUTH: {
     id: 1000,
+    name: 'Login',
+    path: '/auth',
+    color: 'primary',
+    routeInfo: {
+      color: 'primary',
+      icon: <></>,
+    },
+  },
+  HOME: {
+    id: 1001,
     name: 'Inicio',
     path: '/',
     color: 'primary',
@@ -54,7 +89,7 @@ export const mainRoutes = {
     },
   },
   PROFILE: {
-    id: 1001,
+    id: 1002,
     name: 'Perfil',
     path: '/perfil',
     color: 'primary',

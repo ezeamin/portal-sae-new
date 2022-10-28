@@ -1,4 +1,4 @@
-import { modules, mainRoutes, ids } from '../constants/constants';
+import { modules, mainRoutes, ids, authRoutesRouter } from '../constants/constants';
 
 const getModuleInfo = (id) => {
   let module;
@@ -9,6 +9,9 @@ const getModuleInfo = (id) => {
   } else if (id < ids.MAX.MODULES_PROFILES) {
     // modulos del perfil
     module = Object.values(modules.PROFILE).find((mod) => mod.id === id);
+  } else if ( id < ids.MAX.AUTH ) {
+    // rutas login
+    module = Object.values(authRoutesRouter).find((route) => route.id === id);
   } else {
     // rutas principales
     module = Object.values(mainRoutes).find((route) => route.id === id);

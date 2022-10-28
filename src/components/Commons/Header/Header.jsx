@@ -4,11 +4,11 @@ import { Avatar, Container, Paper, Stack } from '@mui/material';
 
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 
-import { RoundedButton } from '../../../styled';
-
 import WelcomeMessage from './WelcomeMessage';
 
-import routes from '../../../constants/routes';
+import { RoundedButton } from '../../../styled';
+
+import { routes } from '../../../constants/routes';
 
 const Header = (props) => {
   const { user, page } = props;

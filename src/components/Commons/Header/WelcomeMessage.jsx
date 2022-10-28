@@ -1,11 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+
+import { HomeRounded, NotificationsRounded } from '@mui/icons-material';
+
 import { Stack, Typography } from '@mui/material';
 
-import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import { routes } from '../../../constants/routes';
 
 import { RoundedButton } from '../../../styled';
-import { useNavigate } from 'react-router-dom';
-import routes from '../../../constants/routes';
 
 const WelcomeMessage = (props) => {
   const { user, isHomePage } = props;
@@ -31,7 +32,7 @@ const WelcomeMessage = (props) => {
           variant='outlined'
           color='dark'
           onClick={handleClick}
-          startIcon={<HomeRoundedIcon />}
+          startIcon={<HomeRounded />}
           sx={{ width: { md: '50%' }, mt: 1 }}
           size='small'
         >
@@ -53,7 +54,7 @@ const WelcomeMessage = (props) => {
       </Typography>
       {user.notifications && (
         <Stack direction='row' alignItems='flex-start'>
-          <NotificationsRoundedIcon color='dark' sx={{ ml: -0.5, mr: 1 }} />
+          <NotificationsRounded color='dark' sx={{ ml: -0.5, mr: 1 }} />
           <Typography color='light.secondaryContrastText'>
             {`Tenés ${user.notifications} notificaciones nuevas`}{' '}
           </Typography>

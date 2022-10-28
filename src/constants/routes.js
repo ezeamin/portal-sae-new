@@ -1,10 +1,43 @@
+import { authRoutesRouter, mainRoutes, modules } from './constants';
+
+import { MainLogin } from '../views/Auth/MainAuth';
+import loginViews from '../views/Auth/FormPanel/data/loginViews';
+import ResetPassword from '../views/Auth/ResetPassword/ResetPassword';
+import RestorePassword from '../views/Auth/RestorePassword/RestorePassword';
+
 import Home from '../views/Home/Home';
+
 import viewList from '../views/Profile/data/viewList';
 import Profile from '../views/Profile/Profile';
 
-import { mainRoutes, modules } from './constants';
+export const authRoutes = {
+  LOGIN: {
+    id: mainRoutes.AUTH.id,
+    path: mainRoutes.AUTH.path,
+    component: MainLogin,
+    args: {
+      view: loginViews.LOGIN,
+    },
+  },
+  RESET_PASSWORD: {
+    id: authRoutesRouter.RESET_PASSWORD.id,
+    path: authRoutesRouter.RESET_PASSWORD.path,
+    component: ResetPassword,
+    args: {
+      view: loginViews.RESET_PASSWORD,
+    },
+  },
+  RESTORE_PASSWORD: {
+    id: authRoutesRouter.RESTORE_PASSWORD.id,
+    path: authRoutesRouter.RESTORE_PASSWORD.path,
+    component: RestorePassword,
+    args: {
+      view: loginViews.RESTORE_PASSWORD,
+    },
+  },
+};
 
-const routes = {
+export const routes = {
   HOME: {
     id: mainRoutes.HOME.id,
     path: mainRoutes.HOME.path,
@@ -39,48 +72,46 @@ const routes = {
   ESCRITOS: {
     id: modules.HOME.ESCRITOS.id,
     path: modules.HOME.ESCRITOS.path,
-    component: Profile
+    component: Profile,
   },
   NOTIFICACIONES: {
     id: modules.HOME.NOTIFICACIONES.id,
     path: modules.HOME.NOTIFICACIONES.path,
-    component: Profile
+    component: Profile,
   },
   PAGOS: {
     id: modules.HOME.PAGOS.id,
     path: modules.HOME.PAGOS.path,
-    component: Profile
+    component: Profile,
   },
   TURNOS: {
     id: modules.HOME.TURNOS.id,
     path: modules.HOME.TURNOS.path,
-    component: Profile
+    component: Profile,
   },
   CONSULTA_EXPEDIENTES: {
     id: modules.HOME.CONSULTA_EXPEDIENTES.id,
     path: modules.HOME.CONSULTA_EXPEDIENTES.path,
-    component: Profile
+    component: Profile,
   },
   UNIDADES: {
     id: modules.HOME.UNIDADES.id,
     path: modules.HOME.UNIDADES.path,
-    component: Profile
+    component: Profile,
   },
   JURISPRUDENCIA: {
     id: modules.HOME.JURISPRUDENCIA.id,
     path: modules.HOME.JURISPRUDENCIA.path,
-    component: Profile
+    component: Profile,
   },
   INICIO_EXPEDIENTES: {
     id: modules.HOME.INICIO_EXPEDIENTES.id,
     path: modules.HOME.INICIO_EXPEDIENTES.path,
-    component: Profile
+    component: Profile,
   },
   OGA: {
     id: modules.HOME.OGA.id,
     path: modules.HOME.OGA.path,
-    component: Profile
+    component: Profile,
   },
 };
-
-export default routes;
