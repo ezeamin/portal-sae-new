@@ -45,7 +45,11 @@ const globalDataSlice = createSlice({
   },
 });
 
-export const { setUser, setCurrentModule, setIsPortrait, setTheme } =
-  globalDataSlice.actions;
+export const {
+  setUser,
+  setCurrentModule,
+  setIsPortrait,
+  setTheme,
+} = globalDataSlice.actions;
 
 export default globalDataSlice.reducer;

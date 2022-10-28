@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from '..';
-import { Navbar } from '../../components';
+
+import ModulesModal from '../../components/ModulesModal/ModulesModal';
 
 import routes from '../../constants/routes';
 import PrivateRoute from './PrivateRoute';
@@ -11,7 +12,7 @@ const Router = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <ModulesModal />
         <Routes>
           <Route path='/' element={<Layout />}>
             {routesArray.map((route) => (

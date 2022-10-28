@@ -1,4 +1,6 @@
 import { Container, Divider, Drawer, Stack } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMainDrawerOpened } from '../../features/surfaces';
 
 import { RoundedButton } from '../../styled';
 
@@ -6,13 +8,21 @@ import ProfileInfo from './ProfileInfo';
 import QuickAccessIcons from './QuickAccessIcons';
 
 const DrawerMenu = (props) => {
-  const { navigateProfile, data, drawerOpened, setDrawerOpened } = props;
+  const { navigateProfile, data } = props;
+
+  const drawerOpened = useSelector((state) => state.surfaces.mainDrawerOpened);
+
+  const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(setMainDrawerOpened(false));
+  };
 
   return (
     <Drawer
       anchor='top'
       open={drawerOpened}
-      onClose={() => setDrawerOpened(false)}
+      onClose={handleClose}
       PaperProps={{
         variant: 'roundedBottom',
       }}

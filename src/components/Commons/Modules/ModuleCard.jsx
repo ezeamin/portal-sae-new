@@ -1,4 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { setModulesModalOpened } from '../../../features/surfaces';
 
 import {
   Box,
@@ -13,8 +16,10 @@ const ModuleCard = (props) => {
   const { module, delay } = props;
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleClick = () => {
+    dispatch(setModulesModalOpened(false));
     if (module.path) navigate(module.path);
     else module.action();
   };
