@@ -1,20 +1,25 @@
-import CreateRoundedIcon from '@mui/icons-material/CreateRounded';
-import MoveToInboxRoundedIcon from '@mui/icons-material/MoveToInboxRounded';
-import DescriptionRoundedIcon from '@mui/icons-material/DescriptionRounded';
-import WorkHistoryRoundedIcon from '@mui/icons-material/WorkHistoryRounded';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
-import BookmarkRoundedIcon from '@mui/icons-material/BookmarkRounded';
-import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
-import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
-import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded';
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
+import {
+  AccountBalanceRounded,
+  BookmarkRounded,
+  CreateRounded,
+  DescriptionRounded,
+  EmailRounded,
+  HomeRounded,
+  LogoutRounded,
+  MenuBookRounded,
+  MoveToInboxRounded,
+  PasswordRounded,
+  PersonRounded,
+  SearchRounded,
+  WorkHistoryRounded,
+} from '@mui/icons-material';
 
 import modulesColors from './modulesColors';
 
 import logout from '../actions/logout';
+
+const currentYear = new Date().getFullYear();
+export const footerLabelSistemas = `© ${currentYear} - Dirección de Sistemas`;
 
 const iconsConfig = {
   sx: {
@@ -85,7 +90,7 @@ export const mainRoutes = {
     color: 'primary',
     routeInfo: {
       color: 'primary',
-      icon: <HomeRoundedIcon {...routeIconsConfig} />,
+      icon: <HomeRounded {...routeIconsConfig} />,
     },
   },
   PROFILE: {
@@ -95,7 +100,7 @@ export const mainRoutes = {
     color: 'primary',
     routeInfo: {
       color: 'primary',
-      icon: <PersonRoundedIcon {...routeIconsConfig} />,
+      icon: <PersonRounded {...routeIconsConfig} />,
     },
   },
 };
@@ -109,10 +114,10 @@ export const modules = {
       dataTestId: 'button-ingreso-escritos',
       path: '/escritos',
       color: modulesColors.ESCRITOS.main,
-      icon: <CreateRoundedIcon {...iconsConfig} />,
+      icon: <CreateRounded {...iconsConfig} />,
       routeInfo: {
         color: 'ESCRITOS',
-        icon: <CreateRoundedIcon {...routeIconsConfig} />,
+        icon: <CreateRounded {...routeIconsConfig} />,
       },
     },
     NOTIFICACIONES: {
@@ -122,10 +127,10 @@ export const modules = {
       dataTestId: 'button-notificaciones',
       path: '/notificaciones',
       color: modulesColors.NOTIFICACIONES.main,
-      icon: <MoveToInboxRoundedIcon {...iconsConfig} />,
+      icon: <MoveToInboxRounded {...iconsConfig} />,
       routeInfo: {
         color: 'NOTIFICACIONES',
-        icon: <MoveToInboxRoundedIcon {...routeIconsConfig} />,
+        icon: <MoveToInboxRounded {...routeIconsConfig} />,
       },
     },
     PAGOS: {
@@ -135,10 +140,10 @@ export const modules = {
       dataTestId: 'button-pagos-judiciales',
       path: '/pagos',
       color: modulesColors.PAGOS.main,
-      icon: <DescriptionRoundedIcon {...iconsConfig} />,
+      icon: <DescriptionRounded {...iconsConfig} />,
       routeInfo: {
         color: 'PAGOS',
-        icon: <DescriptionRoundedIcon {...routeIconsConfig} />,
+        icon: <DescriptionRounded {...routeIconsConfig} />,
       },
     },
     TURNOS: {
@@ -148,10 +153,10 @@ export const modules = {
       dataTestId: 'button-solicitud-turnos',
       path: '/turnos',
       color: modulesColors.TURNOS.main,
-      icon: <WorkHistoryRoundedIcon {...iconsConfig} />,
+      icon: <WorkHistoryRounded {...iconsConfig} />,
       routeInfo: {
         color: 'TURNOS',
-        icon: <WorkHistoryRoundedIcon {...routeIconsConfig} />,
+        icon: <WorkHistoryRounded {...routeIconsConfig} />,
       },
     },
     CONSULTA_EXPEDIENTES: {
@@ -161,10 +166,10 @@ export const modules = {
       dataTestId: 'button-consulta-expedientes',
       path: '/expedientes',
       color: modulesColors.CONSULTA_EXPEDIENTES.main,
-      icon: <SearchRoundedIcon {...iconsConfig} />,
+      icon: <SearchRounded {...iconsConfig} />,
       routeInfo: {
         color: 'CONSULTA_EXPEDIENTES',
-        icon: <SearchRoundedIcon {...routeIconsConfig} />,
+        icon: <SearchRounded {...routeIconsConfig} />,
       },
     },
     UNIDADES: {
@@ -174,10 +179,10 @@ export const modules = {
       dataTestId: 'button-consulta-unidades',
       path: '/unidades',
       color: modulesColors.UNIDADES.main,
-      icon: <EmailRoundedIcon {...iconsConfig} />,
+      icon: <EmailRounded {...iconsConfig} />,
       routeInfo: {
         color: 'UNIDADES',
-        icon: <EmailRoundedIcon {...routeIconsConfig} />,
+        icon: <EmailRounded {...routeIconsConfig} />,
       },
     },
     JURISPRUDENCIA: {
@@ -187,10 +192,10 @@ export const modules = {
       dataTestId: 'button-jurisprudencia',
       path: '/jurisprudencia',
       color: modulesColors.JURISPRUDENCIA.main,
-      icon: <BookmarkRoundedIcon {...iconsConfig} />,
+      icon: <BookmarkRounded {...iconsConfig} />,
       routeInfo: {
         color: 'JURISPRUDENCIA',
-        icon: <BookmarkRoundedIcon {...routeIconsConfig} />,
+        icon: <BookmarkRounded {...routeIconsConfig} />,
       },
     },
     INICIO_EXPEDIENTES: {
@@ -200,10 +205,10 @@ export const modules = {
       dataTestId: 'button-inicio-expedientes',
       path: '/inicio-expedientes',
       color: modulesColors.INICIO_EXPEDIENTES.main,
-      icon: <MenuBookRoundedIcon {...iconsConfig} />,
+      icon: <MenuBookRounded {...iconsConfig} />,
       routeInfo: {
         color: 'INICIO_EXPEDIENTES',
-        icon: <MenuBookRoundedIcon {...routeIconsConfig} />,
+        icon: <MenuBookRounded {...routeIconsConfig} />,
       },
     },
     OGA: {
@@ -213,10 +218,10 @@ export const modules = {
       dataTestId: 'button-oga',
       path: '/oga',
       color: modulesColors.OGA.main,
-      icon: <AccountBalanceRoundedIcon {...iconsConfig} />,
+      icon: <AccountBalanceRounded {...iconsConfig} />,
       routeInfo: {
         color: 'OGA',
-        icon: <AccountBalanceRoundedIcon {...routeIconsConfig} />,
+        icon: <AccountBalanceRounded {...routeIconsConfig} />,
       },
     },
   },
@@ -231,23 +236,23 @@ export const modules = {
       routeInfo: {
         color: 'primary',
         name: 'Perfil',
-        icon: <PersonRoundedIcon {...routeIconsConfig} />,
+        icon: <PersonRounded {...routeIconsConfig} />,
       },
-      icon: <CreateRoundedIcon {...iconsConfig} />,
+      icon: <CreateRounded {...iconsConfig} />,
     },
     PASSWORD: {
       id: 102,
       name: 'Cambiar contraseña',
       description: 'Cambiar contraseña de ingreso',
       dataTestId: 'button-cambiar-contraseña',
-      path: '/perfil/contraseña',
-      color: modulesColors.PROFILE.CONTRASEÑA.main,
+      path: '/perfil/password',
+      color: modulesColors.PROFILE.PASSWORD.main,
       routeInfo: {
         color: 'primary',
         name: 'Perfil',
-        icon: <PersonRoundedIcon {...routeIconsConfig} />,
+        icon: <PersonRounded {...routeIconsConfig} />,
       },
-      icon: <PasswordRoundedIcon {...iconsConfig} />,
+      icon: <PasswordRounded {...iconsConfig} />,
     },
     LOGOUT: {
       id: 103,
@@ -259,9 +264,9 @@ export const modules = {
       routeInfo: {
         color: 'primary',
         name: 'Perfil',
-        icon: <PersonRoundedIcon {...routeIconsConfig} />,
+        icon: <PersonRounded {...routeIconsConfig} />,
       },
-      icon: <LogoutRoundedIcon {...iconsConfig} />,
+      icon: <LogoutRounded {...iconsConfig} />,
       action: logout,
     },
   },

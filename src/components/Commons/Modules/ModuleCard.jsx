@@ -1,4 +1,7 @@
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
+import { setModulesModalOpened } from '../../../features/surfaces';
 
 import {
   Box,
@@ -10,18 +13,25 @@ import {
 } from '@mui/material';
 
 const ModuleCard = (props) => {
-  const { module } = props;
+  const { module, delay } = props;
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleClick = () => {
+    dispatch(setModulesModalOpened(false));
     if (module.path) navigate(module.path);
     else module.action();
   };
 
   return (
     <Card
-      sx={{ height: '100%', backgroundColor: 'whiteDarkMode.main' }}
+      sx={{
+        height: '100%',
+        backgroundColor: 'whiteDarkMode.main',
+        animationDelay: `${delay}ms`,
+      }}
+      className='animate-in'
     >
       <CardActionArea sx={{ height: '100%' }} onClick={handleClick}>
         <Stack sx={{ height: '100%' }} direction='row'>

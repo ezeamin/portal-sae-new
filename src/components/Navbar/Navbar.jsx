@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { AppBar, IconButton, Stack } from '@mui/material';
 
@@ -16,17 +15,28 @@ import { routes } from '../../constants/routes';
 
 import getModuleInfo from '../../helpers/getModuleInfo';
 
+import { setMainDrawerOpened } from '../../features/surfaces';
+
 const Navbar = () => {
   const data = useSelector((state) => state.globalData);
 
-  const [drawerOpened, setDrawerOpened] = useState(false);
+  // const [drawerOpened, setDrawerOpened] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const module = getModuleInfo(data.currentModule);
 
+  const closeDrawer = () => {
+    dispatch(setMainDrawerOpened(false));
+  };
+
+  const openDrawer = () => {
+    dispatch(setMainDrawerOpened(true));
+  };
+
   const navigateProfile = () => {
-    setDrawerOpened(false);
+    closeDrawer();
     navigate(routes.PROFILE.path);
   };
 
@@ -42,7 +52,7 @@ const Navbar = () => {
             </Stack>
 
             {/* ------ RIGHT ------ */}
-            <IconButton onClick={() => setDrawerOpened((state) => !state)}>
+            <IconButton onClick={openDrawer}>
               <SegmentRounded />
             </IconButton>
           </Stack>
@@ -50,12 +60,7 @@ const Navbar = () => {
 
         {/* Drawer tras toque en boton */}
         {/* // TODO: Pasar acciones de modulo */}
-        <DrawerMenu
-          data={data}
-          drawerOpened={drawerOpened}
-          setDrawerOpened={setDrawerOpened}
-          navigateProfile={navigateProfile}
-        />
+        <DrawerMenu data={data} navigateProfile={navigateProfile} />
       </>
     );
   }

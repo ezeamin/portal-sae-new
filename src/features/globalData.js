@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import themes from '../constants/themes';
 
 const defaultPortraitValue = window.innerWidth < 600;

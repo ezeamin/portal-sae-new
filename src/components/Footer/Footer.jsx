@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Chip, Paper, Stack } from '@mui/material';
+import { footerLabelSistemas } from '../../constants/constants';
 
 const Footer = () => {
   const [version, setVersion] = useState('');
@@ -22,7 +23,7 @@ const Footer = () => {
         bottom: 0,
         width: '100%',
         height: '3rem',
-        backgroundColor: "dark.light"
+        backgroundColor: "dark.light",
       }}
     >
       <Stack
@@ -35,7 +36,7 @@ const Footer = () => {
         }}
       >
         <Chip
-          label='2022 - Direccion de Sistemas'
+          label={footerLabelSistemas}
           color='light'
           sx={{
             fontWeight: "bold",

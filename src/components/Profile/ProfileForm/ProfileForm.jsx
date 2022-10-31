@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
 import {
-  Paper,
   TextField,
   Stack,
   Typography,
@@ -13,7 +12,7 @@ import {
 } from '@mui/material';
 
 import BackButton from '../../Commons/BackButton/BackButton';
-import { CustomContainer } from '../../';
+import { CustomContainer, CustomPaper } from '../../';
 import { RoundedButton } from '../../../styled';
 
 import { emailRegex } from '../../../helpers/validators';
@@ -42,7 +41,7 @@ const ProfileForm = () => {
 
   return (
     <CustomContainer>
-      <Paper variant="fullyRounded" sx={{ p: 3, backgroundColor: 'whiteDarkMode.main' }}>
+      <CustomPaper>
         <BackButton sx={{ mb: 3 }} />
         <Typography variant='h4' component='h3'>
           Editar datos
@@ -99,7 +98,7 @@ const ProfileForm = () => {
             </RoundedButton>
           </Box>
         </form>
-      </Paper>
+      </CustomPaper>
     </CustomContainer>
   );
 };

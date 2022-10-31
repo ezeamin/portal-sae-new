@@ -1,7 +1,6 @@
 export const emailRegex =
   /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.edu|com|gov|net|org|int|mil|ar$/;
-
-export const passRegex = /^(?=.[a-z])(?=.[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
+export const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
 
 export const validateEmail = (email) => {
   if (!email.trim()) return false;
@@ -16,9 +15,9 @@ export const validatePassword = (password) => {
   return passRegex.test(password);
 };
 
-export const validatePasswordNumMinMax = (pass) => {
+export const validatePasswordNumMinMax = (password) => {
   const regex = /^(?=.*\d)(?=.*[a-záéíóöúüñ]).*[A-ZÁÉÍÓÖÚÜÑ]/;
-  if (!regex.test(pass)) return false;
+  if (!regex.test(password)) return false;
 
   return true;
 };

@@ -53,7 +53,7 @@ const modulesColors = {
       contrastText: '#fff',
       DARK: {},
     },
-    CONTRASEÑA: {
+    PASSWORD: {
       main: '#7d9ec7',
       contrastText: '#fff',
       DARK: {},

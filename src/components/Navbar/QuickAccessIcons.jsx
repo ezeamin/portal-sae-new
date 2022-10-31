@@ -1,9 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { IconButton, Stack, Tooltip } from '@mui/material';
 
 import themes from '../../constants/themes';
+
 import { setTheme } from '../../features/globalData';
+import {
+  setMainDrawerOpened,
+  setModulesModalOpened,
+} from '../../features/surfaces';
 
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
@@ -14,11 +19,26 @@ const QuickAccessIcons = (props) => {
   const { theme, isPortrait } = props;
 
   const dispatch = useDispatch();
+  const currentModule = useSelector((state) => state.globalData.currentModule);
+
+  const closeMainDrawer = () => {
+    dispatch(setMainDrawerOpened(false));
+  };
 
   const handleChangeTheme = () => {
     const newValue = theme === themes.LIGHT ? themes.DARK : themes.LIGHT;
 
     dispatch(setTheme(newValue));
+    closeMainDrawer();
+  };
+
+  const handleOpenNotifications = () => {
+    closeMainDrawer();
+  };
+
+  const handleOpenModules = () => {
+    if (currentModule !== 1000) dispatch(setModulesModalOpened(true));
+    closeMainDrawer();
   };
 
   const config = {
@@ -38,12 +58,12 @@ const QuickAccessIcons = (props) => {
         </IconButton>
       </Tooltip>
       <Tooltip title='Módulos'>
-        <IconButton>
+        <IconButton onClick={handleOpenModules}>
           <DashboardRoundedIcon />
         </IconButton>
       </Tooltip>
       <Tooltip title='Notificaciones'>
-        <IconButton>
+        <IconButton onClick={handleOpenNotifications}>
           <NotificationsRoundedIcon />
         </IconButton>
       </Tooltip>
