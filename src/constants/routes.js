@@ -1,15 +1,16 @@
+import { lazy } from 'react';
 import { authRoutesRouter, mainRoutes, modules } from './constants';
 
 import loginViews from '../components/Auth/components/FormPanel/data/loginViews';
 
-import MainAuth from '../views/Auth/MainAuth';
-import ResetPassword from '../components/Auth/components/ResetPassword/ResetPassword';
-import RestorePassword from '../components/Auth/components/RestorePassword/RestorePassword';
-
-import Home from '../views/Home/Home';
-
 import viewList from '../views/Profile/data/viewList';
-import Profile from '../views/Profile/Profile';
+
+const MainAuth  = lazy(() => import('../views/Auth/MainAuth'));
+const ResetPassword  = lazy(() => import('../components/Auth/components/ResetPassword/ResetPassword'));
+const RestorePassword = lazy(() => import('../components/Auth/components/RestorePassword/RestorePassword'));
+
+const Home = lazy(() => import('../views/Home/Home'));
+const Profile = lazy(() => import('../views/Profile/Profile'));
 
 export const authRoutes = {
   LOGIN: {

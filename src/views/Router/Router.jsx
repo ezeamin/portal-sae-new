@@ -13,36 +13,37 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/auth'>
-          {authRoutesArray.map((route) => (
-            <Route
-              path={route.path}
-              key={route.id}
-              element={
-                <PrivateRoute
-                  component={route.component}
-                  args={route?.args}
-                  routeId={route.id}
-                />
-              }
-            />
-          ))}
-        </Route>
-        <Route path='/' element={<Layout />}>
-          {routesArray.map((route) => (
-            <Route
-              path={route.path}
-              key={route.id}
-              element={
-                <PrivateRoute
-                  component={route.component}
-                  args={route?.args}
-                  routeId={route.id}
-                />
-              }
-            />
-          ))}
-        </Route>
+          <Route path='/auth'>
+            {authRoutesArray.map((route) => (
+              <Route
+                path={route.path}
+                key={route.id}
+                element={
+                  <PrivateRoute
+                    component={route.component}
+                    args={route?.args}
+                    routeId={route.id}
+                    auth
+                  />
+                }
+              />
+            ))}
+          </Route>
+          <Route path='/' element={<Layout />}>
+            {routesArray.map((route) => (
+              <Route
+                path={route.path}
+                key={route.id}
+                element={
+                  <PrivateRoute
+                    component={route.component}
+                    args={route?.args}
+                    routeId={route.id}
+                  />
+                }
+              />
+            ))}
+          </Route>
       </Routes>
     </BrowserRouter>
   );
