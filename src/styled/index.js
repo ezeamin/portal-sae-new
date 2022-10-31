@@ -44,7 +44,7 @@ export const FormSection = styled.section`
 
 export const RoundedButton = styled(LoadingButton)`
   border-radius: 3rem;
-  width: 100%;
+  /* width: 100%; */
 `;
 
 export const RoundedPaper = styled(Paper)`
