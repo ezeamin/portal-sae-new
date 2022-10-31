@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import { InputAdornment, TextField } from '@mui/material';
+import { InputAdornment, Stack, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 import {
@@ -211,14 +211,16 @@ const ResetPasswordForm = () => {
           ),
         }}
       />
-      <RoundedButton
-        variant='contained'
-        type='submit'
-        loading={loading}
-        sx={{ marginTop: '1rem' }}
-      >
-        {es.RESTORE_PASSWORD}
-      </RoundedButton>
+      <Stack justifyContent={'center'}>
+        <RoundedButton
+          variant='contained'
+          type='submit'
+          loading={loading}
+          sx={{ marginTop: '1.5rem' }}
+        >
+          {es.RESTORE_PASSWORD}
+        </RoundedButton>
+      </Stack>
     </form>
   );
 };

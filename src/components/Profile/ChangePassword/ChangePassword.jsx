@@ -1,16 +1,14 @@
 import { useState } from 'react';
 
-import {
-  Divider,
-  Typography,
-} from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 
 import { CustomContainer, CustomPaper } from '../..';
 import { CustomAlert } from '../..';
 
-import BackButton from '../../Commons/BackButton/BackButton';
 import AlertPassword from './AlertPassword';
 import FormPassword from './FormPassword';
+
+import BackButton from '../../Commons/BackButton/BackButton';
 
 const alertDefault = {
   show: false,
@@ -20,7 +18,6 @@ const alertDefault = {
 
 const ChangePassword = () => {
   const [alert, setAlert] = useState(alertDefault);
-
   return (
     <CustomContainer>
       <CustomPaper>
@@ -33,7 +30,7 @@ const ChangePassword = () => {
           <CustomAlert severity={alert.severity}>{alert.msg}</CustomAlert>
         )}
         <AlertPassword />
-        <FormPassword setAlert={setAlert}/>
+        <FormPassword setAlert={setAlert} />
       </CustomPaper>
     </CustomContainer>
   );
