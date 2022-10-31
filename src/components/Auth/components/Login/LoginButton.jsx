@@ -16,6 +16,7 @@ const LoginButton = (props) => {
           target='_blank'
           variant='outlined'
           startIcon={icon}
+          sx={{ width: '100%' }}
         >
           {title}
         </RoundedButton>
@@ -23,7 +24,12 @@ const LoginButton = (props) => {
     }
 
     return (
-      <RoundedButton to={to} variant='outlined' startIcon={icon}>
+      <RoundedButton
+        to={to}
+        variant='outlined'
+        startIcon={icon}
+        sx={{ width: '100%' }}
+      >
         {title}
       </RoundedButton>
     );
@@ -38,6 +44,7 @@ const LoginButton = (props) => {
           target='_blank'
           variant='outlined'
           size='large'
+          sx={{ width: '100%' }}
         >
           {icon}
         </RoundedButton>
@@ -47,7 +54,12 @@ const LoginButton = (props) => {
 
   return (
     <Tooltip title={title}>
-      <RoundedButton to={to} size='large' variant='outlined'>
+      <RoundedButton
+        to={to}
+        size='large'
+        variant='outlined'
+        sx={{ width: '100%' }}
+      >
         {icon}
       </RoundedButton>
     </Tooltip>

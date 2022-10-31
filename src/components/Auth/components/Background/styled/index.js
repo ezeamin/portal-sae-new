@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const H1AuthPanel = styled.h1`
   font-size: 3rem;
+  line-height: 55px;
   color: #fff;
 `;
 

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from '..';
 
 import PrivateRoute from './PrivateRoute';
+import { ModulesModal } from '../../components';
 
 import { authRoutes, routes } from '../../constants/routes';
 
@@ -12,6 +13,7 @@ const Router = () => {
 
   return (
     <BrowserRouter>
+      <ModulesModal />
       <Routes>
         <Route path='/auth'>
           {authRoutesArray.map((route) => (
@@ -23,6 +25,7 @@ const Router = () => {
                   component={route.component}
                   args={route?.args}
                   routeId={route.id}
+                  auth
                 />
               }
             />

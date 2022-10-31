@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 import { setCurrentModule } from '../../features/globalData';
 
 import getModuleInfo from '../../helpers/getModuleInfo';
+
+import LazyLoadingSpinner from './Loading/LazyLoadingSpinner';
 
 // TODO: implementar
 const PrivateRoute = (props) => {
@@ -21,7 +23,11 @@ const PrivateRoute = (props) => {
     dispatch(setCurrentModule(module.id));
   }, [location, dispatch, routeId]);
 
-  return <Component {...args} />;
+  return (
+    <Suspense fallback={<LazyLoadingSpinner />}>
+      <Component {...args} />
+    </Suspense>
+  );
   // return isJwtTokenStored() ? <Component /> : <Login />
 };
 

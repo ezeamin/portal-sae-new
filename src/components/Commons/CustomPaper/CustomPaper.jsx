@@ -1,6 +1,6 @@
 import { Paper } from '@mui/material';
 
-const CustomPaper = ({ children, sxProps }) => {
+const CustomPaper = ({ children, sx: sxProps }) => {
   const sx = {
     p: 3,
     backgroundColor: 'whiteDarkMode.main',

@@ -10,6 +10,8 @@ import FormPassword from './FormPassword';
 
 import BackButton from '../../Commons/BackButton/BackButton';
 
+import es from '../../../lang/es';
+
 const alertDefault = {
   show: false,
   msg: '',
@@ -19,11 +21,11 @@ const alertDefault = {
 const ChangePassword = () => {
   const [alert, setAlert] = useState(alertDefault);
   return (
-    <CustomContainer>
+    <CustomContainer sx={{mb: 10}}>
       <CustomPaper>
         <BackButton sx={{ mb: 3 }} />
         <Typography variant='h4' component='h3'>
-          Cambiar contraseña
+          { es.CHANGE_PASSWORD }
         </Typography>
         <Divider sx={{ my: 2 }} />
         {alert.show && (

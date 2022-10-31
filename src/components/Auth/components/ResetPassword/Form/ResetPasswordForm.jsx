@@ -60,6 +60,23 @@ const ResetPasswordForm = () => {
     }
 
     /* 
+        valida que tenga al menos 1 letra mayúscula, 1 letra
+        minuscula y 1 numero.
+      */
+    if (!validatePasswordNumMinMax(password)) {
+      setErrors({
+        email: errorsInitialState.email,
+        password: {
+          error: true,
+          msg: validations.PASS_VALIDATION_COMPLETE,
+        },
+        confirmPassword: errorsInitialState.confirmPassword,
+      });
+      setLoading(false);
+      return;
+    }
+
+    /* 
       valida que las contraseñas tengan una cantidad minima
       de 8 caracteres y maxima de 20 caracteres
     */
@@ -105,23 +122,6 @@ const ResetPasswordForm = () => {
     //   setLoading(false);
     //   return;
     // }
-
-    /* 
-        valida que tenga al menos 1 letra mayúscula, 1 letra
-        minuscula y 1 numero.
-      */
-    if (!validatePasswordNumMinMax(password)) {
-      setErrors({
-        email: errorsInitialState.email,
-        password: {
-          error: true,
-          msg: validations.PASS_VALIDATION_COMPLETE,
-        },
-        confirmPassword: errorsInitialState.confirmPassword,
-      });
-      setLoading(false);
-      return;
-    }
 
     /* valida que la contraseña nueva y la validacion 
       sean iguales.
