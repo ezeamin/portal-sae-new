@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
 import { Chip, Paper, Stack } from '@mui/material';
-import { footerLabelSistemas } from '../../constants/constants';
+import { footerLabelSistemas } from '../../../constants/constants';
 
 const Footer = () => {
   const [version, setVersion] = useState('');
 
   useEffect(() => {
     const importPJson = async () => {
-      const pjson = await import('../../../package.json');
+      const pjson = await import('../../../../package.json');
       setVersion(pjson.version);
     };
     importPJson();

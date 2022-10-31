@@ -1,8 +1,8 @@
 import { Container, Divider, Drawer, Stack } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMainDrawerOpened } from '../../features/surfaces';
+import { setMainDrawerOpened } from '../../../features/surfaces';
 
-import { RoundedButton } from '../../styled';
+import { RoundedButton } from '../../../styled';
 
 import ProfileInfo from './ProfileInfo';
 import QuickAccessIcons from './QuickAccessIcons';

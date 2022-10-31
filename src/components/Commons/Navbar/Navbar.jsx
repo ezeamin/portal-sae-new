@@ -11,16 +11,14 @@ import ProfileInfo from './ProfileInfo';
 import PortalLogo from './PortalLogo';
 import QuickAccessIcons from './QuickAccessIcons';
 
-import { routes } from '../../constants/routes';
+import { routes } from '../../../constants/routes';
 
-import getModuleInfo from '../../helpers/getModuleInfo';
+import getModuleInfo from '../../../helpers/getModuleInfo';
 
-import { setMainDrawerOpened } from '../../features/surfaces';
+import { setMainDrawerOpened } from '../../../features/surfaces';
 
 const Navbar = () => {
   const data = useSelector((state) => state.globalData);
-
-  // const [drawerOpened, setDrawerOpened] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
