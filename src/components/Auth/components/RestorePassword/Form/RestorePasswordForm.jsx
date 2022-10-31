@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react';
 import { Alert, TextField } from '@mui/material';
 
-import { validateEmail } from '../../../../helpers/validators';
+import { validateEmail } from '../../../../../helpers/validators';
 
-import es from '../../../../lang/es';
+import es from '../../../../../lang/es';
 
-import { RoundedButton } from '../../../../styled';
+import { RoundedButton } from '../../../../../styled';
 
 const RestorePasswordForm = () => {
   const [emailError, setEmailError] = useState({

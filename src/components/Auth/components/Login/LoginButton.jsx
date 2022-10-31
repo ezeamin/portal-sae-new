@@ -1,6 +1,6 @@
 import { Tooltip } from '@mui/material';
 
-import { RoundedButton } from '../../../styled';
+import { RoundedButton } from '../../../../styled';
 
 const LoginButton = (props) => {
   const { isMobile, href, icon, to, title } = props;

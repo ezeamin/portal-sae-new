@@ -13,13 +13,13 @@ import {
 
 import { Lock, Person, Visibility, VisibilityOff } from '@mui/icons-material';
 
-import { authRoutes } from '../../../../constants/routes';
+import { authRoutes } from '../../../../../constants/routes';
 
-import { validatePassword } from '../../../../helpers/validators';
+import { validatePassword } from '../../../../../helpers/validators';
 
-import es from '../../../../lang/es';
+import es from '../../../../../lang/es';
 
-import { RoundedButton } from '../../../../styled';
+import { RoundedButton } from '../../../../../styled';
 
 const LoginForm = () => {
   const [errorCuil, setErrorCuil] = useState(false);
@@ -142,7 +142,12 @@ const LoginForm = () => {
           {es.FORGOT}
         </MUILink>
       </Stack>
-      <RoundedButton color='primary' variant='contained' type='submit'>
+      <RoundedButton
+        color='primary'
+        variant='contained'
+        type='submit'
+        sx={{ width: '100%' }}
+      >
         {es.ENTER}
       </RoundedButton>
     </form>

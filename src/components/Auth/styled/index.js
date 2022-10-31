@@ -1,5 +1,29 @@
 import styled from '@emotion/styled';
 
+export const H1AuthPanel = styled.h1`
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+`;
+
+export const H2AuthPanel = styled.h2`
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+`;
+
+export const FormSection = styled.section`
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+`;
+
+
+export const PDFViewerStyled = styled.div`
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
 export const modalStyled = {
   bgcolor: 'background.paper',
   // border: '2px solid #000',
@@ -38,12 +62,4 @@ export const ButtonWithIconStyled = styled.div`
     margin-left: 7px;
     padding-top: 1px;
   }
-`;
-
-export const PDFViewerStyled = styled.div`
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 `;

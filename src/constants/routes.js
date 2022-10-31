@@ -1,9 +1,10 @@
 import { authRoutesRouter, mainRoutes, modules } from './constants';
 
-import { MainLogin } from '../views/Auth/MainAuth';
-import loginViews from '../views/Auth/FormPanel/data/loginViews';
-import ResetPassword from '../views/Auth/ResetPassword/ResetPassword';
-import RestorePassword from '../views/Auth/RestorePassword/RestorePassword';
+import loginViews from '../components/Auth/components/FormPanel/data/loginViews';
+
+import MainAuth from '../views/Auth/MainAuth';
+import ResetPassword from '../components/Auth/components/ResetPassword/ResetPassword';
+import RestorePassword from '../components/Auth/components/RestorePassword/RestorePassword';
 
 import Home from '../views/Home/Home';
 
@@ -14,7 +15,7 @@ export const authRoutes = {
   LOGIN: {
     id: mainRoutes.AUTH.id,
     path: mainRoutes.AUTH.path,
-    component: MainLogin,
+    component: MainAuth,
     args: {
       view: loginViews.LOGIN,
     },

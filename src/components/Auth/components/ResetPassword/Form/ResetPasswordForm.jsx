@@ -7,12 +7,12 @@ import {
   validateEmail,
   validatePassword,
   validatePasswordNumMinMax,
-} from '../../../../helpers/validators';
+} from '../../../../../helpers/validators';
 
-import es from '../../../../lang/es';
-import validations from '../../../../lang/validationsMsg';
+import es from '../../../../../lang/es';
+import validations from '../../../../../lang/validationsMsg';
 
-import { RoundedButton } from '../../../../styled';
+import { RoundedButton } from '../../../../../styled';
 
 const errorsInitialState = {
   email: {

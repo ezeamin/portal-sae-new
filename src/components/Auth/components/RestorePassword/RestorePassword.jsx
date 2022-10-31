@@ -3,19 +3,20 @@ import { useNavigate } from 'react-router-dom';
 
 import { Alert } from '@mui/material';
 
-import ResetPasswordForm from './Form/ResetPasswordForm';
+import RestorePasswordForm from './Form/RestorePasswordForm';
 
-import { authRoutes } from '../../../constants/routes';
+import { authRoutes } from '../../../../constants/routes';
 
-import es from '../../../lang/es';
+import es from '../../../../lang/es';
 
-import { FormSection, H2AuthPanel, RoundedButton } from '../../../styled';
+import { FormSection, H2AuthPanel} from '../../styled';
+import { RoundedButton } from '../../../../styled';
 
-const ResetPassword = () => {
+const RestorePassword = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = `${es.RESET_PASSWORD} | ${es.PORTAL}`;
+    document.title = `${es.RESTORE_PASSWORD} | ${es.PORTAL}`;
   }, []);
 
   const redirectHome = () => {
@@ -25,8 +26,8 @@ const ResetPassword = () => {
   return (
     <FormSection>
       <H2AuthPanel>{es.RESTORE_PASSWORD}</H2AuthPanel>
-      <Alert severity='info'>{es.RESET_PASSWORD_MSG}</Alert>
-      <ResetPasswordForm />
+      <Alert severity='info'>{es.RESTORE_PASSWORD_MSG}</Alert>
+      <RestorePasswordForm />
       <RoundedButton
         variant='text'
         sx={{ marginTop: '1rem' }}
@@ -38,4 +39,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default RestorePassword;

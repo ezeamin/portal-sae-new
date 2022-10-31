@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 
 import Header from '../../components/Commons/Header/Header';
+import Waves from '../../components/Home/Waves';
+
 import { ModuleList, ProfileForm } from '../../components';
 
 import { modules } from '../../constants/constants';
@@ -38,6 +40,7 @@ const Profile = (props) => {
     <>
       <Header user={user} page='PROFILE' />
       {renderedComp}
+      <Waves />
     </>
   );
 };

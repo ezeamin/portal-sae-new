@@ -56,23 +56,7 @@ const FormPanel = (props) => {
             https://www.framer.com/docs/introduction/
             https://codesandbox.io/s/framer-motion-screen-wipe-page-transitions-with-react-router-6-yo38bu?from-embed=&file=/src/App.tsx:423-432
         */}
-
         <>{renderedComp}</>
-
-        {/* <Router>
-          <Routes>
-            <Route path={routes.HOME} element={<Login />} />
-            <Route
-              path={routes.RESTORE_PASSWORD}
-              element={<RestorePassword />}
-            />
-            <Route path={routes.RESET_PASSWORD} element={<ResetPassword />} />
-            <Route
-              path={routes.CHANGE_PASSWORD_LOGGED}
-              element={<ChangePasswordLogged />}
-            />
-          </Routes>
-        </Router> */}
       </Container>
     </AuthPaper>
   );

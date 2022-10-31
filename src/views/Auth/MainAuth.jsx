@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import FormPanel from "./FormPanel/FormPanel";
+import { Box } from '@mui/material'; 
 
-import { Background } from "../../components"
+import { Background, FormPanel } from '../../components';
 
 const minSize = 900;
 
-export const MainLogin = (props) => {
+const MainAuth = (props) => {
+  const { view } = props;
 
-    const { view } = props;
-  
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
@@ -20,12 +19,13 @@ export const MainLogin = (props) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  
-    return (
-      <>
-        <FormPanel view={view} />
-        {screenWidth >= minSize && <Background />}
-      </>
 
-  )
-}
+  return (
+    <Box sx={{ minHeight: '100vh', display: 'flex' }}>
+      <FormPanel view={view} />
+      {screenWidth >= minSize && <Background />}
+    </Box>
+  );
+};
+
+export default MainAuth;
