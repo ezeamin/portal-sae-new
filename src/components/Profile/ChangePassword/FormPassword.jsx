@@ -86,7 +86,6 @@ const FormPassword = (props) => {
           label='Contraseña actual'
           variant='outlined'
           error={!!errors.currentPass}
-          autoFocus
           sx={{
             flexBasis: '100%',
             width: '100%',

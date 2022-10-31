@@ -22,7 +22,7 @@ const ChangePassword = () => {
   const [alert, setAlert] = useState(alertDefault);
 
   return (
-    <CustomContainer>
+    <CustomContainer sx={{mb: 10}}>
       <CustomPaper>
         <BackButton sx={{ mb: 3 }} />
         <Typography variant='h4' component='h3'>

@@ -5,7 +5,7 @@ const LazyLoadingSpinner = () => {
     <Stack
       alignItems='center'
       justifyContent='center'
-      sx={{ minHeight: '80vh', width: '100vw' }}
+      sx={{ height: '100%', width: '100%' }}
     >
       <div className='spinner'>
         <div className='double-bounce1'></div>
