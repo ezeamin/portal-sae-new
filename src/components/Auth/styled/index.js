@@ -11,8 +11,7 @@ export const H2AuthPanel = styled.h2`
 `;
 
 export const FormSection = styled.section`
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
 `;
 
 

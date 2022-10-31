@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Alert } from '@mui/material';
+import { Alert, Stack } from '@mui/material';
 
 import ResetPasswordForm from './Form/ResetPasswordForm';
 
@@ -25,16 +25,18 @@ const ResetPassword = () => {
 
   return (
     <FormSection>
-      <H2AuthPanel>{es.RESTORE_PASSWORD}</H2AuthPanel>
-      <Alert severity='info'>{es.RESET_PASSWORD_MSG}</Alert>
+        <H2AuthPanel>{es.RESTORE_PASSWORD}</H2AuthPanel>
+        <Alert severity='info'>{es.RESET_PASSWORD_MSG}</Alert>
       <ResetPasswordForm />
-      <RoundedButton
-        variant='text'
-        sx={{ marginTop: '1rem' }}
-        onClick={redirectHome}
-      >
-        {es.BACK_HOME}
-      </RoundedButton>
+      <Stack justifyContent={'center'}>
+        <RoundedButton
+          onClick={redirectHome}
+          sx={{ marginTop: '1rem' }}
+          variant='text'
+        >
+          {es.BACK_HOME}
+        </RoundedButton>
+      </Stack>
     </FormSection>
   );
 };

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import { InputAdornment, TextField } from '@mui/material';
+import { InputAdornment, Stack, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 import {
@@ -60,6 +60,23 @@ const ResetPasswordForm = () => {
     }
 
     /* 
+        valida que tenga al menos 1 letra mayúscula, 1 letra
+        minuscula y 1 numero.
+      */
+    if (!validatePasswordNumMinMax(password)) {
+      setErrors({
+        email: errorsInitialState.email,
+        password: {
+          error: true,
+          msg: validations.PASS_VALIDATION_COMPLETE,
+        },
+        confirmPassword: errorsInitialState.confirmPassword,
+      });
+      setLoading(false);
+      return;
+    }
+
+    /* 
       valida que las contraseñas tengan una cantidad minima
       de 8 caracteres y maxima de 20 caracteres
     */
@@ -105,23 +122,6 @@ const ResetPasswordForm = () => {
     //   setLoading(false);
     //   return;
     // }
-
-    /* 
-        valida que tenga al menos 1 letra mayúscula, 1 letra
-        minuscula y 1 numero.
-      */
-    if (!validatePasswordNumMinMax(password)) {
-      setErrors({
-        email: errorsInitialState.email,
-        password: {
-          error: true,
-          msg: validations.PASS_VALIDATION_COMPLETE,
-        },
-        confirmPassword: errorsInitialState.confirmPassword,
-      });
-      setLoading(false);
-      return;
-    }
 
     /* valida que la contraseña nueva y la validacion 
       sean iguales.
@@ -211,14 +211,16 @@ const ResetPasswordForm = () => {
           ),
         }}
       />
-      <RoundedButton
-        variant='contained'
-        type='submit'
-        loading={loading}
-        sx={{ marginTop: '1rem' }}
-      >
-        {es.RESTORE_PASSWORD}
-      </RoundedButton>
+      <Stack justifyContent={'center'}>
+        <RoundedButton
+          variant='contained'
+          type='submit'
+          loading={loading}
+          sx={{ marginTop: '1.5rem' }}
+        >
+          {es.RESTORE_PASSWORD}
+        </RoundedButton>
+      </Stack>
     </form>
   );
 };

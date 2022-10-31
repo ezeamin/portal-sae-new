@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Alert, TextField } from '@mui/material';
+import { Alert, Stack, TextField } from '@mui/material';
 
 import { validateEmail } from '../../../../../helpers/validators';
 
@@ -55,16 +55,17 @@ const RestorePasswordForm = () => {
         error={emailError.error}
         helperText={emailError.msg}
       />
-
-      <RoundedButton
-        variant='contained'
-        type='submit'
-        loading={isSending}
-        disabled={isSent}
-        sx={{ marginTop: '1rem' }}
-      >
-        {es.SEND_LINK}
-      </RoundedButton>
+      <Stack justifyContent={'center'}>
+        <RoundedButton
+          variant='contained'
+          type='submit'
+          loading={isSending}
+          disabled={isSent}
+          sx={{ marginTop: '1rem' }}
+        >
+          {es.SEND_LINK}
+        </RoundedButton>
+      </Stack>
     </form>
   );
 };

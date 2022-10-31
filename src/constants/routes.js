@@ -5,11 +5,8 @@ import loginViews from '../components/Auth/components/FormPanel/data/loginViews'
 
 import viewList from '../views/Profile/data/viewList';
 
-const MainAuth  = lazy(() => import('../views/Auth/MainAuth'));
-const ResetPassword  = lazy(() => import('../components/Auth/components/ResetPassword/ResetPassword'));
-const RestorePassword = lazy(() => import('../components/Auth/components/RestorePassword/RestorePassword'));
-
 const Home = lazy(() => import('../views/Home/Home'));
+const MainAuth  = lazy(() => import('../views/Auth/MainAuth'));
 const Profile = lazy(() => import('../views/Profile/Profile'));
 
 export const authRoutes = {
@@ -24,7 +21,7 @@ export const authRoutes = {
   RESET_PASSWORD: {
     id: authRoutesRouter.RESET_PASSWORD.id,
     path: authRoutesRouter.RESET_PASSWORD.path,
-    component: ResetPassword,
+    component: MainAuth,
     args: {
       view: loginViews.RESET_PASSWORD,
     },
@@ -32,7 +29,7 @@ export const authRoutes = {
   RESTORE_PASSWORD: {
     id: authRoutesRouter.RESTORE_PASSWORD.id,
     path: authRoutesRouter.RESTORE_PASSWORD.path,
-    component: RestorePassword,
+    component: MainAuth,
     args: {
       view: loginViews.RESTORE_PASSWORD,
     },
