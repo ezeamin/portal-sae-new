@@ -5,8 +5,13 @@ import Waves from '../../components/Home/Waves';
 
 import { modules } from '../../constants/constants';
 
+import { useGetWritingsQuery } from '../../features/api/writingsSlice';
+
 const Home = () => {
   const user = useSelector((state) => state.globalData.user);
+
+  const { data } = useGetWritingsQuery();
+  console.log("🚀 ~ file: Home.jsx ~ line 14 ~ Home ~ data", data)
 
   const modulesList = Object.values(modules.HOME);
 
