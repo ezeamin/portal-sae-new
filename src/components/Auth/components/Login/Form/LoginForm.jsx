@@ -15,8 +15,6 @@ import { Lock, Person, Visibility, VisibilityOff } from '@mui/icons-material';
 
 import { authRoutes } from '../../../../../constants/routes';
 
-import { validatePassword } from '../../../../../helpers/validators';
-
 import es from '../../../../../lang/es';
 
 import { RoundedButton } from '../../../../../styled';
@@ -38,7 +36,7 @@ const LoginForm = () => {
     } else setErrorCuil(false);
 
     // password validation?
-    if (!validatePassword(password)) {
+    if (password.trim().length === 0) {
       setErrorPass(true);
       isError = true;
     } else setErrorPass(false);
