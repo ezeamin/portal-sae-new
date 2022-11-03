@@ -5,10 +5,11 @@ import { Box, Container, Dialog, Drawer } from '@mui/material';
 
 import ModuleList from '../Commons/ModuleItem/ModuleList';
 
-import { modules } from '../../constants/constants';
+import { mainModules } from '../../constants/Modules/modules';
+
 import { RoundedButton } from '../../styled';
 
-const modulesList = Object.values(modules.HOME);
+const modulesList = mainModules || [];
 
 const ModulesModal = () => {
   const opened = useSelector((state) => state.surfaces.modulesModalOpened);

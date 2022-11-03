@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import { Header, ModuleList } from '../../components';
 import Waves from '../../components/Home/Waves';
 
-import { modules } from '../../constants/constants';
+import mainModules from '../../constants/Modules/modules.js';
 
 const Home = () => {
   const user = useSelector((state) => state.globalData.user);
 
-  const modulesList = Object.values(modules.HOME);
+  const modulesList = mainModules || [];
 
   return (
     <>

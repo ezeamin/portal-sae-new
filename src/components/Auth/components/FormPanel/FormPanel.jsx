@@ -2,7 +2,7 @@ import { Container } from '@mui/system';
 
 import { AuthPaper } from './styled';
 
-import loginViews from './data/loginViews';
+import loginViews from '../../../../constants/views/loginViews';
 
 import Login from '../Login/Login';
 import ResetPassword from '../ResetPassword/ResetPassword';

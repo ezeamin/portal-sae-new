@@ -1,22 +1,19 @@
-/*
-
-const paths = {
-    HOME: '/',
-    AUTH:{
-        LOGIN: '/auth/login',
-        RESTORE_PASSWORD: '/auth/restore-password',
-    },
-    ...
-}
-
-*/
-
 export const paths = {
     HOME: '/',
     AUTH:{
         LOGIN: '/auth/login',
         RESTORE_PASSWORD: '/auth/restore-password',
+        RESET_PASSWORD: '/auth/reset-password',
     },
+    
+    //MODULOS PROFILE
+    PROFILE: {
+        MAIN: '/profile',
+        DATA_FORM: '/profile/data',
+        PASSWORD_FORM: '/profile/password',
+    },
+
+    //MODULOS HOME
     ESCRITOS:{
         MAIN: '/escritos',
         NEW: '/escritos/new',
@@ -39,9 +36,4 @@ export const paths = {
     OGA: {
         MAIN: '/oga',
     },
-    PROFILE: {
-        MAIN: '/profile',
-        DATA_FORM: '/profile/data',
-        PASSWORD_FORM: '/profile/password',
-    }
 }

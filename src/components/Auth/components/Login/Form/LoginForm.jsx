@@ -13,13 +13,13 @@ import {
 
 import { Lock, Person, Visibility, VisibilityOff } from '@mui/icons-material';
 
-import { authRoutes } from '../../../../../constants/routes';
-
 import { validatePassword } from '../../../../../helpers/validators';
 
 import es from '../../../../../lang/es';
 
 import { RoundedButton } from '../../../../../styled';
+
+import { authRoutes } from '../../../../../constants/Routing/routes';
 
 const LoginForm = () => {
   const [errorCuil, setErrorCuil] = useState(false);

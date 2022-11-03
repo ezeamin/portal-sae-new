@@ -8,7 +8,7 @@ import WelcomeMessage from './WelcomeMessage';
 
 import { RoundedButton } from '../../../styled';
 
-import { routes } from '../../../constants/routes';
+import { profileRoutes } from '../../../constants/Routing/routes';
 
 const Header = (props) => {
   const { user, page } = props;
@@ -55,7 +55,7 @@ const Header = (props) => {
               sx={{
                 marginTop: { xs: 2, md: 0 },
               }}
-              onClick={() => navigate(routes.PROFILE.path)}
+              onClick={() => navigate(profileRoutes.MAIN.path)}
             >
               Mi perfil
             </RoundedButton>

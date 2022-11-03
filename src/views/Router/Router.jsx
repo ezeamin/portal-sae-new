@@ -4,19 +4,27 @@ import { Layout } from '..';
 
 import PrivateRoute from './PrivateRoute';
 import { ModulesModal } from '../../components';
-
-import { authRoutes, routes } from '../../constants/routes';
+import {
+  flatAuthRoutes,
+  flatMainRoutes,
+  flatModulesRoutes,
+  flatProfileRoutes,
+} from '../../helpers/flatRoutes';
 
 const Router = () => {
-  const authRoutesArray = Object.values(authRoutes);
-  const routesArray = Object.values(routes);
+  const authRoutes = flatAuthRoutes();
+  const mainRoutes = flatMainRoutes();
+  const profileRoutes = flatProfileRoutes();
+  const modulesRoutes = flatModulesRoutes();
+
+  const loggedRoutes = [...mainRoutes, ...profileRoutes, ...modulesRoutes];
 
   return (
     <BrowserRouter>
       <ModulesModal />
       <Routes>
         <Route path='/auth'>
-          {authRoutesArray.map((route) => (
+          {authRoutes.map((route) => (
             <Route
               path={route.path}
               key={route.id}
@@ -31,8 +39,10 @@ const Router = () => {
             />
           ))}
         </Route>
+
+        {/* Logged routes */}
         <Route path='/' element={<Layout />}>
-          {routesArray.map((route) => (
+          {loggedRoutes.map((route) => (
             <Route
               path={route.path}
               key={route.id}
