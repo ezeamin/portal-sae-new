@@ -2,9 +2,9 @@ import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { setCurrentModule } from '../../features/globalData';
+import { setCurrentPage } from '../../features/globalData';
 
-import getModuleInfo from '../../helpers/getModuleInfo';
+import getPageInfo from '../../helpers/getPageInfo';
 
 import LazyLoadingSpinner from './Loading/LazyLoadingSpinner';
 
@@ -18,9 +18,9 @@ const PrivateRoute = (props) => {
 
   //   Colocar en el store la info del sitio actual
   useEffect(() => {
-    const module = getModuleInfo(routeId);
+    const module = getPageInfo(routeId);
 
-    dispatch(setCurrentModule(module.id));
+    dispatch(setCurrentPage(module.id));
   }, [location, dispatch, routeId]);
 
   return (

@@ -1,4 +1,4 @@
-import modulesColors from '../constants/modulesColors';
+import modulesColors from '../constants/Modules/modulesColors';
 
 const lightTheme = {
   primary: {

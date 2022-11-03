@@ -1,20 +1,3 @@
-/*
-
-const route = {
-    id: 0, //mismo que ruta
-    path: '',
-    component: '',
-    routeInfo: {
-        color: '',
-        icon: '',
-        description?: '',
-        buttons?: [], //linkeado a buttons
-    }, 
-    args?: {}, //args para el componente
-}
-
-*/
-
 import {
   AccountBalanceRounded,
   BookmarkRounded,
@@ -31,15 +14,16 @@ import Home from '../../views/Home/Home';
 import MainAuth from '../../views/Auth/MainAuth';
 import Module from '../../views/Module/Module';
 import Profile from '../../views/Profile/Profile';
+
+import loginViews from '../views/loginViews';
 import viewList from '../views/viewList';
 
 import { paths } from './paths';
 
 import logout from '../../actions/logout';
-import loginViews from '../views/loginViews';
 
 export const mainRoutes = {
-  // min: 0, max: 9999
+  // min: 0, max: 999
   COMMON: {
     component: Home,
     routeInfo: {
@@ -123,6 +107,7 @@ export const authRoutes = {
 };
 
 export const modulesRoutes = {
+  // min: 10000, max: 199999
   ESCRITOS: {
     COMMON: {
       component: Module,
@@ -147,10 +132,7 @@ export const modulesRoutes = {
     NEW: {
       id: 10001,
       path: paths.ESCRITOS.NEW,
-      component: Module,
       routeInfo: {
-        color: 'ESCRITOS',
-        icon: CreateRounded,
         description: 'Nuevo escrito',
         positions: [
           {

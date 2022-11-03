@@ -5,7 +5,7 @@ import { writingsAdapter } from '../../adapters/writingsAdapter';
 import { Header, ModuleList } from '../../components';
 import Waves from '../../components/Home/Waves';
 
-import { modules } from '../../constants/constants';
+import { mainModulesArray } from '../../constants/Modules/modules';
 
 import { useGetWritingsQuery } from '../../features/api/writingsSlice';
 
@@ -26,12 +26,10 @@ const Home = () => {
     }
   }, [data, isError, isLoading]);
 
-  const modulesList = Object.values(modules.HOME);
-
   return (
     <>
       <Header user={user} page='HOME' />
-      <ModuleList modules={modulesList} sx={{ mb: 10 }} />
+      <ModuleList modules={mainModulesArray} sx={{ mb: 10 }} />
       <Waves />
     </>
   );

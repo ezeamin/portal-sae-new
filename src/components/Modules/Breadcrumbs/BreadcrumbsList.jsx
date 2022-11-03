@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Breadcrumbs, Link } from '@mui/material';
 
-import { routes } from '../../../constants/routes';
+import { mainRoutes } from '../../../constants/Routing/routes';
 
 const BreadcrumbsList = (props) => {
   const { positions = [] } = props;
@@ -19,7 +19,7 @@ const BreadcrumbsList = (props) => {
         key='1'
         color='inherit'
         sx={{cursor: "pointer"}}
-        onClick={() => handleClick(routes.HOME.path)}
+        onClick={() => handleClick(mainRoutes.HOME.path)}
       >
         Inicio
       </Link>

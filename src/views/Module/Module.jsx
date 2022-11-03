@@ -3,12 +3,11 @@ import { useSelector } from 'react-redux';
 
 import { Container, Stack, Typography } from '@mui/material';
 
-import { modules } from '../../constants/constants';
-
 import IngresoEscritos from '../../components/Modules/IngresoEscritos/IngresoEscritos';
 import ActionButton from '../../components/Modules/ActionButton/ActionButton';
 import BreadcrumbsList from '../../components/Modules/Breadcrumbs/BreadcrumbsList';
-import { routes } from '../../constants/routes';
+
+import { modulesRoutes } from '../../constants/Routing/routes';
 
 const Module = (props) => {
   const { positions = [], routeDescription } = props;
@@ -20,15 +19,15 @@ const Module = (props) => {
   const [buttons, setButtons] = useState([]);
 
   useEffect(() => {
-    switch (moduleId) {
-      case routes.ESCRITOS.id:
-        setTitle(modules.HOME.ESCRITOS.name);
-        setButtons(modules.HOME.ESCRITOS.buttons);
-        setComponent(<IngresoEscritos />);
-        break;
-      default:
-        break;
-    }
+    // switch (moduleId) {
+    //   case routes.ESCRITOS.id:
+    //     setTitle(modulesRoutes.HOME.ESCRITOS.name);
+    //     setButtons(modulesRoutes.HOME.ESCRITOS.buttons);
+    //     setComponent(<IngresoEscritos />);
+    //     break;
+    //   default:
+    //     break;
+    // }
   }, [moduleId]);
 
   return (

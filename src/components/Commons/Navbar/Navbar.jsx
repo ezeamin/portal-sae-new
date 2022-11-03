@@ -6,16 +6,15 @@ import { AppBar, IconButton, Stack } from '@mui/material';
 import { SegmentRounded } from '@mui/icons-material';
 
 import DrawerMenu from './DrawerMenu';
-import ModuleChip from './ModuleChip';
+import PageChip from './PageChip';
 import ProfileInfo from './ProfileInfo';
 import PortalLogo from './PortalLogo';
 import QuickAccessIcons from './QuickAccessIcons';
 
-import { routes } from '../../../constants/routes';
-
-import getModuleInfo from '../../../helpers/getModuleInfo';
+import getPageInfo from '../../../helpers/getPageInfo';
 
 import { setMainDrawerOpened } from '../../../features/surfaces';
+import { profileRoutes } from '../../../constants/Routing/routes';
 
 const Navbar = () => {
   const data = useSelector((state) => state.globalData);
@@ -23,7 +22,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const module = getModuleInfo(data.currentModule);
+  const page = getPageInfo(data.currentPage);
 
   const closeDrawer = () => {
     dispatch(setMainDrawerOpened(false));
@@ -35,7 +34,7 @@ const Navbar = () => {
 
   const navigateProfile = () => {
     closeDrawer();
-    navigate(routes.PROFILE.path);
+    navigate(profileRoutes.MAIN.path);
   };
 
   if (data.isPortrait) {
@@ -46,7 +45,7 @@ const Navbar = () => {
             {/* ------ LEFT ------ */}
             <Stack direction='row' alignItems='center'>
               <PortalLogo />
-              <ModuleChip currentModule={module} />
+              <PageChip currentPage={page} />
             </Stack>
 
             {/* ------ RIGHT ------ */}
@@ -69,7 +68,7 @@ const Navbar = () => {
         {/* ------ LEFT ------ */}
         <Stack direction='row' alignItems='center'>
           <PortalLogo />
-          <ModuleChip currentModule={module} />
+          <PageChip currentPage={page} />
 
           {/* Acciones módulo */}
           <Stack direction='row'></Stack>

@@ -4,7 +4,7 @@ import { HomeRounded, NotificationsRounded } from '@mui/icons-material';
 
 import { Stack, Typography } from '@mui/material';
 
-import { routes } from '../../../constants/routes';
+import { mainRoutes } from '../../../constants/Routing/routes';
 
 import { RoundedButton } from '../../../styled';
 
@@ -14,7 +14,7 @@ const WelcomeMessage = (props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(routes.HOME.path);
+    navigate(mainRoutes.HOME.path);
   };
 
   if (!isHomePage) {

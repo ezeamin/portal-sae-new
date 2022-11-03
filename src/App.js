@@ -8,7 +8,7 @@ import { setIsPortrait, setTheme } from './features/globalData';
 
 import { Router } from './views';
 
-import { themes } from './constants/constants';
+// import { themes } from './constants/constants';
 import useTheme from './hooks/useTheme';
 
 const App = () => {

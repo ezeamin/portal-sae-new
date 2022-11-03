@@ -5,7 +5,7 @@ import themes from '../constants/themes';
 const defaultPortraitValue = window.innerWidth < 600;
 
 const initialState = {
-  currentModule: 100000,
+  currentPage: 0,
   user: {
     name: 'Ezequiel',
     lastname: 'Amin',
@@ -24,8 +24,8 @@ const globalDataSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
-    setCurrentModule: (state, action) => {
-      state.currentModule = action.payload;
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
     },
     setIsPortrait: (state, action) => {
       if (state.isPortrait !== action.payload)
@@ -46,7 +46,7 @@ const globalDataSlice = createSlice({
   },
 });
 
-export const { setUser, setCurrentModule, setIsPortrait, setTheme } =
+export const { setUser, setCurrentPage, setIsPortrait, setTheme } =
   globalDataSlice.actions;
 
 export default globalDataSlice.reducer;

@@ -5,7 +5,7 @@ import { Alert, Stack } from '@mui/material';
 
 import RestorePasswordForm from './Form/RestorePasswordForm';
 
-import { authRoutes } from '../../../../constants/routes';
+import { authRoutes } from '../../../../constants/Routing/routes';
 
 import es from '../../../../lang/es';
 

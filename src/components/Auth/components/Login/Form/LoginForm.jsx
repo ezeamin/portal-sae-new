@@ -13,7 +13,7 @@ import {
 
 import { Lock, Person, Visibility, VisibilityOff } from '@mui/icons-material';
 
-import { authRoutes } from '../../../../../constants/routes';
+import { authRoutes } from '../../../../../constants/Routing/routes';
 
 import es from '../../../../../lang/es';
 

@@ -1,34 +1,4 @@
-/*
-
-module = {
-    id: 0, //mismo que ruta
-    path: ,//mismo que ruta
-    name: '',
-    description: '',
-    icon: '', //mismo que ruta
-    color: '', //mismo que ruta
-    action?: ()=>{}
-}
-
-const mainModules = [
-{
-    // 
-}
-]
-
-*/
-
 import { modulesRoutes, profileRoutes } from '../Routing/routes';
-
-// ESCRITOS: {
-//     action: ,
-//     color: ,
-//     description: ,
-//     icon: ,
-//     id: ,
-//     name: ,
-//     path: ,
-// },
 
 const mainModules = {
   ESCRITOS: {
