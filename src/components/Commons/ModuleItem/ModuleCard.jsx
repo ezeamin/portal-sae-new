@@ -12,11 +12,19 @@ import {
   Typography,
 } from '@mui/material';
 
+import { iconTypes } from '../../../constants/iconTypes';
+
+import useIcon from '../../../hooks/useIcon';
+
 const ModuleCard = (props) => {
   const { module, delay } = props;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const icon = useIcon({ icon: module.icon, type: iconTypes.MODULE })
+
+  // TODO: Hook para manejar color
 
   const handleClick = () => {
     dispatch(setModulesModalOpened(false));
@@ -54,7 +62,7 @@ const ModuleCard = (props) => {
                   color: module.color,
                 }}
               >
-                {module.icon}
+                {icon}
               </Box>
               <Stack justifyContent='center'>
                 <Typography gutterBottom variant='h5' component='h5'>

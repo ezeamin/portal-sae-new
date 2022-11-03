@@ -13,13 +13,11 @@ import {
 
 import { Lock, Person, Visibility, VisibilityOff } from '@mui/icons-material';
 
-import { validatePassword } from '../../../../../helpers/validators';
+import { authRoutes } from '../../../../../constants/Routing/routes';
 
 import es from '../../../../../lang/es';
 
 import { RoundedButton } from '../../../../../styled';
-
-import { authRoutes } from '../../../../../constants/Routing/routes';
 
 const LoginForm = () => {
   const [errorCuil, setErrorCuil] = useState(false);
@@ -38,7 +36,7 @@ const LoginForm = () => {
     } else setErrorCuil(false);
 
     // password validation?
-    if (!validatePassword(password)) {
+    if (password.trim().length === 0) {
       setErrorPass(true);
       isError = true;
     } else setErrorPass(false);

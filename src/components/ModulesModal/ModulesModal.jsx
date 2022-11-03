@@ -5,11 +5,9 @@ import { Box, Container, Dialog, Drawer } from '@mui/material';
 
 import ModuleList from '../Commons/ModuleItem/ModuleList';
 
-import { mainModules } from '../../constants/Modules/modules';
+import { mainModulesArray } from '../../constants/Routing/routes';
 
 import { RoundedButton } from '../../styled';
-
-const modulesList = mainModules || [];
 
 const ModulesModal = () => {
   const opened = useSelector((state) => state.surfaces.modulesModalOpened);
@@ -35,7 +33,7 @@ const ModulesModal = () => {
           </RoundedButton>
         </Container>
         <Box sx={{ overflow: 'scroll' }}>
-          <ModuleList modules={modulesList} sx={{ mt: 0 }} />
+          <ModuleList modules={mainModulesArray} sx={{ mt: 0 }} />
         </Box>
       </Drawer>
     );
@@ -43,7 +41,7 @@ const ModulesModal = () => {
 
   return (
     <Dialog open={opened} onClose={handleClose} maxWidth='lg'>
-      <ModuleList modules={modulesList} sx={{ overflowY: 'hidden', py: 1 }} />
+      <ModuleList modules={mainModulesArray} sx={{ overflowY: 'hidden', py: 1 }} />
     </Dialog>
   );
 };
