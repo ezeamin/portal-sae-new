@@ -1,7 +1,10 @@
-import { Box, Container, Dialog, Drawer } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { setModulesModalOpened } from '../../features/surfaces';
-import ModuleList from '../Commons/Modules/ModuleList';
+
+import { Box, Container, Dialog, Drawer } from '@mui/material';
+
+import ModuleList from '../Commons/ModuleItem/ModuleList';
+
 import { modules } from '../../constants/constants';
 import { RoundedButton } from '../../styled';
 
@@ -38,12 +41,8 @@ const ModulesModal = () => {
   }
 
   return (
-    <Dialog
-      open={opened}
-      onClose={handleClose}
-      maxWidth='lg'
-    >
-      <ModuleList modules={modulesList} sx={{ overflowY: 'hidden', py: 1 }}/>
+    <Dialog open={opened} onClose={handleClose} maxWidth='lg'>
+      <ModuleList modules={modulesList} sx={{ overflowY: 'hidden', py: 1 }} />
     </Dialog>
   );
 };

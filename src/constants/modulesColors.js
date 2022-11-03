@@ -7,21 +7,21 @@ const modulesColors = {
       contrastText: '#fff',
     },
   },
-  NOTIFICACIONES: {
-    main: '#b3b3b3',
-    contrastText: '#fff',
-    DARK: {},
-  },
+  // NOTIFICACIONES: {
+  //   main: '#b3b3b3',
+  //   contrastText: '#fff',
+  //   DARK: {},
+  // },
   PAGOS: {
     main: '#ce6cd9',
     contrastText: '#fff',
     DARK: {},
   },
-  TURNOS: {
-    main: '#e36f6f',
-    contrastText: '#fff',
-    DARK: {},
-  },
+  // TURNOS: {
+  //   main: '#e36f6f',
+  //   contrastText: '#fff',
+  //   DARK: {},
+  // },
   CONSULTA_EXPEDIENTES: {
     main: '#e6a25e',
     contrastText: '#fff',
@@ -43,7 +43,8 @@ const modulesColors = {
     DARK: {},
   },
   OGA: {
-    main: '#82ad80',
+    // main: '#82ad80',
+    main: '#e36f6f',
     contrastText: '#fff',
     DARK: {},
   },

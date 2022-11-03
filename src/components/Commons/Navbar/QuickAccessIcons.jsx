@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { IconButton, Stack, Tooltip } from '@mui/material';
 
-import themes from '../../constants/themes';
+import themes from '../../../constants/themes';
 
-import { setTheme } from '../../features/globalData';
+import { setTheme } from '../../../features/globalData';
 import {
   setMainDrawerOpened,
   setModulesModalOpened,
-} from '../../features/surfaces';
+} from '../../../features/surfaces';
 
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';

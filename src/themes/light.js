@@ -29,6 +29,18 @@ const lightTheme = {
   background: {
     default: '#e6e6e6',
   },
+  green: {
+    main: '#43a047',
+  },
+  red: {
+    main: '#e53935',
+  },
+  yellow: {
+    main: '#fdd835',
+  },
+  blue: {
+    main: '#039be5',
+  },
 
   // Modules
   ...modulesColors,

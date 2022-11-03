@@ -31,7 +31,7 @@ const ModuleCard = (props) => {
         backgroundColor: 'whiteDarkMode.main',
         animationDelay: `${delay}ms`,
       }}
-      className='animate-in'
+      className='animate-in-bottom'
     >
       <CardActionArea sx={{ height: '100%' }} onClick={handleClick}>
         <Stack sx={{ height: '100%' }} direction='row'>

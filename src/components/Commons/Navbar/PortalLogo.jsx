@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Tooltip } from '@mui/material';
 
-import { routes } from '../../constants/routes';
+import { routes } from '../../../constants/routes';
 
 const PortalLogo = () => {
   const navigate = useNavigate();

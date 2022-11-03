@@ -102,6 +102,17 @@ button {
   }
 }
 
+@keyframes in-keyframes-right-short {
+  0% {
+    opacity: 0;
+    translate: 10% 0;
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
 @keyframes in-keyframes-top {
   0% {
     opacity: 0;
@@ -113,12 +124,16 @@ button {
   }
 }
 
-.animate-in {
+.animate-in-bottom {
   animation: in-keyframes 0.5s both;
 }
 
 .animate-in-right {
   animation: in-keyframes-right 0.75s both;
+}
+
+.animate-in-right-short {
+  animation: in-keyframes-right-short 0.75s both;
 }
 
 .animate-in-top {

@@ -1,13 +1,14 @@
 import { lazy } from 'react';
 import { authRoutesRouter, mainRoutes, modules } from './constants';
 
-import loginViews from '../components/Auth/components/FormPanel/data/loginViews';
+import loginViews from '../../components/Auth/components/FormPanel/data/loginViews';
 
-import viewList from '../views/Profile/data/viewList';
+import viewList from '../../views/Profile/data/viewList';
+import Module from '../../views/Module/Module';
 
-const Home = lazy(() => import('../views/Home/Home'));
-const MainAuth  = lazy(() => import('../views/Auth/MainAuth'));
-const Profile = lazy(() => import('../views/Profile/Profile'));
+const Home = lazy(() => import('../../views/Home/Home'));
+const MainAuth = lazy(() => import('../../views/Auth/MainAuth'));
+const Profile = lazy(() => import('../../views/Profile/Profile'));
 
 export const authRoutes = {
   LOGIN: {
@@ -71,46 +72,59 @@ export const routes = {
   ESCRITOS: {
     id: modules.HOME.ESCRITOS.id,
     path: modules.HOME.ESCRITOS.path,
-    component: Profile,
+    component: Module,
+    args: {
+      routeDescription: modules.HOME.ESCRITOS.internalRoutes.MAIN.description,
+      positions: [],
+    },
   },
-  NOTIFICACIONES: {
-    id: modules.HOME.NOTIFICACIONES.id,
-    path: modules.HOME.NOTIFICACIONES.path,
-    component: Profile,
+  ESCRITOS_NEW: {
+    id: modules.HOME.ESCRITOS.internalRoutes.NEW.id,
+    path: modules.HOME.ESCRITOS.path,
+    component: Module,
+    args: {
+      routeDescription: modules.HOME.ESCRITOS.internalRoutes.MAIN.description,
+      positions: [],
+    },
   },
+  // NOTIFICACIONES: {
+  //   id: modules.HOME.NOTIFICACIONES.id,
+  //   path: modules.HOME.NOTIFICACIONES.path,
+  //   component: Module,
+  // },
   PAGOS: {
     id: modules.HOME.PAGOS.id,
     path: modules.HOME.PAGOS.path,
-    component: Profile,
+    component: Module,
   },
-  TURNOS: {
-    id: modules.HOME.TURNOS.id,
-    path: modules.HOME.TURNOS.path,
-    component: Profile,
-  },
+  // TURNOS: {
+  //   id: modules.HOME.TURNOS.id,
+  //   path: modules.HOME.TURNOS.path,
+  //   component: Module,
+  // },
   CONSULTA_EXPEDIENTES: {
     id: modules.HOME.CONSULTA_EXPEDIENTES.id,
     path: modules.HOME.CONSULTA_EXPEDIENTES.path,
-    component: Profile,
+    component: Module,
   },
   UNIDADES: {
     id: modules.HOME.UNIDADES.id,
     path: modules.HOME.UNIDADES.path,
-    component: Profile,
+    component: Module,
   },
   JURISPRUDENCIA: {
     id: modules.HOME.JURISPRUDENCIA.id,
     path: modules.HOME.JURISPRUDENCIA.path,
-    component: Profile,
+    component: Module,
   },
   INICIO_EXPEDIENTES: {
     id: modules.HOME.INICIO_EXPEDIENTES.id,
     path: modules.HOME.INICIO_EXPEDIENTES.path,
-    component: Profile,
+    component: Module,
   },
   OGA: {
     id: modules.HOME.OGA.id,
     path: modules.HOME.OGA.path,
-    component: Profile,
+    component: Module,
   },
 };
