@@ -9,7 +9,8 @@ export const writingsSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getWritings: builder.query({
-      query: () => `find-all-by-filters-paginated?page=0&size=20`,
+      query: ({ numPage, quantityPerPage }) =>
+        `find-all-by-filters-paginated?page=${numPage}&size=${quantityPerPage}`,
     }),
   }),
 });
