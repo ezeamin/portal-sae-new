@@ -6,7 +6,7 @@ import Waves from '../../components/Home/Waves';
 import { ModuleList, ProfileForm } from '../../components';
 
 import { modules } from '../../constants/constants';
-import viewList from './data/viewList';
+import viewList from '../../constants/views/viewList';
 import ChangePassword from '../../components/Profile/ChangePassword/ChangePassword';
 
 const Profile = (props) => {

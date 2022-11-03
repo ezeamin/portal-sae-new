@@ -43,5 +43,5 @@ export const paths = {
         MAIN: '/profile',
         DATA_FORM: '/profile/data',
         PASSWORD_FORM: '/profile/password',
-    }
-}
+    },
+};

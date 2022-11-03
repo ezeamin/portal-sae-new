@@ -1,0 +1,14 @@
+export const ids = {
+  MIN: {
+    MAIN_ROUTES: 0,
+    PROFILE_ROUTES: 1000,
+    AUTH_ROUTES: 2000,
+    MODULES_ROUTES: 10000,
+  },
+  MAX: {
+    MAIN_ROUTES: 999,
+    PROFILE_ROUTES: 1999,
+    AUTH_ROUTES: 2999,
+    MODULES_ROUTES: 199999,
+  },
+};
