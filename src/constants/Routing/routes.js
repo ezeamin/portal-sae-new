@@ -5,7 +5,9 @@ import {
   DescriptionRounded,
   EmailRounded,
   HomeRounded,
+  LogoutRounded,
   MenuBookRounded,
+  PasswordRounded,
   PersonRounded,
   SearchRounded,
 } from '@mui/icons-material';
@@ -66,6 +68,7 @@ export const mainRoutes = {
   MAIN: {
     id: 0,
     path: paths.HOME,
+    name: 'Inicio',
   },
 };
 
@@ -273,6 +276,7 @@ export const profileRoutes = {
     routeInfo: {
       color: 'primary',
       icon: PersonRounded,
+      name: "Perfil"
     },
   },
   MAIN: {
@@ -282,6 +286,7 @@ export const profileRoutes = {
     },
     id: 1000,
     path: paths.PROFILE.MAIN,
+    name: 'Perfil',
   },
   DATA_FORM: {
     action: null,
@@ -292,6 +297,7 @@ export const profileRoutes = {
     id: 1001,
     name: 'Editar datos',
     path: paths.PROFILE.DATA_FORM,
+    icon: CreateRounded
   },
   PASSWORD: {
     action: null,
@@ -302,6 +308,7 @@ export const profileRoutes = {
     id: 1002,
     name: 'Cambiar contraseña',
     path: paths.PROFILE.PASSWORD_FORM,
+    icon: PasswordRounded
   },
   LOGOUT: {
     action: logout,
@@ -309,6 +316,7 @@ export const profileRoutes = {
     id: 1003,
     name: 'Cerrar sesión',
     path: null, // si explota poner '' string vacio
+    icon: LogoutRounded
   },
 };
 
@@ -323,14 +331,13 @@ export const mainModulesArray = arrModulesRoutes.map((module) => {
 
 const arrProfileRoutes = Object.values(profileRoutes);
 const arrValues = arrProfileRoutes.map((profile, index) => {
-  if ( index < 2 ) return null;
+  if (index < 2) return null;
   return {
     ...profile,
     color: arrProfileRoutes[0].routeInfo.color,
-    icon: arrProfileRoutes[0].routeInfo.icon,
-  } 
-})
+    icon: profile.icon || arrProfileRoutes[0].routeInfo.icon,
+  };
+});
 // remove null values
-const profile = arrValues.filter((item) => item !== null)
+const profile = arrValues.filter((item) => item !== null);
 export const profileModulesArray = profile;
-console.log("🚀 ~ file: routes.js ~ line 329 ~ profileModulesArray", profileModulesArray)
