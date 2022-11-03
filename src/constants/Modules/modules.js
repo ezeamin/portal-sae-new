@@ -96,6 +96,6 @@ const profileModules = {
   },
 };
 
-export const mainModulesArray = Object.values(mainModules);
+// export const mainModulesArray = Object.values(mainModules);
 
-export const profileModulesArray = Object.values(profileModules);
+// export const profileModulesArray = Object.values(profileModules);

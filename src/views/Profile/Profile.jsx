@@ -1,15 +1,14 @@
 import { useSelector } from 'react-redux';
 
+import { ModuleList, ProfileForm } from '../../components';
+
+import ChangePassword from '../../components/Profile/ChangePassword/ChangePassword';
 import Header from '../../components/Commons/Header/Header';
 import Waves from '../../components/Home/Waves';
 
-import { ModuleList, ProfileForm } from '../../components';
-
-import { profileModulesArray } from '../../constants/Modules/modules';
-
 import viewList from '../../constants/views/viewList';
 
-import ChangePassword from '../../components/Profile/ChangePassword/ChangePassword';
+import { profileModulesArray } from '../../constants/Routing/routes';
 
 const Profile = (props) => {
   const { view } = props;

@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+
 import { writingsAdapter } from '../../adapters/writingsAdapter';
 
 import { Header, ModuleList } from '../../components';
 import Waves from '../../components/Home/Waves';
 
-import { mainModulesArray } from '../../constants/Modules/modules';
+import { mainModulesArray } from '../../constants/Routing/routes';
 
 import { useGetWritingsQuery } from '../../features/api/writingsSlice';
 

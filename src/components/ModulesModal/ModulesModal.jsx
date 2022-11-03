@@ -5,7 +5,7 @@ import { Box, Container, Dialog, Drawer } from '@mui/material';
 
 import ModuleList from '../Commons/ModuleItem/ModuleList';
 
-import { mainModulesArray } from '../../constants/Modules/modules';
+import { mainModulesArray } from '../../constants/Routing/routes';
 
 import { RoundedButton } from '../../styled';
 
