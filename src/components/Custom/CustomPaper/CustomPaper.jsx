@@ -8,7 +8,7 @@ const CustomPaper = ({ children, sx: sxProps }) => {
   };
 
   return (
-    <Paper variant='fullyRounded' sx={sx} className='animate-in'>
+    <Paper variant='fullyRounded' sx={sx} className='animate-in-bottom'>
       {children}
     </Paper>
   );

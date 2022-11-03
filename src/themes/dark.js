@@ -30,6 +30,18 @@ const darkTheme = {
   background: {
     default: '#3a3a3a',
   },
+  green: {
+    main: '#43a047',
+  },
+  red: {
+    main: '#e53935',
+  },
+  yellow: {
+    main: '#fdd835',
+  },
+  blue: {
+    main: '#039be5',
+  },
 
   // Modules
   ...modulesColors

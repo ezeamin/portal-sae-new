@@ -4,7 +4,6 @@ import {
   CreateRounded,
   DescriptionRounded,
   EmailRounded,
-  HomeRounded,
   LogoutRounded,
   MenuBookRounded,
   MoveToInboxRounded,
@@ -16,10 +15,10 @@ import {
 
 import modulesColors from './modulesColors';
 
-import logout from '../actions/logout';
+import logout from '../../../actions/logout';
 
-const currentYear = new Date().getFullYear();
-export const footerLabelSistemas = `© ${currentYear} - Dirección de Sistemas`;
+import { actionButtons } from '../../actionButtons';
+import { routeIconsConfig } from '../constants';
 
 const iconsConfig = {
   sx: {
@@ -27,114 +26,54 @@ const iconsConfig = {
   },
 };
 
-const routeIconsConfig = {
-  sx: {
-    fontSize: '1.2rem',
-    ml: '12px !important',
-  },
-};
-
-export const ids = {
-  MIN: {
-    ROUTES: 1000,
-    MODULES_HOME: 0,
-    MODULES_PROFILES: 100,
-    AUTH: 200,
-  },
-  MAX: {
-    ROUTES: 2000,
-    MODULES_HOME: 99,
-    MODULES_PROFILES: 199,
-    AUTH: 299,
-  },
-};
-
-export const authRoutesRouter = {
-  RESET_PASSWORD: {
-    id: 200,
-    name: 'Blanqueo contraseña',
-    path: '/auth/reset-password',
-    color: 'primary',
-    routeInfo: {
-      color: 'primary',
-      icon: <></>,
-    },
-  },
-  RESTORE_PASSWORD: {
-    id: 201,
-    name: 'Solicitud blanqueo de contraseña',
-    path: '/auth/restore-password',
-    color: 'primary',
-    routeInfo: {
-      color: 'primary',
-      icon: <></>,
-    },
-  },
-};
-
-export const mainRoutes = {
-  AUTH: {
-    id: 1000,
-    name: 'Login',
-    path: '/auth',
-    color: 'primary',
-    routeInfo: {
-      color: 'primary',
-      icon: <></>,
-    },
-  },
-  HOME: {
-    id: 1001,
-    name: 'Inicio',
-    path: '/',
-    color: 'primary',
-    routeInfo: {
-      color: 'primary',
-      icon: <HomeRounded {...routeIconsConfig} />,
-    },
-  },
-  PROFILE: {
-    id: 1002,
-    name: 'Perfil',
-    path: '/perfil',
-    color: 'primary',
-    routeInfo: {
-      color: 'primary',
-      icon: <PersonRounded {...routeIconsConfig} />,
-    },
-  },
-};
-
 export const modules = {
   HOME: {
     ESCRITOS: {
-      id: 0,
+      id: 100,
       name: 'Ingreso escritos',
       description: 'Presentaciones',
       dataTestId: 'button-ingreso-escritos',
       path: '/escritos',
       color: modulesColors.ESCRITOS.main,
       icon: <CreateRounded {...iconsConfig} />,
+      buttons: [
+        { ...actionButtons.SEARCH, path: '/escritos/buscar' },
+        {
+          ...actionButtons.NEW,
+          path: '/escritos/nuevo',
+        },
+        actionButtons.CLOSE,
+      ],
       routeInfo: {
         color: 'ESCRITOS',
         icon: <CreateRounded {...routeIconsConfig} />,
       },
-    },
-    NOTIFICACIONES: {
-      id: 1,
-      name: 'Notificaciones',
-      description: 'Casillero virtual',
-      dataTestId: 'button-notificaciones',
-      path: '/notificaciones',
-      color: modulesColors.NOTIFICACIONES.main,
-      icon: <MoveToInboxRounded {...iconsConfig} />,
-      routeInfo: {
-        color: 'NOTIFICACIONES',
-        icon: <MoveToInboxRounded {...routeIconsConfig} />,
+      internalRoutes: {
+        MAIN: {
+          id: 100,
+          description: 'Listado',
+        },
+        NEW: {
+          id: 101,
+          description: 'Nuevo escrito',
+        },
       },
     },
+    // NOTIFICACIONES: {
+    //   id: 200,
+    //   name: 'Notificaciones',
+    //   description: 'Casillero virtual',
+    //   dataTestId: 'button-notificaciones',
+    //   path: '/notificaciones',
+    //   color: modulesColors.NOTIFICACIONES.main,
+    //   icon: <MoveToInboxRounded {...iconsConfig} />,
+    //   routeInfo: {
+    //     color: 'NOTIFICACIONES',
+    //     icon: <MoveToInboxRounded {...routeIconsConfig} />,
+    //   },
+    // },
     PAGOS: {
-      id: 2,
+      id: 300,
       name: 'Pagos judiciales',
       description: 'Online/Presencial',
       dataTestId: 'button-pagos-judiciales',
@@ -146,21 +85,21 @@ export const modules = {
         icon: <DescriptionRounded {...routeIconsConfig} />,
       },
     },
-    TURNOS: {
-      id: 3,
-      name: 'Solicitud turnos',
-      description: 'Online/Presencial',
-      dataTestId: 'button-solicitud-turnos',
-      path: '/turnos',
-      color: modulesColors.TURNOS.main,
-      icon: <WorkHistoryRounded {...iconsConfig} />,
-      routeInfo: {
-        color: 'TURNOS',
-        icon: <WorkHistoryRounded {...routeIconsConfig} />,
-      },
-    },
+    // TURNOS: {
+    //   id: 400,
+    //   name: 'Solicitud turnos',
+    //   description: 'Online/Presencial',
+    //   dataTestId: 'button-solicitud-turnos',
+    //   path: '/turnos',
+    //   color: modulesColors.TURNOS.main,
+    //   icon: <WorkHistoryRounded {...iconsConfig} />,
+    //   routeInfo: {
+    //     color: 'TURNOS',
+    //     icon: <WorkHistoryRounded {...routeIconsConfig} />,
+    //   },
+    // },
     CONSULTA_EXPEDIENTES: {
-      id: 4,
+      id: 500,
       name: 'Consulta expedientes',
       description: 'Online/Presencial',
       dataTestId: 'button-consulta-expedientes',
@@ -173,7 +112,7 @@ export const modules = {
       },
     },
     UNIDADES: {
-      id: 5,
+      id: 600,
       name: 'Consulta unidades',
       description: 'Online/Presencial',
       dataTestId: 'button-consulta-unidades',
@@ -186,7 +125,7 @@ export const modules = {
       },
     },
     JURISPRUDENCIA: {
-      id: 6,
+      id: 700,
       name: 'Jurisprudencia',
       description: 'Online/Presencial',
       dataTestId: 'button-jurisprudencia',
@@ -199,7 +138,7 @@ export const modules = {
       },
     },
     INICIO_EXPEDIENTES: {
-      id: 7,
+      id: 800,
       name: 'Inicio expedientes',
       description: 'Online/Presencial',
       dataTestId: 'button-inicio-expedientes',
@@ -212,7 +151,7 @@ export const modules = {
       },
     },
     OGA: {
-      id: 8,
+      id: 900,
       name: 'OGA',
       description: 'Online/Presencial',
       dataTestId: 'button-oga',
@@ -227,7 +166,7 @@ export const modules = {
   },
   PROFILE: {
     DATA_FORM: {
-      id: 101,
+      id: 10001,
       name: 'Editar datos',
       description: 'Editar datos personales como nombre e email',
       dataTestId: 'button-editar-datos',
@@ -241,7 +180,7 @@ export const modules = {
       icon: <CreateRounded {...iconsConfig} />,
     },
     PASSWORD: {
-      id: 102,
+      id: 10002,
       name: 'Cambiar contraseña',
       description: 'Cambiar contraseña de ingreso',
       dataTestId: 'button-cambiar-contraseña',
@@ -255,7 +194,7 @@ export const modules = {
       icon: <PasswordRounded {...iconsConfig} />,
     },
     LOGOUT: {
-      id: 103,
+      id: 10003,
       name: 'Cerrar sesión',
       description: 'Salir de la sesión actual',
       dataTestId: 'button-cerrar-sesion',

@@ -5,7 +5,7 @@ import themes from '../constants/themes';
 const defaultPortraitValue = window.innerWidth < 600;
 
 const initialState = {
-  currentModule: 1000,
+  currentModule: 100000,
   user: {
     name: 'Ezequiel',
     lastname: 'Amin',

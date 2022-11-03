@@ -14,7 +14,7 @@ const Waves = () => {
 
   return (
     <Box
-      className='animate-in'
+      className='animate-in-bottom'
       sx={{ position: 'fixed', bottom: 0, width: '100%', zIndex: -1 }}
     >
       <svg
