@@ -9,6 +9,7 @@ import BreadcrumbsList from '../../components/Modules/Breadcrumbs/BreadcrumbsLis
 import { flatModulesRoutes } from '../../helpers/flatRoutes';
 import { actionButtons } from '../../constants/actionButtons';
 
+
 const tempButtons = Object.values(actionButtons)
 
 const Module = () => {
@@ -60,6 +61,7 @@ const Module = () => {
             {subtitle}
           </Typography>
         </div>
+        {/* agregar la nueva propiead en button */}
         <Stack direction='row' alignItems='center' sx={{ mt: { xs: 2 } }}>
           {buttons.map((button, index) => (
             <ActionButton

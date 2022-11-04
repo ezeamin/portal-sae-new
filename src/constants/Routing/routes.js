@@ -27,6 +27,7 @@ import { actionButtons } from '../actionButtons';
 
 import modulesColors from '../Modules/modulesColors';
 import IngresoEscritos from '../../components/Modules/IngresoEscritos/IngresoEscritos';
+import { moduleName } from '../Modules/modulesName';
 
 export const authRoutes = {
   // min: 2000, max: 2999
@@ -90,11 +91,18 @@ export const modulesRoutes = {
       action: null,
       description: 'Presentaciones',
       id: 10000,
-      name: 'Ingreso escritos',
+      name: moduleName.ESCRITOS,
       path: paths.ESCRITOS.MAIN,
       routeInfo: {
         component: IngresoEscritos,
-        buttons: [actionButtons.SEARCH, actionButtons.NEW, actionButtons.CLOSE],
+        buttons: [
+          { 
+            ...actionButtons.SEARCH, 
+            moduleInfo: moduleName.ESCRITOS + ' search',
+          },
+          actionButtons.NEW,
+          actionButtons.CLOSE,
+        ],
         description: 'Listado',
         positions: [
           {
