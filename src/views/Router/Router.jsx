@@ -33,7 +33,6 @@ const Router = () => {
                   component={route.component}
                   args={route?.args}
                   routeId={route.id}
-                  auth
                 />
               }
             />

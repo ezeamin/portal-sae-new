@@ -10,7 +10,7 @@ const logout = () => {
   }).then((res) => {
     if (res.isConfirmed) {
       console.log('Sesion cerrada');
-      //window.location.href = '/login';
+      window.location.href = 'auth/login';
     }
   });
 };

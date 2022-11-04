@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {
   Checkbox,
@@ -13,7 +13,10 @@ import {
 
 import { Lock, Person, Visibility, VisibilityOff } from '@mui/icons-material';
 
-import { authRoutes } from '../../../../../constants/Routing/routes';
+import {
+  authRoutes,
+  mainRoutes,
+} from '../../../../../constants/Routing/routes';
 
 import es from '../../../../../lang/es';
 
@@ -26,6 +29,8 @@ const LoginForm = () => {
 
   const cuilRef = useRef();
   const passRef = useRef();
+
+  const navigate = useNavigate();
 
   const checkForErrors = (cuil, password) => {
     let isError = false;
@@ -52,6 +57,7 @@ const LoginForm = () => {
 
     if (!checkForErrors(cuil, password)) {
       // datos válidos, llamar al back
+      navigate(mainRoutes.MAIN.path);
     } else {
       /*
       ! 8. Ingreso Fallido:

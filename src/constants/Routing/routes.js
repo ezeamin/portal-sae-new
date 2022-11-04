@@ -32,7 +32,7 @@ export const authRoutes = {
     component: MainAuth,
     routeInfo: {
       color: 'primary',
-      icon: <></>,
+      icon: HomeRounded,
     },
   },
   LOGIN: {
