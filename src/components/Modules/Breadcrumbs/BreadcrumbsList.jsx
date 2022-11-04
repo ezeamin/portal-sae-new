@@ -19,7 +19,7 @@ const BreadcrumbsList = (props) => {
         key='1'
         color='inherit'
         sx={{cursor: "pointer"}}
-        onClick={() => handleClick(mainRoutes.HOME.path)}
+        onClick={() => handleClick(mainRoutes.MAIN.path)}
       >
         Inicio
       </Link>

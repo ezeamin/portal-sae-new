@@ -43,6 +43,7 @@ const getPageInfo = (id) => {
       ...page,
       icon: arr[0].routeInfo.icon,
       color: arr[0].routeInfo.color,
+      name: arr[0].routeInfo.name,
     };
   }
 

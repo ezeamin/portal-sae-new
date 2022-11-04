@@ -14,7 +14,7 @@ const WelcomeMessage = (props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(mainRoutes.HOME.path);
+    navigate(mainRoutes.MAIN.path);
   };
 
   if (!isHomePage) {

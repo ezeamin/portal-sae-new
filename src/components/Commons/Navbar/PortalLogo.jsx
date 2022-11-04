@@ -9,7 +9,7 @@ const PortalLogo = () => {
   return (
     <Tooltip title='Portal del SAE'>
       <button
-        onClick={() => navigate(mainRoutes.HOME.path)}
+        onClick={() => navigate(mainRoutes.MAIN.path)}
         style={{ marginRight: '0.5rem', height: '65px' }}
       >
         <img
