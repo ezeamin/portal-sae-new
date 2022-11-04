@@ -15,6 +15,7 @@ import {
 import { iconTypes } from '../../../constants/iconTypes';
 
 import useIcon from '../../../hooks/useIcon';
+import useModuleColor from '../../../hooks/useModuleColor';
 
 const ModuleCard = (props) => {
   const { module, delay } = props;
@@ -23,6 +24,7 @@ const ModuleCard = (props) => {
   const dispatch = useDispatch();
 
   const icon = useIcon({ icon: module.icon, type: iconTypes.MODULE })
+  const color = useModuleColor(module.color);
 
   // TODO: Hook para manejar color
 
@@ -46,7 +48,7 @@ const ModuleCard = (props) => {
           <Box
             sx={{
               width: '15px',
-              backgroundColor: module.color,
+              backgroundColor: color,
             }}
           ></Box>
           <CardContent sx={{ height: '100%' }}>
@@ -59,7 +61,7 @@ const ModuleCard = (props) => {
                   minWidth: '4rem',
                   height: '5rem',
                   mr: 3,
-                  color: module.color,
+                  color: color,
                 }}
               >
                 {icon}

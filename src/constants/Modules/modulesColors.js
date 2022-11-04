@@ -38,22 +38,20 @@ const modulesColors = {
     contrastText: '#fff',
     DARK: {},
   },
-  PROFILE: {
-    DATA_FORM: {
-      main: '#7d9ec7',
-      contrastText: '#fff',
-      DARK: {},
-    },
-    PASSWORD: {
-      main: '#7d9ec7',
-      contrastText: '#fff',
-      DARK: {},
-    },
-    LOGOUT: {
-      main: '#e36f6f',
-      contrastText: '#fff',
-      DARK: {},
-    },
+  PROFILE_DATA_FORM: {
+    main: '#7d9ec7',
+    contrastText: '#fff',
+    DARK: {},
+  },
+  PROFILE_PASSWORD: {
+    main: '#7d9ec7',
+    contrastText: '#fff',
+    DARK: {},
+  },
+  PROFILE_LOGOUT: {
+    main: '#e36f6f',
+    contrastText: '#fff',
+    DARK: {},
   },
 };
 

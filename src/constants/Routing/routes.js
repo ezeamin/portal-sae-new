@@ -25,6 +25,8 @@ import loginViews from '../views/loginViews';
 import viewList from '../views/viewList';
 import { actionButtons } from '../actionButtons';
 
+import modulesColors from '../Modules/modulesColors';
+
 export const authRoutes = {
   // min: 2000, max: 2999
   COMMON: {
@@ -275,6 +277,10 @@ export const modulesRoutes = {
   },
 };
 
+// Profile routes tambien llevan como atributo
+// icon y color, porque cada uno se maneja con un
+// color distinto, pero en el routeo (chip en el navbar)
+// se usa el mismo (primary e icono de perfil)
 export const profileRoutes = {
   // min: 1000, max: 1999
   COMMON: {
@@ -282,7 +288,7 @@ export const profileRoutes = {
     routeInfo: {
       color: 'primary',
       icon: PersonRounded,
-      name: "Perfil"
+      name: 'Perfil',
     },
   },
   MAIN: {
@@ -303,7 +309,8 @@ export const profileRoutes = {
     id: 1001,
     name: 'Editar datos',
     path: paths.PROFILE.DATA_FORM,
-    icon: CreateRounded
+    icon: CreateRounded,
+    color: "PROFILE_DATA_FORM",
   },
   PASSWORD: {
     action: null,
@@ -314,15 +321,17 @@ export const profileRoutes = {
     id: 1002,
     name: 'Cambiar contraseña',
     path: paths.PROFILE.PASSWORD_FORM,
-    icon: PasswordRounded
+    icon: PasswordRounded,
+    color: "PROFILE_PASSWORD",
   },
   LOGOUT: {
     action: logout,
     description: 'Salir de la sesión actual',
     id: 1003,
     name: 'Cerrar sesión',
-    path: null, // si explota poner '' string vacio
-    icon: LogoutRounded
+    path: null,
+    icon: LogoutRounded,
+    color: "PROFILE_LOGOUT",
   },
 };
 
@@ -340,7 +349,7 @@ const arrValues = arrProfileRoutes.map((profile, index) => {
   if (index < 2) return null;
   return {
     ...profile,
-    color: arrProfileRoutes[0].routeInfo.color,
+    color: profile.color || arrProfileRoutes[0].routeInfo.color,
     icon: profile.icon || arrProfileRoutes[0].routeInfo.icon,
   };
 });
