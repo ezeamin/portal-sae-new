@@ -329,8 +329,7 @@ const arrValues = arrProfileRoutes.map((profile, index) => {
     color: arrProfileRoutes[0].routeInfo.color,
     icon: arrProfileRoutes[0].routeInfo.icon,
   } 
-})
+});
 // remove null values
 const profile = arrValues.filter((item) => item !== null)
 export const profileModulesArray = profile;
-console.log("🚀 ~ file: routes.js ~ line 329 ~ profileModulesArray", profileModulesArray)
