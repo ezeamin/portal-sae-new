@@ -1,4 +1,6 @@
 import { AddRounded, CloseRounded, SearchRounded } from '@mui/icons-material';
+import { paths } from './Routing/paths';
+
 
 const iconsConfig = {
   sx: {
@@ -8,19 +10,21 @@ const iconsConfig = {
 
 export const actionButtons = {
   CLOSE: {
-    name: 'Cerrar',
+    color: 'red',
     icon: <CloseRounded {...iconsConfig} />,
-    color: "red",
-    path: '/',
+    name: 'Cerrar',
+    path: paths.HOME,
   },
   NEW: {
-    name: 'Nuevo',
-    icon: <AddRounded {...iconsConfig} />,
     color: 'green',
+    icon: <AddRounded {...iconsConfig} />,
+    name: 'Nuevo',
+    path: null,
   },
   SEARCH: {
-    name: 'Buscar',
-    icon: <SearchRounded {...iconsConfig} />,
     color: 'blue',
+    icon: <SearchRounded {...iconsConfig} />,
+    name: 'Buscar',
+    path: null,
   },
 };

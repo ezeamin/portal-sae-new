@@ -23,6 +23,7 @@ import Profile from '../../views/Profile/Profile';
 
 import loginViews from '../views/loginViews';
 import viewList from '../views/viewList';
+import { actionButtons } from '../actionButtons';
 
 import modulesColors from '../Modules/modulesColors';
 
@@ -91,6 +92,11 @@ export const modulesRoutes = {
       name: 'Ingreso escritos',
       path: paths.ESCRITOS.MAIN,
       routeInfo: {
+        buttons: [
+          actionButtons.SEARCH,
+          actionButtons.NEW,
+          actionButtons.CLOSE,
+        ],
         description: 'Listado',
         positions: [
           {

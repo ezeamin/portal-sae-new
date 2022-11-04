@@ -3,31 +3,33 @@ import { useSelector } from 'react-redux';
 
 import { Container, Stack, Typography } from '@mui/material';
 
-import IngresoEscritos from '../../components/Modules/IngresoEscritos/IngresoEscritos';
 import ActionButton from '../../components/Modules/ActionButton/ActionButton';
 import BreadcrumbsList from '../../components/Modules/Breadcrumbs/BreadcrumbsList';
+import IngresoEscritos from '../../components/Modules/IngresoEscritos/IngresoEscritos';
 
-// import { modulesRoutes } from '../../constants/Routing/routes';
+import { modulesRoutes } from '../../constants/Routing/routes';
 
 const Module = (props) => {
   const { positions = [], routeDescription } = props;
+  console.log("🚀 ~ file: Module.jsx ~ line 14 ~ Module ~ positions", positions)
 
-  const moduleId = useSelector((state) => state.globalData.currentModule);
+  const moduleId = useSelector((state) => state.globalData.currentPage);
 
   const [title, setTitle] = useState('');
   const [component, setComponent] = useState(null);
   const [buttons, setButtons] = useState([]);
+  console.log("🚀 ~ file: Module.jsx ~ line 21 ~ Module ~ buttons", buttons)
 
   useEffect(() => {
-    // switch (moduleId) {
-    //   case routes.ESCRITOS.id:
-    //     setTitle(modulesRoutes.HOME.ESCRITOS.name);
-    //     setButtons(modulesRoutes.HOME.ESCRITOS.buttons);
-    //     setComponent(<IngresoEscritos />);
-    //     break;
-    //   default:
-    //     break;
-    // }
+    switch (moduleId) {
+      case modulesRoutes.ESCRITOS.MAIN.id:
+        setTitle(modulesRoutes.ESCRITOS.MAIN.name);
+        setButtons(modulesRoutes.ESCRITOS.MAIN.routeInfo.buttons);
+        setComponent(<IngresoEscritos />);
+        break;
+      default:
+        break;
+    }
   }, [moduleId]);
 
   return (
