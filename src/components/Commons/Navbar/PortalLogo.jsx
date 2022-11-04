@@ -17,6 +17,7 @@ const PortalLogo = () => {
           alt='Portal del SAE'
           height={45}
           width={42}
+          className='animate-in-bottom'
         />
       </button>
     </Tooltip>

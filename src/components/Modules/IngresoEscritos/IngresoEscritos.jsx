@@ -1,7 +1,7 @@
-const IngresoEscritos = () => {
-  return (
-    <div>IngresoEscritos</div>
-  )
-}
+import { Paper } from '@mui/material';
 
-export default IngresoEscritos
+const IngresoEscritos = () => {
+  return <Paper sx={{ width: '100%', height: '100%',display: "block-inline", animationDelay: "500ms" }} className="animate-in-bottom"></Paper>;
+};
+
+export default IngresoEscritos;

@@ -26,6 +26,7 @@ import viewList from '../views/viewList';
 import { actionButtons } from '../actionButtons';
 
 import modulesColors from '../Modules/modulesColors';
+import IngresoEscritos from '../../components/Modules/IngresoEscritos/IngresoEscritos';
 
 export const authRoutes = {
   // min: 2000, max: 2999
@@ -92,15 +93,12 @@ export const modulesRoutes = {
       name: 'Ingreso escritos',
       path: paths.ESCRITOS.MAIN,
       routeInfo: {
-        buttons: [
-          actionButtons.SEARCH,
-          actionButtons.NEW,
-          actionButtons.CLOSE,
-        ],
+        component: IngresoEscritos,
+        buttons: [actionButtons.SEARCH, actionButtons.NEW, actionButtons.CLOSE],
         description: 'Listado',
         positions: [
           {
-            name: 'Listado de escritos',
+            name: 'Listado',
             path: paths.ESCRITOS.MAIN,
           },
         ],
@@ -111,10 +109,11 @@ export const modulesRoutes = {
       id: 10001,
       path: paths.ESCRITOS.NEW,
       routeInfo: {
+        component: IngresoEscritos,
         description: 'Nuevo escrito',
         positions: [
           {
-            name: 'Listado de escritos',
+            name: 'Listado',
             path: paths.ESCRITOS.MAIN,
           },
           {
@@ -140,6 +139,7 @@ export const modulesRoutes = {
       name: 'Pagos judiciales',
       path: paths.PAGOS.MAIN,
       routeInfo: {
+        component: IngresoEscritos,
         description: '',
         positions: [
           {
@@ -165,6 +165,7 @@ export const modulesRoutes = {
       name: 'Consulta expedientes',
       path: paths.CONSULTA_EXPEDIENTES.MAIN,
       routeInfo: {
+        component: IngresoEscritos,
         description: '',
         positions: [
           {
@@ -190,6 +191,7 @@ export const modulesRoutes = {
       name: 'Consulta unidades',
       path: paths.UNIDADES.MAIN,
       routeInfo: {
+        component: IngresoEscritos,
         description: '',
         positions: [
           {
@@ -215,6 +217,7 @@ export const modulesRoutes = {
       name: 'Jurisprudencia',
       path: paths.JURISPRUDENCIA.MAIN,
       routeInfo: {
+        component: IngresoEscritos,
         description: '',
         positions: [
           {
@@ -240,6 +243,7 @@ export const modulesRoutes = {
       name: 'Inicio expedientes',
       path: paths.INICIO_EXPEDIENTES.MAIN,
       routeInfo: {
+        component: IngresoEscritos,
         description: '',
         positions: [
           {
@@ -265,6 +269,7 @@ export const modulesRoutes = {
       name: 'OGA',
       path: paths.OGA.MAIN,
       routeInfo: {
+        component: IngresoEscritos,
         description: '',
         positions: [
           {
@@ -310,7 +315,7 @@ export const profileRoutes = {
     name: 'Editar datos',
     path: paths.PROFILE.DATA_FORM,
     icon: CreateRounded,
-    color: "PROFILE_DATA_FORM",
+    color: 'PROFILE_DATA_FORM',
   },
   PASSWORD: {
     action: null,
@@ -322,7 +327,7 @@ export const profileRoutes = {
     name: 'Cambiar contraseña',
     path: paths.PROFILE.PASSWORD_FORM,
     icon: PasswordRounded,
-    color: "PROFILE_PASSWORD",
+    color: 'PROFILE_PASSWORD',
   },
   LOGOUT: {
     action: logout,
@@ -331,7 +336,7 @@ export const profileRoutes = {
     name: 'Cerrar sesión',
     path: null,
     icon: LogoutRounded,
-    color: "PROFILE_LOGOUT",
+    color: 'PROFILE_LOGOUT',
   },
 };
 
