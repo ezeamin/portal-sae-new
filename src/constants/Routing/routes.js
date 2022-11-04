@@ -1,3 +1,5 @@
+import { lazy } from 'react';
+
 import {
   AccountBalanceRounded,
   BookmarkRounded,
@@ -16,17 +18,44 @@ import { paths } from './paths';
 
 import logout from '../../actions/logout';
 
-import Home from '../../views/Home/Home';
-import MainAuth from '../../views/Auth/MainAuth';
-import Module from '../../views/Module/Module';
-import Profile from '../../views/Profile/Profile';
-
 import loginViews from '../views/loginViews';
 import viewList from '../views/viewList';
 import { actionButtons } from '../actionButtons';
 
-import modulesColors from '../Modules/modulesColors';
-import IngresoEscritos from '../../components/Modules/IngresoEscritos/IngresoEscritos';
+const Home = lazy(() =>
+  import("../../views/Home/Home")
+);
+const MainAuth = lazy(() =>
+  import('../../views/Auth/MainAuth')
+);
+const Module = lazy(() =>
+  import('../../views/Module/Module')
+);
+const Profile = lazy(() =>
+  import('../../views/Profile/Profile')
+);
+
+const IngresoEscritos = lazy(() =>
+  import('../../components/Modules/IngresoEscritos/IngresoEscritos')
+);
+const PagosJudiciales = lazy(() =>
+  import('../../components/Modules/PagosJudiciales/PagosJudiciales')
+);
+const ConsultaExpedientes = lazy(() =>
+  import('../../components/Modules/ConsultaExpedientes/ConsultaExpedientes')
+);
+const ConsultaUnidades = lazy(() =>
+  import('../../components/Modules/ConsultaUnidades/ConsultaUnidades')
+);
+const Jurisprudencia = lazy(() =>
+  import('../../components/Modules/Jurisprudencia/Jurisprudencia')
+);
+const InicioExpedientes = lazy(() =>
+  import('../../components/Modules/InicioExpedientes/InicioExpedientes')
+);
+const OGA = lazy(() =>
+  import('../../components/Modules/OGA/OGA')
+);
 
 export const authRoutes = {
   // min: 2000, max: 2999
@@ -81,6 +110,7 @@ export const modulesRoutes = {
   ESCRITOS: {
     COMMON: {
       component: Module,
+      help: 'Aquí se listarán todos los escritos que haya ingresado a través de esta plataforma. Los últimos se mostrarán primero. A su vez podrá filtrar la información ya sea escribiendo fecha, nro. de expediente, unidad judicial, categoría, descripción o estado. A continuación, presione el botón BUSCAR',
       routeInfo: {
         color: 'ESCRITOS',
         icon: CreateRounded,
@@ -127,6 +157,7 @@ export const modulesRoutes = {
   PAGOS: {
     COMMON: {
       component: Module,
+      help: 'Aquí se listarán todas las boletas de pago que haya generado a través de la plataforma. Se mostrarán los más nuevos primero, pero podrá filtrar la informacion por cualquier de los campos que se muestra a continuación. Simplemente complete algunos de ellos y luego presione el botón BUSCAR',
       routeInfo: {
         color: 'PAGOS',
         icon: DescriptionRounded,
@@ -139,7 +170,7 @@ export const modulesRoutes = {
       name: 'Pagos judiciales',
       path: paths.PAGOS.MAIN,
       routeInfo: {
-        component: IngresoEscritos,
+        component: PagosJudiciales,
         description: '',
         positions: [
           {
@@ -153,6 +184,7 @@ export const modulesRoutes = {
   CONSULTA_EXPEDIENTES: {
     COMMON: {
       component: Module,
+      help: '',
       routeInfo: {
         color: 'CONSULTA_EXPEDIENTES',
         icon: SearchRounded,
@@ -165,7 +197,7 @@ export const modulesRoutes = {
       name: 'Consulta expedientes',
       path: paths.CONSULTA_EXPEDIENTES.MAIN,
       routeInfo: {
-        component: IngresoEscritos,
+        component: ConsultaExpedientes,
         description: '',
         positions: [
           {
@@ -179,6 +211,7 @@ export const modulesRoutes = {
   UNIDADES: {
     COMMON: {
       component: Module,
+      help: '',
       routeInfo: {
         color: 'UNIDADES',
         icon: EmailRounded,
@@ -191,7 +224,7 @@ export const modulesRoutes = {
       name: 'Consulta unidades',
       path: paths.UNIDADES.MAIN,
       routeInfo: {
-        component: IngresoEscritos,
+        component: ConsultaUnidades,
         description: '',
         positions: [
           {
@@ -205,6 +238,7 @@ export const modulesRoutes = {
   JURISPRUDENCIA: {
     COMMON: {
       component: Module,
+      help: '',
       routeInfo: {
         color: 'JURISPRUDENCIA',
         icon: BookmarkRounded,
@@ -217,7 +251,7 @@ export const modulesRoutes = {
       name: 'Jurisprudencia',
       path: paths.JURISPRUDENCIA.MAIN,
       routeInfo: {
-        component: IngresoEscritos,
+        component: Jurisprudencia,
         description: '',
         positions: [
           {
@@ -231,6 +265,7 @@ export const modulesRoutes = {
   INICIO_EXPEDIENTES: {
     COMMON: {
       component: Module,
+      help: '',
       routeInfo: {
         color: 'INICIO_EXPEDIENTES',
         icon: MenuBookRounded,
@@ -243,7 +278,7 @@ export const modulesRoutes = {
       name: 'Inicio expedientes',
       path: paths.INICIO_EXPEDIENTES.MAIN,
       routeInfo: {
-        component: IngresoEscritos,
+        component: InicioExpedientes,
         description: '',
         positions: [
           {
@@ -257,6 +292,7 @@ export const modulesRoutes = {
   OGA: {
     COMMON: {
       component: Module,
+      help: '',
       routeInfo: {
         color: 'OGA',
         icon: AccountBalanceRounded,
@@ -269,7 +305,7 @@ export const modulesRoutes = {
       name: 'OGA',
       path: paths.OGA.MAIN,
       routeInfo: {
-        component: IngresoEscritos,
+        component: OGA,
         description: '',
         positions: [
           {

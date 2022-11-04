@@ -102,8 +102,9 @@ const LoginForm = () => {
         label={es.CUIL_CUIT}
         inputRef={cuilRef}
         placeholder={`Ingrese ${es.CUIL_CUIT} sin guiones`}
-        sx={{ marginTop: '1.5rem' }}
+        sx={{ marginTop: '1.5rem', animationDelay: '200ms' }}
         type='number'
+        className='animate-in-right-short'
       />
       <TextField
         error={errorPass}
@@ -129,8 +130,9 @@ const LoginForm = () => {
         label={es.PASS}
         inputRef={passRef}
         placeholder='Ingrese su contraseña'
-        sx={{ marginTop: '1rem' }}
+        sx={{ marginTop: '1rem', animationDelay: '300ms' }}
         type={showPass ? 'text' : 'password'}
+        className='animate-in-right-short'
       />
       <Stack
         alignItems={{ xs: 'flex-start', sm: 'center' }}
@@ -141,8 +143,18 @@ const LoginForm = () => {
           marginBottom: '1rem',
         }}
       >
-        <FormControlLabel control={<Checkbox />} label={es.REMEMBER_ME} />
-        <MUILink component={Link} to={authRoutes.RESTORE_PASSWORD.path}>
+        <FormControlLabel
+          control={<Checkbox />}
+          label={es.REMEMBER_ME}
+          className='animate-in-right-short'
+          sx={{animationDelay: '400ms'}}
+        />
+        <MUILink
+          component={Link}
+          to={authRoutes.RESTORE_PASSWORD.path}
+          className='animate-in-right-short'
+          sx={{animationDelay: '450ms'}}
+        >
           {es.FORGOT}
         </MUILink>
       </Stack>
@@ -150,7 +162,8 @@ const LoginForm = () => {
         color='primary'
         variant='contained'
         type='submit'
-        sx={{ width: '100%' }}
+        sx={{ width: '100%', animationDelay: "600ms" }}
+        className='animate-in-bottom'
       >
         {es.ENTER}
       </RoundedButton>

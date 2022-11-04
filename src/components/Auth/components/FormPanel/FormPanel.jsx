@@ -52,11 +52,7 @@ const FormPanel = (props) => {
           height='57'
           width='57'
         />
-        {/* //TODO: animacion para transicion de pagina  
-            https://www.framer.com/docs/introduction/
-            https://codesandbox.io/s/framer-motion-screen-wipe-page-transitions-with-react-router-6-yo38bu?from-embed=&file=/src/App.tsx:423-432
-        */}
-        <>{renderedComp}</>
+        {renderedComp}
       </Container>
     </AuthPaper>
   );

@@ -49,6 +49,10 @@ export const flatModulesRoutes = () => {
     const moduleRoutes = Object.values(module);
     moduleRoutes.shift();
 
+    moduleRoutes.forEach((route) => {
+      route.help = module.COMMON.help;
+    });
+
     return moduleRoutes;
   });
 

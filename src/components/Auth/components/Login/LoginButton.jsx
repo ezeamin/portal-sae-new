@@ -3,7 +3,7 @@ import { Tooltip } from '@mui/material';
 import { RoundedButton } from '../../../../styled';
 
 const LoginButton = (props) => {
-  const { isMobile, href, icon, to, title } = props;
+  const { isMobile, href, icon, to, title, className, sx: sxProps } = props;
 
   const isExternal = href ? true : false;
 
@@ -16,7 +16,8 @@ const LoginButton = (props) => {
           target='_blank'
           variant='outlined'
           startIcon={icon}
-          sx={{ width: '100%' }}
+          sx={{ ...sxProps,width: '100%' }}
+          className={className}
         >
           {title}
         </RoundedButton>
@@ -28,7 +29,8 @@ const LoginButton = (props) => {
         to={to}
         variant='outlined'
         startIcon={icon}
-        sx={{ width: '100%' }}
+        sx={{ ...sxProps,width: '100%' }}
+        className={className}
       >
         {title}
       </RoundedButton>
@@ -44,7 +46,8 @@ const LoginButton = (props) => {
           target='_blank'
           variant='outlined'
           size='large'
-          sx={{ width: '100%' }}
+          sx={{ ...sxProps,width: '100%' }}
+          className={className}
         >
           {icon}
         </RoundedButton>
@@ -58,7 +61,8 @@ const LoginButton = (props) => {
         to={to}
         size='large'
         variant='outlined'
-        sx={{ width: '100%' }}
+        sx={{ ...sxProps,width: '100%' }}
+        className={className}
       >
         {icon}
       </RoundedButton>

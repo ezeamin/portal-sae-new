@@ -27,6 +27,10 @@ const Home = () => {
     }
   }, [data, isError, isLoading]);
 
+  useEffect(() => {
+    document.title = 'Portal del SAE | Poder Judicial de Tucumán';
+  }, []);
+
   return (
     <>
       <Header user={user} page='HOME' />

@@ -15,7 +15,7 @@ const Background = () => {
           height: '100vh',
         }}
       >
-        <Container maxWidth='sm'>
+        <Container maxWidth='sm' className="animate-in-bottom-short" sx={{animationDelay: "200ms"}}>
           <H1AuthPanel>
             Bienvenido al
             <br /> Portal del SAE

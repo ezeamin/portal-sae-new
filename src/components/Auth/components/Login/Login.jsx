@@ -24,8 +24,8 @@ const Login = () => {
       {/* // TODO: validar terminos y condiciones con la base de datos */}
       {/* <TermsAndConditionsModal /> */}
       <FormSection>
-        <H2AuthPanel>{es.LOGIN}</H2AuthPanel>
-        <Stack direction='row'>
+        <H2AuthPanel className="animate-in-right-short">{es.LOGIN}</H2AuthPanel>
+        <Stack direction='row' className="animate-in-right-short" sx={{animationDelay: "100ms"}}>
           <p
             style={{
               marginRight: '0.5rem',

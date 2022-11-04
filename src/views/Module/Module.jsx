@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Container, Stack, Typography } from '@mui/material';
+import {
+  Container,
+  Dialog,
+  IconButton,
+  Stack,
+  Typography,
+} from '@mui/material';
+import { CustomAlert } from '../../components';
 
 import ActionButton from '../../components/Modules/ActionButton/ActionButton';
 import BreadcrumbsList from '../../components/Modules/Breadcrumbs/BreadcrumbsList';
@@ -9,7 +16,9 @@ import BreadcrumbsList from '../../components/Modules/Breadcrumbs/BreadcrumbsLis
 import { flatModulesRoutes } from '../../helpers/flatRoutes';
 import { actionButtons } from '../../constants/actionButtons';
 
-const tempButtons = Object.values(actionButtons)
+import { InfoRounded } from '@mui/icons-material';
+
+const tempButtons = Object.values(actionButtons);
 
 const Module = () => {
   const moduleId = useSelector((state) => state.globalData.currentPage);
@@ -21,6 +30,17 @@ const Module = () => {
   const [component, setComponent] = useState(null);
   const [buttons, setButtons] = useState([]);
   const [positions, setPositions] = useState([]);
+  const [moduleHelp, setModuleHelp] = useState('');
+
+  const [modalOpened, setModalOpened] = useState(false);
+
+  const handleOpenModal = () => {
+    setModalOpened(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpened(false);
+  };
 
   useEffect(() => {
     const module = modulesList.find((module) => module.id === moduleId);
@@ -31,6 +51,7 @@ const Module = () => {
     setSubtitle(module.routeInfo.description);
     setButtons(module.routeInfo.buttons || tempButtons);
     setPositions(module.routeInfo.positions);
+    setModuleHelp(module.help);
     setComponent(<module.routeInfo.component />);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moduleId]);
@@ -44,14 +65,19 @@ const Module = () => {
         sx={{ mb: 4 }}
       >
         <div>
-          <Typography
-            variant='h4'
-            fontWeight='bold'
+          <Stack
+            direction='row'
+            alignItems='center'
             sx={{ mt: 2, animationDelay: '50ms' }}
             className='animate-in-right'
           >
-            {title}
-          </Typography>
+            <Typography variant='h4' fontWeight='bold'>
+              {title}
+            </Typography>
+            <IconButton sx={{ ml: 1 }} onClick={handleOpenModal}>
+              <InfoRounded sx={{ color: '#a0a0a0' }} />
+            </IconButton>
+          </Stack>
           <Typography
             variant='body1'
             sx={{ animationDelay: '100ms' }}
@@ -71,6 +97,9 @@ const Module = () => {
         </Stack>
       </Stack>
       {component}
+      <Dialog open={modalOpened} onClose={handleCloseModal}>
+        <CustomAlert severity="info">{moduleHelp}</CustomAlert>
+      </Dialog>
     </Container>
   );
 };
