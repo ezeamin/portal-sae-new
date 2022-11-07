@@ -7,6 +7,7 @@ import es from '../../../lang/es';
 
 const PortalLogo = () => {
   const navigate = useNavigate();
+  
   return (
     <Tooltip title={es.PORTAL}>
       <button

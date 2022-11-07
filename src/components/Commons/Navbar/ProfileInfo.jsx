@@ -20,7 +20,7 @@ const ProfileInfo = (props) => {
             lineHeight: 1.5,
           }}
         >
-          {`${user.name} ${user.lastname}`}
+          {user.name + " " + user.lastname}
         </Typography>
         <Typography
           variant='body2'
@@ -35,7 +35,7 @@ const ProfileInfo = (props) => {
       </Stack>
       <Tooltip title='Mi perfil'>
         <button onClick={navigateProfile}>
-          <Avatar alt={user.name} src={user?.avatar || '/'} />
+          <Avatar alt={user.name + " avatar"} src={user?.avatar || '/'} />
         </button>
       </Tooltip>
     </Stack>

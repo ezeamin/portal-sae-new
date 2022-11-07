@@ -4,19 +4,13 @@ import { useSelector } from 'react-redux';
 import {
   Container,
   Dialog,
-  IconButton,
-  Stack,
-  Typography,
 } from '@mui/material';
-import { CustomAlert } from '../../components';
-
-import ActionButton from '../../components/Modules/ActionButton/ActionButton';
-import BreadcrumbsList from '../../components/Modules/Breadcrumbs/BreadcrumbsList';
+import { CustomAlert, BreadcrumbsList } from '../../components';
 
 import { flatModulesRoutes } from '../../helpers/flatRoutes';
 import { actionButtons } from '../../constants/actionButtons';
 
-import { InfoRounded } from '@mui/icons-material';
+import ModuleHeader from '../../components/Modules/Extra/ModuleHeader/ModuleHeader';
 
 const tempButtons = Object.values(actionButtons);
 
@@ -34,12 +28,8 @@ const Module = () => {
 
   const [modalOpened, setModalOpened] = useState(false);
 
-  const handleOpenModal = () => {
-    setModalOpened(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpened(false);
+  const handleModal = (condition) => {
+    setModalOpened(condition);
   };
 
   useEffect(() => {
@@ -59,46 +49,12 @@ const Module = () => {
   return (
     <Container sx={{ mb: 10, mt: 12, overflowX: 'hidden' }}>
       <BreadcrumbsList positions={positions} />
-      <Stack
-        direction={{ xs: 'column', sm: 'row' }}
-        justifyContent='space-between'
-        sx={{ mb: 4 }}
-      >
-        <div>
-          <Stack
-            direction='row'
-            alignItems='center'
-            sx={{ mt: 2, animationDelay: '50ms' }}
-            className='animate-in-right'
-          >
-            <Typography variant='h4' fontWeight='bold' sx={{color:"white.contrastText"}}>
-              {title}
-            </Typography>
-            <IconButton sx={{ ml: 1 }} onClick={handleOpenModal}>
-              <InfoRounded sx={{ color: '#a0a0a0' }} />
-            </IconButton>
-          </Stack>
-          <Typography
-            variant='body1'
-            sx={{ animationDelay: '100ms' }}
-            className='animate-in-right'
-          >
-            {subtitle}
-          </Typography>
-        </div>
-        <Stack direction='row' alignItems='center' sx={{ mt: { xs: 2 } }}>
-          {buttons.map((button, index) => (
-            <ActionButton
-              key={button?.name}
-              delay={`${index * 100 + 300}ms`}
-              {...button}
-            />
-          ))}
-        </Stack>
-      </Stack>
+      <ModuleHeader title={title} subtitle={subtitle} buttons={buttons} handleModal={handleModal}/>
+
       {component}
-      <Dialog open={modalOpened} onClose={handleCloseModal}>
-        <CustomAlert severity="info">{moduleHelp}</CustomAlert>
+
+      <Dialog open={modalOpened} onClose={()=>handleModal(false)}>
+        <CustomAlert severity='info'>{moduleHelp}</CustomAlert>
       </Dialog>
     </Container>
   );

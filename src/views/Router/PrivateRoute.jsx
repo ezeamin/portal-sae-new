@@ -4,8 +4,6 @@ import { useLocation } from 'react-router-dom';
 
 import { setCurrentPage } from '../../features/globalData';
 
-import getPageInfo from '../../helpers/getPageInfo';
-
 import LazyLoadingSpinner from './Loading/LazyLoadingSpinner';
 
 // TODO: implementar
@@ -16,13 +14,12 @@ const PrivateRoute = (props) => {
 
   const dispatch = useDispatch();
 
-  //   Colocar en el store la info del sitio actual
+  // Colocar en el store el id de la página actual
   useEffect(() => {
-    const module = getPageInfo(routeId);
-
-    dispatch(setCurrentPage(module.id));
+    dispatch(setCurrentPage(routeId));
   }, [location, dispatch, routeId]);
 
+  // Suspense se usa para los componentes de carga lazy
   return (
     <Suspense fallback={<LazyLoadingSpinner />}>
       <Component {...args} />

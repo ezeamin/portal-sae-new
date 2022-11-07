@@ -15,8 +15,8 @@ const Profile = (props) => {
 
   const user = useSelector((state) => state.globalData.user);
 
+  // Pseudo Router para navegacion por perfil 
   let renderedComp;
-
   switch (view) {
     case viewList.MAIN: {
       renderedComp = <ModuleList modules={profileModulesArray} />;

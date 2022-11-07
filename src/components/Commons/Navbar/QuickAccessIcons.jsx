@@ -58,11 +58,13 @@ const QuickAccessIcons = (props) => {
           )}
         </IconButton>
       </Tooltip>
+
       <Tooltip title={es.MODULES_NAME}>
         <IconButton onClick={handleOpenModules}>
           <DashboardRoundedIcon />
         </IconButton>
       </Tooltip>
+
       <Tooltip title={es.NOTIFICATIONS}>
         <IconButton onClick={handleOpenNotifications}>
           <NotificationsRoundedIcon />

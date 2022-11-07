@@ -18,6 +18,8 @@ import { RoundedButton } from '../../../styled';
 
 import { emailRegex } from '../../../helpers/validators';
 
+import es from '../../../lang/es';
+
 const ProfileForm = () => {
   const {
     register,
@@ -29,12 +31,15 @@ const ProfileForm = () => {
   const [hasBeenSent, setHasBeenSent] = useState(false);
 
   const handleSubmit = (data) => {
-    console.log(data);
+    // Las validaciones las hace la librería antes de llamar al submit
     setAlert({
       show: true,
       msg: 'Datos modificados correctamente',
-      severity: "success"
+      severity: 'success',
     });
+
+    // TODO: Enviar datos a backend
+
     setHasBeenSent(true);
   };
 
@@ -45,14 +50,17 @@ const ProfileForm = () => {
       <CustomPaper>
         <BackButton sx={{ mb: 3 }} />
         <Typography variant='h4' component='h3'>
-          Editar datos
+          {es.CHANGE_DATA}
         </Typography>
         <Divider sx={{ my: 2 }} />
+
         {alert.show && (
           <Alert sx={{ mb: 3 }} severity={alert.severity}>
             {alert.msg}
           </Alert>
         )}
+
+        {/* submitRHF es el middleware de react hook form */}
         <form onSubmit={submitRHF(handleSubmit)}>
           <Stack
             direction={{ xs: 'column', md: 'row' }}
@@ -93,9 +101,14 @@ const ProfileForm = () => {
               {...register('email', { required: true, pattern: emailRegex })}
             />
           </Stack>
+
           <Box sx={{ textAlign: 'right', mt: 3 }}>
-            <RoundedButton disabled={hasBeenSent} type='submit' variant='contained'>
-              Guardar
+            <RoundedButton
+              disabled={hasBeenSent}
+              type='submit'
+              variant='contained'
+            >
+              {es.SAVE}
             </RoundedButton>
           </Box>
         </form>

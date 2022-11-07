@@ -56,7 +56,6 @@ const Navbar = () => {
         </AppBar>
 
         {/* Drawer tras toque en boton */}
-        {/* // TODO: Pasar acciones de modulo */}
         <DrawerMenu data={data} navigateProfile={navigateProfile} />
       </>
     );

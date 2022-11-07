@@ -11,6 +11,7 @@ const MainAuth = (props) => {
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
+  // Resize handling: para mostrar u ocultar el fondo
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);

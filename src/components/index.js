@@ -1,4 +1,6 @@
+import ActionButton from './Modules/Extra/ActionButton/ActionButton';
 import Background from './Auth/components/Background/Background';
+import BreadcrumbsList from './Modules/Extra/Breadcrumbs/BreadcrumbsList';
 import CustomAlert from './Custom/CustomAlert/CustomAlert';
 import CustomContainer from './Custom/CustomContainer/CustomContainer';
 import CustomPaper from './Custom/CustomPaper/CustomPaper';
@@ -15,7 +17,9 @@ import ResetPassword from './Auth/components/ResetPassword/ResetPassword';
 import RestorePassword from './Auth/components/RestorePassword/RestorePassword';
 
 export {
+  ActionButton,
   Background,
+  BreadcrumbsList,
   CustomAlert,
   CustomContainer,
   CustomPaper,

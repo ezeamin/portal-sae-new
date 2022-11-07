@@ -3,13 +3,17 @@ import { useForm } from 'react-hook-form';
 
 import { RoundedButton } from '../../../styled';
 
-import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
-import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import {
+  NavigateNextRounded,
+  KeyboardArrowDownRounded,
+  Visibility,
+  VisibilityOff,
+} from '@mui/icons-material';
 
 import { validatePassword } from '../../../helpers/validators';
 import { Box, InputAdornment, Stack, TextField } from '@mui/material';
+
+import es from '../../../lang/es';
 
 const defaultStateShowPass = {
   currentPass: false,
@@ -40,7 +44,7 @@ const FormPassword = (props) => {
         msg: 'Las contraseñas no coinciden',
         severity: 'warning',
       });
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
@@ -50,7 +54,7 @@ const FormPassword = (props) => {
         msg: 'La contraseña no cumple con el patron',
         severity: 'warning',
       });
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
@@ -59,11 +63,14 @@ const FormPassword = (props) => {
       msg: 'Datos modificados correctamente',
       severity: 'success',
     });
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // TODO: Enviar datos a backend
+
     setHasBeenSent(true);
   };
 
-  //   Para correccion de flecha de contraseña
+  //   Para correccion de flecha de contraseña (visual)
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -108,11 +115,13 @@ const FormPassword = (props) => {
           }}
           {...register('currentPass', { required: true, minLength: 2 })}
         />
+
         {screenWidth >= 900 ? (
-          <NavigateNextRoundedIcon />
+          <NavigateNextRounded />
         ) : (
-          <KeyboardArrowDownRoundedIcon />
+          <KeyboardArrowDownRounded />
         )}
+
         <TextField
           type={showPass.newPass ? 'text' : 'password'}
           label='Nueva contraseña'
@@ -144,6 +153,7 @@ const FormPassword = (props) => {
             ),
           }}
         />
+
         <TextField
           type={showPass.repeatPass ? 'text' : 'password'}
           label='Repetir contraseña'
@@ -178,7 +188,7 @@ const FormPassword = (props) => {
       </Stack>
       <Box sx={{ textAlign: 'right', mt: 3 }}>
         <RoundedButton disabled={hasBeenSent} type='submit' variant='contained'>
-          Guardar
+          {es.SAVE}
         </RoundedButton>
       </Box>
     </form>

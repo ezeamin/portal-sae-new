@@ -5,10 +5,10 @@ import themes from '../constants/themes';
 const defaultPortraitValue = window.innerWidth < 600;
 
 const initialState = {
-  currentPage: 0,
+  currentPage: 0, //HOME
   user: {
-    name: 'Ezequiel',
-    lastname: 'Amin',
+    name: 'Armando',
+    lastname: 'Paredes',
     email: 'ezequielamin@outlook.com',
     number: 20437063932,
     notifications: 5,

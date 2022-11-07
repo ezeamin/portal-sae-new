@@ -23,18 +23,10 @@ import viewList from '../views/viewList';
 import { actionButtons } from '../actionButtons';
 import es from '../../lang/es';
 
-const Home = lazy(() =>
-  import("../../views/Home/Home")
-);
-const MainAuth = lazy(() =>
-  import('../../views/Auth/MainAuth')
-);
-const Module = lazy(() =>
-  import('../../views/Module/Module')
-);
-const Profile = lazy(() =>
-  import('../../views/Profile/Profile')
-);
+const Home = lazy(() => import('../../views/Home/Home'));
+const MainAuth = lazy(() => import('../../views/Auth/MainAuth'));
+const Module = lazy(() => import('../../views/Module/Module'));
+const Profile = lazy(() => import('../../views/Profile/Profile'));
 
 const IngresoEscritos = lazy(() =>
   import('../../components/Modules/IngresoEscritos/IngresoEscritos')
@@ -54,9 +46,7 @@ const Jurisprudencia = lazy(() =>
 const InicioExpedientes = lazy(() =>
   import('../../components/Modules/InicioExpedientes/InicioExpedientes')
 );
-const OGA = lazy(() =>
-  import('../../components/Modules/OGA/OGA')
-);
+const OGA = lazy(() => import('../../components/Modules/OGA/OGA'));
 
 export const authRoutes = {
   // min: 2000, max: 2999
@@ -377,18 +367,21 @@ export const profileRoutes = {
   },
 };
 
+// Listado de modulos como array para mostrar en HOME
 const arrModulesRoutes = Object.values(modulesRoutes);
-export const mainModulesArray = arrModulesRoutes.map((module) => {
-  return {
-    ...Object.values(module)[1],
-    color: module.COMMON.routeInfo.color,
-    icon: module.COMMON.routeInfo.icon,
-  };
-});
+export const mainModulesArray = arrModulesRoutes.map((module) => ({
+  ...module.MAIN,
+  color: module.COMMON.routeInfo.color,
+  icon: module.COMMON.routeInfo.icon,
+}));
 
+// Listado de modulos como array para mostrar en PROFILE
 const arrProfileRoutes = Object.values(profileRoutes);
 const arrValues = arrProfileRoutes.map((profile, index) => {
+  // Posicion 0 = COMMON, no se muestra
+  // Posicion 1 = Profile, no un modulo, y no se muestra
   if (index < 2) return null;
+
   return {
     ...profile,
     color: profile.color || arrProfileRoutes[0].routeInfo.color,
@@ -396,5 +389,4 @@ const arrValues = arrProfileRoutes.map((profile, index) => {
   };
 });
 // remove null values
-const profile = arrValues.filter((item) => item !== null);
-export const profileModulesArray = profile;
+export const profileModulesArray = arrValues.filter((item) => item !== null);

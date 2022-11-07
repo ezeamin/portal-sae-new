@@ -2,7 +2,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { Breadcrumbs, Link } from '@mui/material';
 
-import { mainRoutes } from '../../../constants/Routing/routes';
+import { mainRoutes } from '../../../../constants/Routing/routes';
+import es from '../../../../lang/es';
 
 const BreadcrumbsList = (props) => {
   const { positions = [] } = props;
@@ -21,7 +22,7 @@ const BreadcrumbsList = (props) => {
         sx={{cursor: "pointer"}}
         onClick={() => handleClick(mainRoutes.MAIN.path)}
       >
-        Inicio
+        {es.HOME}
       </Link>
       {positions.map((position, index) => (
         <Link

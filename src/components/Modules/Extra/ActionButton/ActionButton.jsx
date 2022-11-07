@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Tooltip } from '@mui/material';
 
-import { ButtonStyled } from './styled';
+import { ButtonStyled } from '../styled';
 
 const ActionButton = (props) => {
   const { icon, name, color, path, delay } = props;

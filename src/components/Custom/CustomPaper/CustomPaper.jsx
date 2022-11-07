@@ -1,5 +1,7 @@
 import { Paper } from '@mui/material';
 
+// Paper con colores y margenes normalizados
+
 const CustomPaper = ({ children, sx: sxProps }) => {
   const sx = {
     p: 3,

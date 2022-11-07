@@ -23,6 +23,8 @@ const Router = () => {
     <BrowserRouter>
       <ModulesModal />
       <Routes>
+        
+        {/* Auth routes */}
         <Route path='/auth'>
           {authRoutes.map((route) => (
             <Route

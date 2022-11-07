@@ -13,6 +13,9 @@ export const routesIconsConfig = {
   },
 };
 
+// Ajustar los estilos y tamaños del icono segun
+// donde se aplique
+
 const useIcon = (props) => {
   const { icon: Icon, type } = props;
 

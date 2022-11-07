@@ -11,6 +11,7 @@ import RestorePassword from '../RestorePassword/RestorePassword';
 const FormPanel = (props) => {
   const { view } = props;
 
+  // Router propio, para mostrar el componente correspondiente
   let renderedComp;
   switch (view) {
     case loginViews.LOGIN: {
@@ -51,6 +52,7 @@ const FormPanel = (props) => {
           alt='Logo Poder Judicial de Tucumán'
           height='57'
           width='57'
+          className='animate-in-bottom-short'
         />
         {renderedComp}
       </Container>

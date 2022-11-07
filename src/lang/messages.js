@@ -1,6 +1,6 @@
 const messages = {
 
-    NOT_NOTIFICATIONS: 'Sus notificaciones están al día.',
+    NO_NOTIFICATIONS: 'Sus notificaciones están al día.',
 
     errors: {
         GENERAL: 'Ha ocurrido un error. Por favor, intente nuevamente.',

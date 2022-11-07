@@ -4,6 +4,8 @@ import { Alert } from '@mui/material';
 
 import themes from '../../../constants/themes';
 
+// Alert que en modo oscuro se coloca con "outlined"
+
 const CustomAlert = ({ children, ...sxProps }) => {
   const theme = useSelector((state) => state.globalData.theme);
 

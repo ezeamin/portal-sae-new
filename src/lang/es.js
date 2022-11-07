@@ -98,6 +98,7 @@ const es = {
   RESTORE_PASSWORD: 'Blanquear contraseña',
   RESTORE_PASSWORD_MSG:
     'Ingrese el E-MAIL con el que se registró. Luego presione en el botón ENVIAR ENLACE. Se le enviará un correo con los pasos a seguir.',
+  SAVE: 'Guardar',
   SEARCH: 'Buscar',
   SEARCH_ACCUSED: 'Agregar desde el Legajo',
   SEARCH_INPUT_TEXT: 'Ingrese Texto a Buscar',

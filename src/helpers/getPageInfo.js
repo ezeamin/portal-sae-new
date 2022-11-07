@@ -74,6 +74,8 @@ const getPageInfo = (id) => {
 
     return page;
   }
+
+  return null; // page not found
 };
 
 export default getPageInfo;

@@ -20,7 +20,7 @@ const PageChip = (props) => {
         lineHeight: '10',
         textShadow: '0 0 2px #000',
         '& .MuiChip-icon': {
-          filter: "drop-shadow(0 0 0.5px #000)",
+          filter: "drop-shadow(0 0 0.3px #000)",
           color: 'red',
         },
       }}

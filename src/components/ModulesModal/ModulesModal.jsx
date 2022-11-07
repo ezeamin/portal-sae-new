@@ -18,6 +18,7 @@ const ModulesModal = () => {
     dispatch(setModulesModalOpened(false));
   };
 
+  // Panel de drawer en modo portrait
   if (window.innerWidth < 900) {
     return (
       <Drawer open={opened} onClose={handleClose}>
@@ -39,6 +40,7 @@ const ModulesModal = () => {
     );
   }
 
+  // Panel de dialog en modo landscape
   return (
     <Dialog open={opened} onClose={handleClose} maxWidth='lg'>
       <ModuleList modules={mainModulesArray} sx={{ overflowY: 'hidden', py: 1 }} />

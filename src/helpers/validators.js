@@ -15,6 +15,7 @@ export const validatePassword = (password) => {
   return passRegex.test(password);
 };
 
+// TODO: Revisar utilidad y repeticion de RegEx
 export const validatePasswordNumMinMax = (password) => {
   const regex = /^(?=.*\d)(?=.*[a-záéíóöúüñ]).*[A-ZÁÉÍÓÖÚÜÑ]/;
   if (!regex.test(password)) return false;

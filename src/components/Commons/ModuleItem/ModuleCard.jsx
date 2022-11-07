@@ -26,10 +26,9 @@ const ModuleCard = (props) => {
   const icon = useIcon({ icon: module.icon, type: iconTypes.MODULE })
   const color = useModuleColor(module.color);
 
-  // TODO: Hook para manejar color
-
   const handleClick = () => {
     dispatch(setModulesModalOpened(false));
+
     if (module.path) navigate(module.path);
     else module.action();
   };
@@ -49,6 +48,7 @@ const ModuleCard = (props) => {
             sx={{
               minWidth: '15px',
               backgroundColor: color,
+              boxShadow: '-1px 0px 2px 0px rgba(0,0,0,0.10) inset',
             }}
           ></Box>
           <CardContent sx={{ height: '100%' }}>

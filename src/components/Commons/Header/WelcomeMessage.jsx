@@ -18,6 +18,7 @@ const WelcomeMessage = (props) => {
     navigate(mainRoutes.MAIN.path);
   };
 
+  // Página del perfil
   if (!isHomePage) {
     return (
       <Stack>
@@ -45,6 +46,7 @@ const WelcomeMessage = (props) => {
     );
   }
 
+  // Página principal
   return (
     <Stack>
       <Typography
