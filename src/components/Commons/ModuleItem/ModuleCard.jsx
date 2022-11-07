@@ -47,7 +47,7 @@ const ModuleCard = (props) => {
         <Stack sx={{ height: '100%' }} direction='row'>
           <Box
             sx={{
-              width: '15px',
+              minWidth: '15px',
               backgroundColor: color,
             }}
           ></Box>

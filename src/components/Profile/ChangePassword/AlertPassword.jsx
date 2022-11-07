@@ -39,7 +39,7 @@ const AlertPassword = () => {
         </ListItem>
         <ListItem sx={LIST_ITEM_MUI}>
           <Brightness1Icon sx={LIST_ICON_MUI} />
-          <ListItemText>Debe contener al menos un número.</ListItemText>
+          <ListItemText>Debe contener al menos 1 número.</ListItemText>
         </ListItem>
         <ListItem sx={LIST_ITEM_MUI}>
           <Brightness1Icon sx={LIST_ICON_MUI} />

@@ -9,6 +9,7 @@ import WelcomeMessage from './WelcomeMessage';
 import { RoundedButton } from '../../../styled';
 
 import { profileRoutes } from '../../../constants/Routing/routes';
+import es from '../../../lang/es';
 
 const Header = (props) => {
   const { user, page } = props;
@@ -57,7 +58,7 @@ const Header = (props) => {
               }}
               onClick={() => navigate(profileRoutes.MAIN.path)}
             >
-              Mi perfil
+              {es.MY + ' ' + es.PROFILE}
             </RoundedButton>
           )}
         </Stack>

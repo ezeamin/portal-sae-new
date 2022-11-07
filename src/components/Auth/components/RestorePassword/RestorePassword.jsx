@@ -25,13 +25,14 @@ const RestorePassword = () => {
 
   return (
     <FormSection>
-      <H2AuthPanel>{es.RESTORE_PASSWORD}</H2AuthPanel>
-      <Alert severity='info'>{es.RESTORE_PASSWORD_MSG}</Alert>
+      <H2AuthPanel className='animate-in-right-short'>{es.RESTORE_PASSWORD}</H2AuthPanel>
+      <Alert severity='info' className='animate-in-right-short' sx={{animationDelay: "150ms"}}>{es.RESTORE_PASSWORD_MSG}</Alert>
       <RestorePasswordForm />
       <Stack justifyContent={'center'}>
         <RoundedButton
           variant='text'
-          sx={{ marginTop: '1rem' }}
+          sx={{ marginTop: '1rem', animationDelay: "700ms" }}
+          className="animate-in-bottom"
           onClick={redirectHome}
         >
           {es.BACK_HOME}

@@ -9,6 +9,7 @@ import Waves from '../../components/Home/Waves';
 import { mainModulesArray } from '../../constants/Routing/routes';
 
 import { useGetWritingsQuery } from '../../features/api/writingsSlice';
+import es from '../../lang/es';
 
 const Home = () => {
   const user = useSelector((state) => state.globalData.user);
@@ -28,9 +29,9 @@ const Home = () => {
   }, [data, isError, isLoading]);
 
   useEffect(() => {
-    document.title = 'Portal del SAE | Poder Judicial de Tucumán';
+    document.title = `${es.PORTAL} | ${es.PJT}`;
   }, []);
-
+  
   return (
     <>
       <Header user={user} page='HOME' />

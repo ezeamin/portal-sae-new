@@ -14,6 +14,7 @@ import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
+import es from '../../../lang/es';
 
 const QuickAccessIcons = (props) => {
   const { theme, isPortrait } = props;
@@ -48,7 +49,7 @@ const QuickAccessIcons = (props) => {
 
   return (
     <Stack {...config} sx={{ mr: !isPortrait && 2 }}>
-      <Tooltip title='Cambiar tema'>
+      <Tooltip title={es.CHANGE_THEME}>
         <IconButton onClick={handleChangeTheme}>
           {theme === themes.LIGHT ? (
             <DarkModeRoundedIcon />
@@ -57,12 +58,12 @@ const QuickAccessIcons = (props) => {
           )}
         </IconButton>
       </Tooltip>
-      <Tooltip title='Módulos'>
+      <Tooltip title={es.MODULES_NAME}>
         <IconButton onClick={handleOpenModules}>
           <DashboardRoundedIcon />
         </IconButton>
       </Tooltip>
-      <Tooltip title='Notificaciones'>
+      <Tooltip title={es.NOTIFICATIONS}>
         <IconButton onClick={handleOpenNotifications}>
           <NotificationsRoundedIcon />
         </IconButton>

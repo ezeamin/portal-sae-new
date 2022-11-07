@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Tooltip } from '@mui/material';
 
 import { mainRoutes } from '../../../constants/Routing/routes';
+import es from '../../../lang/es';
 
 const PortalLogo = () => {
   const navigate = useNavigate();
   return (
-    <Tooltip title='Portal del SAE'>
+    <Tooltip title={es.PORTAL}>
       <button
         onClick={() => navigate(mainRoutes.MAIN.path)}
         style={{ marginRight: '0.5rem', height: '65px' }}

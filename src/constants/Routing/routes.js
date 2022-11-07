@@ -21,6 +21,7 @@ import logout from '../../actions/logout';
 import loginViews from '../views/loginViews';
 import viewList from '../views/viewList';
 import { actionButtons } from '../actionButtons';
+import es from '../../lang/es';
 
 const Home = lazy(() =>
   import("../../views/Home/Home")
@@ -118,9 +119,9 @@ export const modulesRoutes = {
     },
     MAIN: {
       action: null,
-      description: 'Presentaciones',
+      description: es.MODULES.WRITINGS.DESC,
       id: 10000,
-      name: 'Ingreso escritos',
+      name: es.MODULES.WRITINGS.NAME,
       path: paths.ESCRITOS.MAIN,
       routeInfo: {
         component: IngresoEscritos,
@@ -165,9 +166,9 @@ export const modulesRoutes = {
     },
     MAIN: {
       action: null,
-      description: 'Online/Presencial',
+      description: es.MODULES.PAYMENTS.DESC,
       id: 20000,
-      name: 'Pagos judiciales',
+      name: es.MODULES.PAYMENTS.NAME,
       path: paths.PAGOS.MAIN,
       routeInfo: {
         component: PagosJudiciales,
@@ -192,9 +193,9 @@ export const modulesRoutes = {
     },
     MAIN: {
       action: null,
-      description: 'Online/Presencial',
+      description: es.MODULES.PROCEEDINGS.DESC,
       id: 30000,
-      name: 'Consulta expedientes',
+      name: es.MODULES.PROCEEDINGS.NAME,
       path: paths.CONSULTA_EXPEDIENTES.MAIN,
       routeInfo: {
         component: ConsultaExpedientes,
@@ -219,9 +220,9 @@ export const modulesRoutes = {
     },
     MAIN: {
       action: null,
-      description: 'Online/Presencial',
+      description: es.MODULES.UNITS.DESC,
       id: 40000,
-      name: 'Consulta unidades',
+      name: es.MODULES.UNITS.NAME,
       path: paths.UNIDADES.MAIN,
       routeInfo: {
         component: ConsultaUnidades,
@@ -246,9 +247,9 @@ export const modulesRoutes = {
     },
     MAIN: {
       action: null,
-      description: 'Online/Presencial',
+      description: es.MODULES.JURISPRUDENCE.DESC,
       id: 50000,
-      name: 'Jurisprudencia',
+      name: es.MODULES.JURISPRUDENCE.NAME,
       path: paths.JURISPRUDENCIA.MAIN,
       routeInfo: {
         component: Jurisprudencia,
@@ -273,9 +274,9 @@ export const modulesRoutes = {
     },
     MAIN: {
       action: null,
-      description: 'Online/Presencial',
+      description: es.MODULES.NEW_PROCEEDINGS.DESC,
       id: 60000,
-      name: 'Inicio expedientes',
+      name: es.MODULES.NEW_PROCEEDINGS.NAME,
       path: paths.INICIO_EXPEDIENTES.MAIN,
       routeInfo: {
         component: InicioExpedientes,
@@ -300,9 +301,9 @@ export const modulesRoutes = {
     },
     MAIN: {
       action: null,
-      description: 'Online/Presencial',
+      description: es.MODULES.OGA.DESC,
       id: 70000,
-      name: 'OGA',
+      name: es.MODULES.OGA.NAME,
       path: paths.OGA.MAIN,
       routeInfo: {
         component: OGA,
@@ -348,7 +349,7 @@ export const profileRoutes = {
     },
     description: 'Editar datos personales como nombre e email',
     id: 1001,
-    name: 'Editar datos',
+    name: es.CHANGE_DATA,
     path: paths.PROFILE.DATA_FORM,
     icon: CreateRounded,
     color: 'PROFILE_DATA_FORM',
@@ -360,7 +361,7 @@ export const profileRoutes = {
       view: viewList.PASS,
     },
     id: 1002,
-    name: 'Cambiar contraseña',
+    name: es.CHANGE_PASSWORD,
     path: paths.PROFILE.PASSWORD_FORM,
     icon: PasswordRounded,
     color: 'PROFILE_PASSWORD',
@@ -369,7 +370,7 @@ export const profileRoutes = {
     action: logout,
     description: 'Salir de la sesión actual',
     id: 1003,
-    name: 'Cerrar sesión',
+    name: es.LOGOUT,
     path: null,
     icon: LogoutRounded,
     color: 'PROFILE_LOGOUT',

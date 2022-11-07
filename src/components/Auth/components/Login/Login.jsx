@@ -39,7 +39,7 @@ const Login = () => {
         </Stack>
         <LoginForm />
       </FormSection>
-      <Divider />
+      <Divider sx={{animationDelay: "650ms"}} className="animate-in-bottom"/>
       <QuickAccessButtons />
     </>
   );

@@ -51,9 +51,10 @@ const RestorePasswordForm = () => {
         type='email'
         inputRef={mailRef}
         inputProps={{ maxLength: 50, required: true }}
-        sx={{ marginTop: '1.5rem' }}
+        sx={{ marginTop: '1.5rem', animationDelay: "300ms" }}
         error={emailError.error}
         helperText={emailError.msg}
+        className="animate-in-right-short"
       />
       <Stack justifyContent={'center'}>
         <RoundedButton
@@ -61,7 +62,8 @@ const RestorePasswordForm = () => {
           type='submit'
           loading={isSending}
           disabled={isSent}
-          sx={{ marginTop: '1rem' }}
+          sx={{ marginTop: '1rem', animationDelay: "500ms" }}
+          className="animate-in-bottom"
         >
           {es.SEND_LINK}
         </RoundedButton>

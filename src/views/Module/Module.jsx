@@ -71,7 +71,7 @@ const Module = () => {
             sx={{ mt: 2, animationDelay: '50ms' }}
             className='animate-in-right'
           >
-            <Typography variant='h4' fontWeight='bold'>
+            <Typography variant='h4' fontWeight='bold' sx={{color:"white.contrastText"}}>
               {title}
             </Typography>
             <IconButton sx={{ ml: 1 }} onClick={handleOpenModal}>

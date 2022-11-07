@@ -1,6 +1,8 @@
 import { Container, Divider, Drawer, Stack } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+import logout from '../../../actions/logout';
 import { setMainDrawerOpened } from '../../../features/surfaces';
+import es from '../../../lang/es';
 
 import { RoundedButton } from '../../../styled';
 
@@ -37,11 +39,11 @@ const DrawerMenu = (props) => {
 
         {/* Botones de accion de perfil */}
         <Stack sx={{ mt: 3 }} direction='row' justifyContent='space-evenly'>
-          <RoundedButton variant='outlined' color='error'>
-            Cerrar sesión
+          <RoundedButton variant='outlined' color='error' onClick={logout}>
+            {es.LOGOUT}
           </RoundedButton>
           <RoundedButton variant='outlined' onClick={navigateProfile}>
-            Mi perfil
+            {es.MY + ' ' + es.PROFILE}
           </RoundedButton>
         </Stack>
 

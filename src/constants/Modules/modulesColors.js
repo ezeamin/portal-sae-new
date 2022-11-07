@@ -19,7 +19,7 @@ const modulesColors = {
   },
   UNIDADES: {
     main: '#ded559',
-    contrastText: '#636363',
+    contrastText: '#fff',
     DARK: {},
   },
   JURISPRUDENCIA: {

@@ -18,6 +18,11 @@ const PageChip = (props) => {
       sx={{
         fontWeight: 'bold',
         lineHeight: '10',
+        textShadow: '0 0 2px #000',
+        '& .MuiChip-icon': {
+          filter: "drop-shadow(0 0 0.5px #000)",
+          color: 'red',
+        },
       }}
     />
   );

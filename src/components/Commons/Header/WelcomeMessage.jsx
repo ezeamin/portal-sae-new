@@ -7,6 +7,7 @@ import { Stack, Typography } from '@mui/material';
 import { mainRoutes } from '../../../constants/Routing/routes';
 
 import { RoundedButton } from '../../../styled';
+import es from '../../../lang/es';
 
 const WelcomeMessage = (props) => {
   const { user, isHomePage } = props;
@@ -27,7 +28,7 @@ const WelcomeMessage = (props) => {
           color='light.contrastText'
           className='animate-in-right'
         >
-          {`${user.name} ${user.lastname}`}
+          {user.name + " " + user.lastname}
         </Typography>
         <RoundedButton
           variant='outlined'
@@ -38,7 +39,7 @@ const WelcomeMessage = (props) => {
           size='small'
           className='animate-in-right'
         >
-          Inicio
+          {es.HOME}
         </RoundedButton>
       </Stack>
     );
@@ -53,14 +54,14 @@ const WelcomeMessage = (props) => {
         color='light.contrastText'
         className='animate-in-right'
       >
-        {`Bienvenido, ${user.name} ${user.lastname}`}
+        {es.WELCOME + ", " + user.name + " " + user.lastname}
       </Typography>
       {user.notifications && (
         <Stack direction='row' alignItems='flex-start'
         className='animate-in-right' sx={{animationDelay: "100ms"}}>
           <NotificationsRounded color='dark' sx={{ ml: -0.5, mr: 1 }} />
           <Typography color='light.secondaryContrastText'>
-            {`Tenés ${user.notifications} notificaciones nuevas`}{' '}
+            {es.YOU_HAVE + " " + user.notifications + " " + es.NEW_NOTIFICATIONS.toLowerCase()}
           </Typography>
         </Stack>
       )}
