@@ -15,6 +15,7 @@ const IngresoEscritos = () => {
 
   useEffect(() => {
     if (data && !isError && !isLoading) {
+      console.log(data)
       const formattedData = writingsAdapter(data);
       setWritings(formattedData);
     }

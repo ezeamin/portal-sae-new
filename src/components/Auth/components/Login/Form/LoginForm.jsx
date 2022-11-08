@@ -1,5 +1,9 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { usePostLoginMutation } from '../../../../../features/api/authApiSlice';
+import { setAccessToken, setRefreshToken } from '../../../../../features/auth';
 
 import {
   Checkbox,
@@ -25,7 +29,12 @@ import { RoundedButton } from '../../../../../styled';
 const LoginForm = () => {
   const [errorCuil, setErrorCuil] = useState(false);
   const [errorPass, setErrorPass] = useState(false);
+  const [backendError, setBackendError] = useState({ show: false, msg: '' });
   const [showPass, setShowPass] = useState(false);
+
+  const [postLogin, result] = usePostLoginMutation();
+
+  const dispatch = useDispatch();
 
   const cuilRef = useRef();
   const passRef = useRef();
@@ -56,8 +65,7 @@ const LoginForm = () => {
     const password = passRef.current.value;
 
     if (!checkForErrors(cuil, password)) {
-      // datos válidos, llamar al back
-      navigate(mainRoutes.MAIN.path);
+      postLogin({ username: cuil, password });
     } else {
       /*
       ! 8. Ingreso Fallido:
@@ -70,8 +78,39 @@ const LoginForm = () => {
     }
   };
 
+  useEffect(() => {
+    if (result.isSuccess) {
+      setBackendError({
+        show: false,
+        msg: '',
+      });
+
+      dispatch(setAccessToken(result.data.accessToken));
+      dispatch(setRefreshToken(result.data.refreshToken));
+
+      // const info = jwt.decode(result.data.accessToken);
+      // console.log(info)
+
+      navigate(mainRoutes.MAIN.path);
+    }
+
+    if (result.isError) {
+      setBackendError({
+        show: true,
+        msg:
+          result?.error?.data?.message || 'Ocurrio un error. Revise los campos',
+      });
+    }
+  }, [result, navigate, dispatch]);
+
   return (
     <form onSubmit={onSubmit}>
+      {backendError.show && (
+        <Alert severity='warning' sx={{ marginTop: '1rem' }}>
+          {backendError.msg}
+        </Alert>
+      )}
+
       {errorCuil && (
         <Alert severity='warning' sx={{ marginTop: '1rem' }}>
           {cuilRef.current.value.length === 0
@@ -79,6 +118,7 @@ const LoginForm = () => {
             : es.NOT_VALID_CUIL_CUIT}
         </Alert>
       )}
+
       {errorPass && (
         <Alert
           severity='warning'
@@ -89,6 +129,7 @@ const LoginForm = () => {
             : es.NOT_VALID_PASSWORD}
         </Alert>
       )}
+
       <TextField
         error={errorCuil}
         fullWidth
@@ -106,6 +147,7 @@ const LoginForm = () => {
         type='number'
         className='animate-in-right-short'
       />
+
       <TextField
         error={errorPass}
         fullWidth
@@ -134,6 +176,7 @@ const LoginForm = () => {
         type={showPass ? 'text' : 'password'}
         className='animate-in-right-short'
       />
+
       <Stack
         alignItems={{ xs: 'flex-start', sm: 'center' }}
         justifyContent='space-between'
@@ -147,22 +190,23 @@ const LoginForm = () => {
           control={<Checkbox />}
           label={es.REMEMBER_ME}
           className='animate-in-right-short'
-          sx={{animationDelay: '400ms'}}
+          sx={{ animationDelay: '400ms' }}
         />
         <MUILink
           component={Link}
           to={authRoutes.RESTORE_PASSWORD.path}
           className='animate-in-right-short'
-          sx={{animationDelay: '450ms'}}
+          sx={{ animationDelay: '450ms' }}
         >
           {es.FORGOT}
         </MUILink>
       </Stack>
+
       <RoundedButton
         color='primary'
         variant='contained'
         type='submit'
-        sx={{ width: '100%', animationDelay: "600ms" }}
+        sx={{ width: '100%', animationDelay: '600ms' }}
         className='animate-in-bottom'
       >
         {es.ENTER}

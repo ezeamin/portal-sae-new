@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     document.title = `${es.PORTAL} | ${es.PJT}`;
   }, []);
-  
+
   return (
     <>
       <Header user={user} page='HOME' />

@@ -10,7 +10,7 @@ export const writingsSlice = createApi({
   endpoints: (builder) => ({
     getWritings: builder.query({
       query: ({ numPage, quantityPerPage }) =>
-        `find-all-by-filters-paginated?page=${numPage}&size=${quantityPerPage}`,
+        `/find-all-by-filters-paginated?page=${numPage}&size=${quantityPerPage}`,
     }),
   }),
 });

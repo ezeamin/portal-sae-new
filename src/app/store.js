@@ -1,18 +1,40 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
 
-import { authSlice } from '../features/api/authSlice';
+import { authApiSlice } from '../features/api/authApiSlice';
 import { writingsSlice } from '../features/api/writingsSlice';
 
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+import authSlice from '../features/auth';
 import globalDataSlice from '../features/globalData';
 import surfacesSlice from '../features/surfaces';
 
-export default configureStore({
-  reducer: {
-    globalData: globalDataSlice,
-    surfaces: surfacesSlice,
-    [authSlice.reducerPath]: authSlice.reducer,
-    [writingsSlice.reducerPath]: writingsSlice.reducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(writingsSlice.middleware),
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+const rootReducer = combineReducers({
+  globalData: globalDataSlice,
+  surfaces: surfacesSlice,
+  auth: authSlice,
+  [authApiSlice.reducerPath]: authApiSlice.reducer,
+  [writingsSlice.reducerPath]: writingsSlice.reducer,
 });
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: [thunk],
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware().concat(
+  //     authApiSlice.middleware,
+  //     writingsSlice.middleware
+  //   ),
+  devTools: process.env.NODE_ENV !== 'production',
+});
+
+export const persistor = persistStore(store);
