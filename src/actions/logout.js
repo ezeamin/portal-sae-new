@@ -24,23 +24,23 @@ const logout = () => {
       const accToken = store.getState().auth.accessToken;
       const refToken = store.getState().auth.refreshToken;
 
-      // store.dispatch(store.endpoints.postLogout.initiate({ token }));
       await fetch(`${baseUrlList.AUTH}/auth/logout`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${accToken}`,
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           refresh_token: refToken,
         }),
       });
 
-      // store.dispatch(setUser(null));
-      // store.dispatch(setAccessToken(null));
-      // store.dispatch(setRefreshToken(null));
+      store.dispatch(setUser(null));
+      store.dispatch(setAccessToken(null));
+      store.dispatch(setRefreshToken(null));
 
       localStorage.removeItem('persist:root');
-      // window.location.href = 'auth/login';
+      window.location.href = 'auth/login';
     }
   });
 };
