@@ -35,6 +35,7 @@ const Router = () => {
                   component={route.component}
                   args={route?.args}
                   routeId={route.id}
+                  auth={true}
                 />
               }
             />
@@ -52,6 +53,7 @@ const Router = () => {
                   component={route.component}
                   args={route?.args}
                   routeId={route.id}
+                  auth={false}
                 />
               }
             />

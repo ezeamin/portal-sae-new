@@ -7,11 +7,11 @@ const defaultPortraitValue = window.innerWidth < 600;
 const initialState = {
   currentPage: 0, //HOME
   user: {
-    name: 'Armando',
-    lastname: 'Paredes',
-    email: 'ezequielamin@outlook.com',
-    number: 20437063932,
-    notifications: 5,
+    name: '',
+    lastname: '',
+    email: '',
+    number: 0,
+    notifications: 0,
   },
   isPortrait: defaultPortraitValue,
   theme: themes.LIGHT,

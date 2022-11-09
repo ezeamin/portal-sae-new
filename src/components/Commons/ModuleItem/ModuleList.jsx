@@ -16,7 +16,7 @@ const ModuleList = (props) => {
         justifyContent='space-evenly'
       >
         {modules.map((module, index) => (
-          <Grid item key={module.name} xs={12} md={4}>
+          <Grid item key={module.name} xs={12} sm={6} md={4}>
             <ModuleCard module={module} delay={index * 30} />
           </Grid>
         ))}

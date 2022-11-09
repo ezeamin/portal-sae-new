@@ -1,24 +1,28 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import {
-  TextField,
-  Stack,
-  Typography,
-  Divider,
-  Box,
-  Alert,
-} from '@mui/material';
+  responseUpdateUserAdapter,
+  updateUserAdapter,
+} from '../../../adapters/profileAdapter';
+import { usePutUpdateUserMutation } from '../../../features/api/userSlice';
+
+import { TextField, Stack, Typography, Divider, Box } from '@mui/material';
 
 import BackButton from '../../Commons/BackButton/BackButton';
 
-import { CustomContainer, CustomPaper } from '../../';
+import { CustomContainer, CustomPaper, CustomAlert } from '../../';
 import { RoundedButton } from '../../../styled';
+import customSwal from '../../../helpers/customSwal';
 
 import { emailRegex } from '../../../helpers/validators';
 
+import { profileRoutes } from '../../../constants/Routing/routes';
+
 import es from '../../../lang/es';
+import { setUser } from '../../../features/globalData';
 
 const ProfileForm = () => {
   const {
@@ -27,21 +31,42 @@ const ProfileForm = () => {
     formState: { errors },
   } = useForm();
 
+  // Mutation
+  const [putUpdateUser, response] = usePutUpdateUserMutation();
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [alert, setAlert] = useState({ show: false, msg: '' });
   const [hasBeenSent, setHasBeenSent] = useState(false);
 
   const handleSubmit = (data) => {
     // Las validaciones las hace la librería antes de llamar al submit
-    setAlert({
-      show: true,
-      msg: 'Datos modificados correctamente',
-      severity: 'success',
-    });
+    const dataToSend = updateUserAdapter(data);
 
-    // TODO: Enviar datos a backend
-
-    setHasBeenSent(true);
+    putUpdateUser(dataToSend);
   };
+
+  useEffect(() => {
+    if (response.isError) {
+      setAlert({
+        show: true,
+        msg: 'Error al modificar los datos',
+        severity: 'error',
+      });
+    } else if (response.isSuccess) {
+      const user = responseUpdateUserAdapter(response.data.data);
+      dispatch(setUser(user));
+
+      setAlert({
+        show: true,
+        msg: 'Datos modificados correctamente',
+        severity: 'success',
+      });
+
+      setHasBeenSent(true);
+    }
+  }, [response, navigate, dispatch]);
 
   const user = useSelector((state) => state.globalData.user);
 
@@ -55,9 +80,9 @@ const ProfileForm = () => {
         <Divider sx={{ my: 2 }} />
 
         {alert.show && (
-          <Alert sx={{ mb: 3 }} severity={alert.severity}>
+          <CustomAlert sx={{ mb: 3 }} severity={alert.severity}>
             {alert.msg}
-          </Alert>
+          </CustomAlert>
         )}
 
         {/* submitRHF es el middleware de react hook form */}
@@ -72,6 +97,7 @@ const ProfileForm = () => {
               label='Apellido'
               variant='outlined'
               helperText={user.lastname}
+              disabled={hasBeenSent}
               error={Boolean(errors.lastname)}
               sx={{
                 flexBasis: '80%',
@@ -83,6 +109,7 @@ const ProfileForm = () => {
               label='Nombre'
               variant='outlined'
               helperText={user.name}
+              disabled={hasBeenSent}
               error={Boolean(errors.name)}
               sx={{
                 flexBasis: '80%',
@@ -95,6 +122,7 @@ const ProfileForm = () => {
               variant='outlined'
               helperText={user.email}
               error={Boolean(errors.email)}
+              disabled={hasBeenSent}
               sx={{
                 flexBasis: '100%',
               }}

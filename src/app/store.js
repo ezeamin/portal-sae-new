@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 
 import { authApiSlice } from '../features/api/authApiSlice';
+import { userSlice } from '../features/api/userSlice';
 import { writingsSlice } from '../features/api/writingsSlice';
 
 import { persistReducer, persistStore } from 'redux-persist';
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   surfaces: surfacesSlice,
   auth: authSlice,
   [authApiSlice.reducerPath]: authApiSlice.reducer,
+  [userSlice.reducerPath]: userSlice.reducer,
   [writingsSlice.reducerPath]: writingsSlice.reducer,
 });
 
@@ -35,6 +37,7 @@ export const store = configureStore({
     }).concat(
       thunk,
       authApiSlice.middleware,
+      userSlice.middleware,
       writingsSlice.middleware,
     ),
   devTools: process.env.NODE_ENV !== 'production',

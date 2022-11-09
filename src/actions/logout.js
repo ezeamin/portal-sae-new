@@ -35,7 +35,6 @@ const logout = () => {
       store.dispatch(setRefreshToken(null));
 
       sessionStorage.removeItem('persist:root');
-      window.location.href = 'auth/login';
     }
   });
 };
