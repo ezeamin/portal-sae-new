@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 import {
   responseUpdateUserAdapter,
   updateUserAdapter,
 } from '../../../adapters/profileAdapter';
 import { usePutUpdateUserMutation } from '../../../features/api/userSlice';
+import { setUser } from '../../../features/globalData';
 
 import { TextField, Stack, Typography, Divider, Box } from '@mui/material';
 
@@ -15,14 +15,11 @@ import BackButton from '../../Commons/BackButton/BackButton';
 
 import { CustomContainer, CustomPaper, CustomAlert } from '../../';
 import { RoundedButton } from '../../../styled';
-import customSwal from '../../../helpers/customSwal';
 
 import { emailRegex } from '../../../helpers/validators';
 
-import { profileRoutes } from '../../../constants/Routing/routes';
-
 import es from '../../../lang/es';
-import { setUser } from '../../../features/globalData';
+
 
 const ProfileForm = () => {
   const {
@@ -34,7 +31,6 @@ const ProfileForm = () => {
   // Mutation
   const [putUpdateUser, response] = usePutUpdateUserMutation();
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [alert, setAlert] = useState({ show: false, msg: '' });
@@ -66,7 +62,7 @@ const ProfileForm = () => {
 
       setHasBeenSent(true);
     }
-  }, [response, navigate, dispatch]);
+  }, [response, dispatch]);
 
   const user = useSelector((state) => state.globalData.user);
 

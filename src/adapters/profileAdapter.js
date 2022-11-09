@@ -18,3 +18,12 @@ export const responseUpdateUserAdapter = (APIInfo) => {
 
   return formattedInfo;
 };
+
+export const updatePasswordAdapter = (data) => {
+    const formattedInfo = {
+        oldPassword: data.currentPass,
+        newPassword: data.newPass,
+    };
+    
+    return formattedInfo;
+}

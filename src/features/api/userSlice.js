@@ -16,7 +16,15 @@ export const userSlice = createApi({
         type: baseUrlTypes.AUTH,
       }),
     }),
+    putUpdatePassword: builder.mutation({
+      query: (data) => ({
+        url: `${userBaseUrl}/update-password`,
+        method: 'PUT',
+        body: data,
+        type: baseUrlTypes.AUTH,
+      }),
+    }),
   }),
 });
 
-export const { usePutUpdateUserMutation } = userSlice;
+export const { usePutUpdateUserMutation, usePutUpdatePasswordMutation } = userSlice;

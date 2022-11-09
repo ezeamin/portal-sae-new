@@ -15,6 +15,9 @@ import { Box, InputAdornment, Stack, TextField } from '@mui/material';
 
 import es from '../../../lang/es';
 
+import { usePutUpdatePasswordMutation } from '../../../features/api/userSlice';
+import { updatePasswordAdapter } from '../../../adapters/profileAdapter';
+
 const defaultStateShowPass = {
   currentPass: false,
   newPass: false,
@@ -29,6 +32,8 @@ const FormPassword = (props) => {
     handleSubmit: submitRHF,
     formState: { errors },
   } = useForm();
+
+  const [updatePassword, response] = usePutUpdatePasswordMutation();
 
   const [hasBeenSent, setHasBeenSent] = useState(false);
   const [showPass, setShowPass] = useState(defaultStateShowPass);
@@ -58,17 +63,30 @@ const FormPassword = (props) => {
       return;
     }
 
-    setAlert({
-      show: true,
-      msg: 'Datos modificados correctamente',
-      severity: 'success',
-    });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const dataToSend = updatePasswordAdapter(data);
 
-    // TODO: Enviar datos a backend
-
-    setHasBeenSent(true);
+    updatePassword(dataToSend)
   };
+
+  useEffect(() => {
+    if (response.isError) {
+      setAlert({
+        show: true,
+        msg: 'Error al modificar la contraseña',
+        severity: 'error',
+      });
+    } else if (response.isSuccess) {
+      setAlert({
+        show: true,
+        msg: 'Contraseña modificada correctamente',
+        severity: 'success',
+      });
+
+      setHasBeenSent(true);
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [response, setAlert]);
 
   //   Para correccion de flecha de contraseña (visual)
   useEffect(() => {
@@ -92,6 +110,7 @@ const FormPassword = (props) => {
           type={showPass.currentPass ? 'text' : 'password'}
           label='Contraseña actual'
           variant='outlined'
+          disabled={hasBeenSent}
           error={!!errors.currentPass}
           sx={{
             flexBasis: '100%',
@@ -127,6 +146,7 @@ const FormPassword = (props) => {
           label='Nueva contraseña'
           variant='outlined'
           error={!!errors.newPass}
+          disabled={hasBeenSent}
           sx={{
             flexBasis: '100%',
             width: '100%',
@@ -159,6 +179,7 @@ const FormPassword = (props) => {
           label='Repetir contraseña'
           variant='outlined'
           error={!!errors.repeatNewPass}
+          disabled={hasBeenSent}
           sx={{
             flexBasis: '100%',
             width: '100%',
