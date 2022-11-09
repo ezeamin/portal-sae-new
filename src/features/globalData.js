@@ -24,6 +24,9 @@ const globalDataSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    setUserNotifications: (state, action) => {
+      state.user.notifications = action.payload;
+    },
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
@@ -46,7 +49,12 @@ const globalDataSlice = createSlice({
   },
 });
 
-export const { setUser, setCurrentPage, setIsPortrait, setTheme } =
-  globalDataSlice.actions;
+export const {
+  setUser,
+  setUserNotifications,
+  setCurrentPage,
+  setIsPortrait,
+  setTheme,
+} = globalDataSlice.actions;
 
 export default globalDataSlice.reducer;

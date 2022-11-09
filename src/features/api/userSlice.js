@@ -3,25 +3,23 @@ import { createApi } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrlTypes } from '../../constants/api/urls';
 import { rtkBaseQuery } from './customBaseQuery';
 
-const userBaseUrl = '/users';
-
 export const userSlice = createApi({
   baseQuery: rtkBaseQuery,
   endpoints: (builder) => ({
     putUpdateUser: builder.mutation({
       query: (user) => ({
-        url: `${userBaseUrl}/update-user`,
+        url: `/update-user`,
         method: 'PUT',
         body: user,
-        type: baseUrlTypes.AUTH,
+        type: baseUrlTypes.USERS,
       }),
     }),
     putUpdatePassword: builder.mutation({
       query: (data) => ({
-        url: `${userBaseUrl}/update-password`,
+        url: `/update-password`,
         method: 'PUT',
         body: data,
-        type: baseUrlTypes.AUTH,
+        type: baseUrlTypes.USERS,
       }),
     }),
   }),

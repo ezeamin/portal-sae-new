@@ -72,7 +72,7 @@ const FormPassword = (props) => {
     if (response.isError) {
       setAlert({
         show: true,
-        msg: 'Error al modificar la contraseña',
+        msg: response.isError?.message || 'Error al modificar la contraseña',
         severity: 'error',
       });
     } else if (response.isSuccess) {

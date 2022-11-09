@@ -4,14 +4,12 @@ import { loginAdapter } from '../../adapters/authAdapter';
 import { baseUrlTypes } from '../../constants/api/urls';
 import { rtkBaseQuery } from './customBaseQuery';
 
-const authBaseUrl = '/auth';
-
 export const authApiSlice = createApi({
   baseQuery: rtkBaseQuery,
   endpoints: (builder) => ({
     postLogin: builder.mutation({
       query: (user) => ({
-        url: `${authBaseUrl}/login`,
+        url: `/login`,
         method: 'POST',
         body: user,
         type: baseUrlTypes.AUTH,
@@ -21,7 +19,7 @@ export const authApiSlice = createApi({
     }),
     postRefresh: builder.mutation({
       query: (user) => ({
-        url: `${authBaseUrl}/refresh`,
+        url: `/refresh`,
         method: 'POST',
         body: user,
         type: baseUrlTypes.AUTH,
@@ -29,9 +27,17 @@ export const authApiSlice = createApi({
       transformResponse: (response) => loginAdapter(response),
       transformErrorResponse: (response) => response.status,
     }),
+    postRestorePassword: builder.mutation({
+      query: (data) => ({
+        url: `/forgot-password`,
+        method: 'POST',
+        body: data,
+        type: baseUrlTypes.AUTH,
+      }),
+    }),
     postLogout: builder.mutation({
       query: () => ({
-        url: `${authBaseUrl}/logout`,
+        url: `/logout`,
         method: 'POST',
         type: baseUrlTypes.AUTH,
       }),
@@ -39,4 +45,4 @@ export const authApiSlice = createApi({
   }),
 });
 
-export const { usePostLoginMutation, usePostRefreshMutation } = authApiSlice;
+export const { usePostLoginMutation, usePostRefreshMutation, usePostRestorePasswordMutation } = authApiSlice;
