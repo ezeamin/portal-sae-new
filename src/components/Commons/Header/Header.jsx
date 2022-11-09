@@ -40,7 +40,7 @@ const Header = (props) => {
           {/* ------------ LEFT ------------ */}
           <Stack direction='row' alignItems='center'>
             <Avatar
-              alt={user.name}
+              alt={user?.name}
               sx={{ width: '4rem', height: '4rem', mr: 3 }}
             />
             <WelcomeMessage user={user} isHomePage={isHomePage} />

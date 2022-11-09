@@ -3,7 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { usePostLoginMutation } from '../../../../../features/api/authApiSlice';
+import { setUser } from '../../../../../features/globalData';
 import { setAccessToken, setRefreshToken } from '../../../../../features/auth';
+
+import { userAdapter } from '../../../../../adapters/authAdapter';
 
 import {
   Checkbox,
@@ -85,6 +88,9 @@ const LoginForm = () => {
         msg: '',
       });
 
+      const user = userAdapter(result.data.user);
+
+      dispatch(setUser(user))
       dispatch(setAccessToken(result.data.accessToken));
       dispatch(setRefreshToken(result.data.refreshToken));
 

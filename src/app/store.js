@@ -5,7 +5,7 @@ import { authApiSlice } from '../features/api/authApiSlice';
 import { writingsSlice } from '../features/api/writingsSlice';
 
 import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storageSession from 'redux-persist/lib/storage/session';
 
 import authSlice from '../features/auth';
 import globalDataSlice from '../features/globalData';
@@ -13,7 +13,7 @@ import surfacesSlice from '../features/surfaces';
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: storageSession,
 };
 
 const rootReducer = combineReducers({
@@ -28,12 +28,15 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: [thunk],
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(
-  //     authApiSlice.middleware,
-  //     writingsSlice.middleware
-  //   ),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+      // ! Esto debe ser corregido
+    }).concat(
+      thunk,
+      authApiSlice.middleware,
+      writingsSlice.middleware,
+    ),
   devTools: process.env.NODE_ENV !== 'production',
 });
 

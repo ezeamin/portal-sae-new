@@ -6,11 +6,6 @@ import { setUser } from '../features/globalData';
 import { setAccessToken, setRefreshToken } from '../features/auth';
 
 const logout = () => {
-  // const token = JSON.parse(
-  //   JSON.parse(localStorage.getItem('persist:root')).auth
-  // ).accessToken;
-
-  // console.log(token);
   customSwal({
     title: '¿Estás seguro?',
     text: '¿Deseas cerrar sesión?',
@@ -39,7 +34,7 @@ const logout = () => {
       store.dispatch(setAccessToken(null));
       store.dispatch(setRefreshToken(null));
 
-      localStorage.removeItem('persist:root');
+      sessionStorage.removeItem('persist:root');
       window.location.href = 'auth/login';
     }
   });

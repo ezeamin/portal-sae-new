@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { HomeRounded, NotificationsRounded } from '@mui/icons-material';
 
-import { Stack, Typography } from '@mui/material';
+import { Skeleton, Stack, Typography } from '@mui/material';
 
 import { mainRoutes } from '../../../constants/Routing/routes';
 
@@ -29,7 +29,11 @@ const WelcomeMessage = (props) => {
           color='light.contrastText'
           className='animate-in-right'
         >
-          {user.name + " " + user.lastname}
+          {user ? (
+            <>{es.WELCOME + ', ' + user?.name + ' ' + user?.lastname}</>
+          ) : (
+            <Skeleton variant='rectangular' width={250} height={30} />
+          )}
         </Typography>
         <RoundedButton
           variant='outlined'
@@ -56,14 +60,34 @@ const WelcomeMessage = (props) => {
         color='light.contrastText'
         className='animate-in-right'
       >
-        {es.WELCOME + ", " + user.name + " " + user.lastname}
+        {user ? (
+          <>{es.WELCOME + ', ' + user?.name + ' ' + user?.lastname}</>
+        ) : (
+          <>
+            <Skeleton variant='rectangular' width={250} height={30} />
+            <Skeleton
+              variant='rectangular'
+              width={200}
+              height={20}
+              sx={{ mt: 0.5 }}
+            />
+          </>
+        )}
       </Typography>
-      {user.notifications && (
-        <Stack direction='row' alignItems='flex-start'
-        className='animate-in-right' sx={{animationDelay: "100ms"}}>
+      {!!user?.notifications && (
+        <Stack
+          direction='row'
+          alignItems='flex-start'
+          className='animate-in-right'
+          sx={{ animationDelay: '100ms' }}
+        >
           <NotificationsRounded color='dark' sx={{ ml: -0.5, mr: 1 }} />
           <Typography color='light.secondaryContrastText'>
-            {es.YOU_HAVE + " " + user.notifications + " " + es.NEW_NOTIFICATIONS.toLowerCase()}
+            {es.YOU_HAVE +
+              ' ' +
+              user?.notifications +
+              ' ' +
+              es.NEW_NOTIFICATIONS.toLowerCase()}
           </Typography>
         </Stack>
       )}
