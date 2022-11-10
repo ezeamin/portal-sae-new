@@ -14,12 +14,10 @@ const logout = () => {
     confirmButtonText: 'Cerrar sesión',
   }).then(async (res) => {
     if (res.isConfirmed) {
-      console.log('Sesion cerrada');
-
       const accToken = store.getState().auth.accessToken;
       const refToken = store.getState().auth.refreshToken;
 
-      await fetch(`${baseUrlList.AUTH}/auth/logout`, {
+      await fetch(`${baseUrlList.AUTH}/logout`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${accToken}`,

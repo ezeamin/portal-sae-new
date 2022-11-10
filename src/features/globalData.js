@@ -12,6 +12,7 @@ const initialState = {
     email: '',
     number: 0,
     notifications: 0,
+    activeModules: []
   },
   isPortrait: defaultPortraitValue,
   theme: themes.LIGHT,
