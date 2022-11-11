@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { usePostLoginMutation } from '../../../../../features/api/authApiSlice';
 import { setUser } from '../../../../../features/globalData';
-import { setAccessToken, setRefreshToken } from '../../../../../features/auth';
+import { setAccessToken } from '../../../../../features/auth';
 
 import { userAdapter } from '../../../../../adapters/authAdapter';
 
@@ -92,10 +92,6 @@ const LoginForm = () => {
 
       dispatch(setUser(user))
       dispatch(setAccessToken(result.data.accessToken));
-      dispatch(setRefreshToken(result.data.refreshToken));
-
-      // const info = jwt.decode(result.data.accessToken);
-      // console.log(info)
 
       navigate(mainRoutes.MAIN.path);
     }

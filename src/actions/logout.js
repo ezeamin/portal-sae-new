@@ -1,9 +1,11 @@
 import { baseUrlList } from '../constants/api/urls';
 import customSwal from '../helpers/customSwal';
 
+import Cookies from 'js-cookie';
+
 import { store } from '../app/store';
 import { setUser } from '../features/globalData';
-import { setAccessToken, setRefreshToken } from '../features/auth';
+import { setAccessToken } from '../features/auth';
 
 const logout = () => {
   customSwal({
@@ -15,7 +17,8 @@ const logout = () => {
   }).then(async (res) => {
     if (res.isConfirmed) {
       const accToken = store.getState().auth.accessToken;
-      const refToken = store.getState().auth.refreshToken;
+      // const refToken = store.getState().auth.refreshToken;
+      const refToken = Cookies.get('refreshToken') || '';
 
       await fetch(`${baseUrlList.AUTH}/logout`, {
         method: 'POST',
@@ -30,7 +33,7 @@ const logout = () => {
 
       store.dispatch(setUser(null));
       store.dispatch(setAccessToken(null));
-      store.dispatch(setRefreshToken(null));
+      Cookies.remove('refreshToken');
 
       sessionStorage.removeItem('persist:root');
     }
