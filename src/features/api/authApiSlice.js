@@ -1,4 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/dist/query/react';
+import Cookies from 'js-cookie';
 
 import { loginAdapter } from '../../adapters/authAdapter';
 import { baseUrlTypes } from '../../constants/api/urls';
@@ -14,7 +15,14 @@ export const authApiSlice = createApi({
         body: user,
         type: baseUrlTypes.AUTH,
       }),
-      transformResponse: (response) => loginAdapter(response),
+      transformResponse: (response) => {
+        const data = loginAdapter(response);
+        if (process.env.NODE_ENV !== 'production') {
+          Cookies.set('refreshToken', data?.refreshToken);
+        }
+
+        return data;
+      },
       transformErrorResponse: (response) => response.status,
     }),
     postRefresh: builder.mutation({
@@ -45,4 +53,8 @@ export const authApiSlice = createApi({
   }),
 });
 
-export const { usePostLoginMutation, usePostRefreshMutation, usePostRestorePasswordMutation } = authApiSlice;
+export const {
+  usePostLoginMutation,
+  usePostRefreshMutation,
+  usePostRestorePasswordMutation,
+} = authApiSlice;

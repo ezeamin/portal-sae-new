@@ -20,6 +20,11 @@ const DrawerMenu = (props) => {
     dispatch(setMainDrawerOpened(false));
   };
 
+  const handleLogout = () => {
+    dispatch(setMainDrawerOpened(false));
+    logout();
+  };
+
   return (
     <Drawer
       anchor='top'
@@ -39,7 +44,11 @@ const DrawerMenu = (props) => {
 
         {/* Botones de accion de perfil */}
         <Stack sx={{ mt: 3 }} direction='row' justifyContent='space-evenly'>
-          <RoundedButton variant='outlined' color='error' onClick={logout}>
+          <RoundedButton
+            variant='outlined'
+            color='error'
+            onClick={handleLogout}
+          >
             {es.LOGOUT}
           </RoundedButton>
           <RoundedButton variant='outlined' onClick={navigateProfile}>

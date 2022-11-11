@@ -24,6 +24,7 @@ const customBaseQuery = async (args, api, extraOptions) =>
         headers.set('Authorization', `Bearer ${auth.accessToken}`);
       }
       headers.set('Content-Type', 'application/json');
+      
       return headers;
     },
   })(args, api, extraOptions);
@@ -57,6 +58,9 @@ export const rtkBaseQuery = async (args, api, extraOptions) => {
       const formatRes = loginAdapter(refreshResult);
 
       //* Set refresh con cookie
+      if (process.env.NODE_ENV !== 'production') {
+        Cookies.set('refreshToken', formatRes.refreshToken);
+      }
 
       api.dispatch(setAccessToken(formatRes.accessToken));
 
@@ -68,6 +72,7 @@ export const rtkBaseQuery = async (args, api, extraOptions) => {
       Cookies.remove('refreshToken');
     }
   }
+
 
   return result;
 };
