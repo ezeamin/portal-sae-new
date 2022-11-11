@@ -23,8 +23,8 @@ const modulesColors = {
     DARK: {},
   },
   JURISPRUDENCIA: {
-    main: '#b58c53',
-    dark: '#8e6a3b',
+    main: '#9f7de8',
+    dark: '#7d5bc3',
     contrastText: '#fff',
     DARK: {},
   },

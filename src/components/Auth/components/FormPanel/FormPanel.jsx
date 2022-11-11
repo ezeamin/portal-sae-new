@@ -35,7 +35,7 @@ const FormPanel = (props) => {
   }
 
   return (
-    <AuthPaper square>
+    <AuthPaper square sx={{ backgroundColor: 'whiteDarkMode.main' }}>
       <Container
         sx={{
           paddingY: '2.5rem',

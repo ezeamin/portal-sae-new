@@ -20,7 +20,6 @@ import { emailRegex } from '../../../helpers/validators';
 
 import es from '../../../lang/es';
 
-
 const ProfileForm = () => {
   const {
     register,
@@ -93,6 +92,7 @@ const ProfileForm = () => {
               label='Apellido'
               variant='outlined'
               helperText={user.lastname}
+              defaultValue={user.lastname}
               disabled={hasBeenSent}
               error={Boolean(errors.lastname)}
               sx={{
@@ -105,6 +105,7 @@ const ProfileForm = () => {
               label='Nombre'
               variant='outlined'
               helperText={user.name}
+              defaultValue={user.name}
               disabled={hasBeenSent}
               error={Boolean(errors.name)}
               sx={{
@@ -117,6 +118,7 @@ const ProfileForm = () => {
               label='Correo'
               variant='outlined'
               helperText={user.email}
+              defaultValue={user.email}
               error={Boolean(errors.email)}
               disabled={hasBeenSent}
               sx={{

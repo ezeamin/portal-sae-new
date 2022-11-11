@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Header, ModuleList } from '../../components';
 import Waves from '../../components/Home/Waves';
 
-import { mainModulesArray } from '../../constants/Routing/routes';
+import useAvailableModules from '../../hooks/useAvailableModules';
 
 import es from '../../lang/es';
 
@@ -15,10 +15,12 @@ const Home = () => {
     document.title = `${es.PORTAL} | ${es.PJT}`;
   }, []);
 
+  const { modules } = useAvailableModules();
+
   return (
     <>
       <Header user={user} page='HOME' />
-      <ModuleList modules={mainModulesArray} sx={{ mb: 10 }} />
+      <ModuleList modules={modules} sx={{ mb: 10 }} />
       <Waves />
     </>
   );
