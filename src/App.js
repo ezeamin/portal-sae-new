@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect, useLayoutEffect } from 'react';
 
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
@@ -13,13 +12,14 @@ import { usePostRefreshMutation } from './features/api/authApiSlice';
 
 // import { themes } from './constants/constants';
 import useTheme from './hooks/useTheme';
+import { authRoutes } from './constants/Routing/routes';
 
 const App = () => {
   const dispatch = useDispatch();
 
   const theme = useTheme();
 
-  const [postRefresh] = usePostRefreshMutation();
+  const [postRefresh, response] = usePostRefreshMutation();
 
   // Resize & theme detection
   useEffect(() => {
@@ -35,15 +35,23 @@ const App = () => {
       // dispatch(setTheme(themes.DARK));
     }
 
-    // No access token (refresh)
-    if (!window.location.href.includes('auth')) {
-      dispatch(postRefresh());
-    }
-
     return () => {
       window.removeEventListener('resize', () => {});
     };
   }, [dispatch, postRefresh]);
+
+  // No access token (refresh)
+  useLayoutEffect(() => {
+    if (!window.location.href.includes('auth')) {
+      postRefresh();
+    }
+  }, [postRefresh]);
+
+  useEffect(() => {
+    if (response.isError) {
+      window.location.replace(authRoutes.LOGIN.path);
+    }
+  }, [response]);
 
   return (
     <ThemeProvider theme={theme}>

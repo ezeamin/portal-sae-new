@@ -7,6 +7,8 @@ import { store } from '../app/store';
 import { setUser } from '../features/globalData';
 import { setAccessToken } from '../features/auth';
 
+import { authRoutes } from '../constants/Routing/routes';
+
 const logout = () => {
   customSwal({
     title: '¿Estás seguro?',
@@ -35,7 +37,7 @@ const logout = () => {
       store.dispatch(setAccessToken(null));
       Cookies.remove('refreshToken');
 
-      sessionStorage.removeItem('persist:root');
+      window.location.href = authRoutes.LOGIN.path;
     }
   });
 };

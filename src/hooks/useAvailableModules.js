@@ -5,8 +5,10 @@ import { modulesRoutes } from '../constants/Routing/routes';
 
 const useAvailableModules = () => {
   const activeModules = useSelector(
-    (state) => state.globalData.user.activeModules
+    (state) => state.globalData.user?.activeModules
   );
+
+  if (!activeModules) return [];
 
   const activeModulesAddapted = modulesAdapter(activeModules);
   const activeModulesIds = modulesAdapterIds(activeModules);

@@ -1,9 +1,17 @@
 import { createApi } from '@reduxjs/toolkit/dist/query/react';
+import { store } from '../../app/store';
+
 import Cookies from 'js-cookie';
 
-import { loginAdapter } from '../../adapters/authAdapter';
+import { loginAdapter, userAdapter } from '../../adapters/authAdapter';
+
+import { setAccessToken } from '../auth';
+import { setUser } from '../globalData';
+
 import { baseUrlTypes } from '../../constants/api/urls';
 import { rtkBaseQuery } from './customBaseQuery';
+
+const type = baseUrlTypes.AUTH;
 
 export const authApiSlice = createApi({
   baseQuery: rtkBaseQuery,
@@ -13,12 +21,15 @@ export const authApiSlice = createApi({
         url: `/login`,
         method: 'POST',
         body: user,
-        type: baseUrlTypes.AUTH,
+        type,
       }),
       transformResponse: (response) => {
         const data = loginAdapter(response);
         if (process.env.NODE_ENV !== 'production') {
-          Cookies.set('refreshToken', data?.refreshToken);
+          Cookies.set('refreshToken', data?.refreshToken, {
+            expires: 1,
+            secure: true,
+          });
         }
 
         return data;
@@ -26,17 +37,22 @@ export const authApiSlice = createApi({
       transformErrorResponse: (response) => response.status,
     }),
     postRefresh: builder.mutation({
-      query: (user) => ({
+      query: () => ({
         url: `/refresh`,
         method: 'POST',
-        body: user,
-        type: baseUrlTypes.AUTH,
+        body: { refresh_token: Cookies.get('refreshToken') },
+        type,
       }),
       transformResponse: (response) => {
         const data = loginAdapter(response);
         if (process.env.NODE_ENV !== 'production') {
           Cookies.set('refreshToken', data?.refreshToken);
         }
+
+        const user = userAdapter(data.user);
+
+        store.dispatch(setAccessToken(data.accessToken));
+        store.dispatch(setUser(user));
 
         return data;
       },
@@ -47,14 +63,14 @@ export const authApiSlice = createApi({
         url: `/forgot-password`,
         method: 'POST',
         body: data,
-        type: baseUrlTypes.AUTH,
+        type,
       }),
     }),
     postLogout: builder.mutation({
       query: () => ({
         url: `/logout`,
         method: 'POST',
-        type: baseUrlTypes.AUTH,
+        type,
       }),
     }),
   }),

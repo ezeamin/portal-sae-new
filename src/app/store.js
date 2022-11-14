@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
 
 import { authApiSlice } from '../features/api/authApiSlice';
 import { userSlice } from '../features/api/userSlice';

@@ -30,7 +30,7 @@ const WelcomeMessage = (props) => {
           className='animate-in-right'
         >
           {user ? (
-            <>{es.WELCOME + ', ' + user?.name + ' ' + user?.lastname}</>
+            <>{user?.name + ' ' + user?.lastname}</>
           ) : (
             <Skeleton variant='rectangular' width={250} height={30} />
           )}
@@ -40,7 +40,7 @@ const WelcomeMessage = (props) => {
           color='dark'
           onClick={handleClick}
           startIcon={<HomeRounded />}
-          sx={{ width: { md: '50%' }, mt: 1 }}
+          sx={{ width: { xs: '100%', md: '150px' }, mt: 1 }}
           size='small'
           className='animate-in-right'
         >

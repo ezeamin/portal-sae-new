@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from '..';
 
 import PrivateRoute from './PrivateRoute';
-import { ModulesModal } from '../../components';
 import {
   flatAuthRoutes,
   flatMainRoutes,
@@ -21,7 +20,6 @@ const Router = () => {
 
   return (
     <BrowserRouter>
-      <ModulesModal />
       <Routes>
         
         {/* Auth routes */}

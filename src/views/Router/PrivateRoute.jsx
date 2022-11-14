@@ -45,15 +45,9 @@ const PrivateRoute = (props) => {
   }
 
   return (
-    <>
-      {accessToken ? (
-        <Suspense fallback={<LazyLoadingSpinner />}>
-          <Component {...args} />
-        </Suspense>
-      ) : (
-        <Navigate to={authRoutes.LOGIN.path} />
-      )}
-    </>
+    <Suspense fallback={<LazyLoadingSpinner />}>
+      <Component {...args} />
+    </Suspense>
   );
 };
 

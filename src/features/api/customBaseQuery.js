@@ -32,7 +32,7 @@ export const rtkBaseQuery = async (args, api, extraOptions) => {
   baseUrl = baseUrlList[type];
 
   let result = await customBaseQuery(args, api, extraOptions);
-
+    
   if (
     type !== baseUrlTypes.AUTH &&
     // result.error &&
@@ -57,7 +57,10 @@ export const rtkBaseQuery = async (args, api, extraOptions) => {
 
       //* Set refresh con cookie
       if (process.env.NODE_ENV !== 'production') {
-        Cookies.set('refreshToken', formatRes.refreshToken);
+        Cookies.set('refreshToken', formatRes.refreshToken, {
+          expires: 1,
+          secure: true,
+        });
       }
 
       api.dispatch(setAccessToken(formatRes.accessToken));

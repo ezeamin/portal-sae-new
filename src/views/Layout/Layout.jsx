@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { Footer, Navbar } from '../../components';
+import { Footer, ModulesModal, Navbar } from '../../components';
 
 const Layout = () => {
   return (
@@ -12,6 +12,9 @@ const Layout = () => {
       </div>
       
       <Footer />
+
+      {/* Modales */}
+      <ModulesModal />
     </>
   );
 };

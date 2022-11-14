@@ -9,13 +9,10 @@ import { setAccessToken } from '../../../../../features/auth';
 import { userAdapter } from '../../../../../adapters/authAdapter';
 
 import {
-  Checkbox,
-  FormControlLabel,
   TextField,
   Link as MUILink,
   InputAdornment,
   Alert,
-  Stack,
 } from '@mui/material';
 
 import { Lock, Person, Visibility, VisibilityOff } from '@mui/icons-material';
@@ -34,6 +31,8 @@ const LoginForm = () => {
   const [errorPass, setErrorPass] = useState(false);
   const [backendError, setBackendError] = useState({ show: false, msg: '' });
   const [showPass, setShowPass] = useState(false);
+
+  const [loginAttemps, setLoginAttemps] = useState(0);
 
   const [postLogin, result] = usePostLoginMutation();
 
@@ -68,6 +67,7 @@ const LoginForm = () => {
     const password = passRef.current.value;
 
     if (!checkForErrors(cuil, password)) {
+      setLoginAttemps((loginAttemps) => loginAttemps + 1);
       postLogin({ username: cuil, password });
     } else {
       /*
@@ -90,20 +90,24 @@ const LoginForm = () => {
 
       const user = userAdapter(result.data.user);
 
-      dispatch(setUser(user))
+      dispatch(setUser(user));
       dispatch(setAccessToken(result.data.accessToken));
 
       navigate(mainRoutes.MAIN.path);
     }
 
     if (result.isError) {
+      if (loginAttemps > 2) {
+        navigate(authRoutes.RESTORE_PASSWORD.path);
+      }
+
       setBackendError({
         show: true,
         msg:
           result?.error?.data?.message || 'Ocurrio un error. Revise los campos',
       });
     }
-  }, [result, navigate, dispatch]);
+  }, [result, navigate, dispatch, loginAttemps]);
 
   return (
     <form onSubmit={onSubmit}>
@@ -179,30 +183,19 @@ const LoginForm = () => {
         className='animate-in-right-short'
       />
 
-      <Stack
-        alignItems={{ xs: 'flex-start', sm: 'center' }}
-        justifyContent='space-between'
-        direction={{ xs: 'column', sm: 'row' }}
-        style={{
+      <MUILink
+        component={Link}
+        to={authRoutes.RESTORE_PASSWORD.path}
+        className='animate-in-right-short'
+        sx={{
+          animationDelay: '450ms',
+          display: 'inline-block',
           marginTop: '1rem',
           marginBottom: '1rem',
         }}
       >
-        <FormControlLabel
-          control={<Checkbox />}
-          label={es.REMEMBER_ME}
-          className='animate-in-right-short'
-          sx={{ animationDelay: '400ms' }}
-        />
-        <MUILink
-          component={Link}
-          to={authRoutes.RESTORE_PASSWORD.path}
-          className='animate-in-right-short'
-          sx={{ animationDelay: '450ms' }}
-        >
-          {es.FORGOT}
-        </MUILink>
-      </Stack>
+        {es.FORGOT}
+      </MUILink>
 
       <RoundedButton
         color='primary'
