@@ -24,24 +24,33 @@ export const modulesAdapter = (modules) => {
 };
 
 export const modulesAdapterIds = (modules) => {
-  return modules.map((module) => {
-    switch (module) {
-      case 'writings':
-        return modulesRoutes.ESCRITOS.MAIN.id;
-      case 'payments':
-        return modulesRoutes.PAGOS.MAIN.id;
-      case 'proceedings-viewer':
-        return modulesRoutes.CONSULTA_EXPEDIENTES.MAIN.id;
-      case 'consultations':
-        return modulesRoutes.UNIDADES.MAIN.id;
-      case 'jurisprudence':
-        return modulesRoutes.JURISPRUDENCIA.MAIN.id;
-      case 'proceedings-creation':
-        return modulesRoutes.INICIO_EXPEDIENTES.MAIN.id;
-      case 'oga':
-        return modulesRoutes.OGA.MAIN.id;
-      default:
-        return 0;
-    }
-  });
+  return modules
+    .map((module) => {
+      switch (module) {
+        case 'writings':
+          return Object.values(modulesRoutes.ESCRITOS).map((page) => page?.id);
+        case 'payments':
+          return Object.values(modulesRoutes.PAGOS).map((page) => page?.id);
+        case 'proceedings-viewer':
+          return Object.values(modulesRoutes.CONSULTA_EXPEDIENTES).map(
+            (page) => page?.id
+          );
+        case 'consultations':
+          return Object.values(modulesRoutes.UNIDADES).map((page) => page?.id);
+        case 'jurisprudence':
+          return Object.values(modulesRoutes.JURISPRUDENCIA).map(
+            (page) => page?.id
+          );
+        case 'proceedings-creation':
+          return Object.values(modulesRoutes.INICIO_EXPEDIENTES).map(
+            (page) => page?.id
+          );
+        case 'oga':
+          return Object.values(modulesRoutes.OGA).map((page) => page?.id);
+        default:
+          return 0;
+      }
+    })
+    .flat()
+    .filter((ids) => ids); // eliminar undefined
 };

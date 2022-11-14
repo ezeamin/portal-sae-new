@@ -32,7 +32,14 @@ export const authApiSlice = createApi({
         body: user,
         type: baseUrlTypes.AUTH,
       }),
-      transformResponse: (response) => loginAdapter(response),
+      transformResponse: (response) => {
+        const data = loginAdapter(response);
+        if (process.env.NODE_ENV !== 'production') {
+          Cookies.set('refreshToken', data?.refreshToken);
+        }
+
+        return data;
+      },
       transformErrorResponse: (response) => response.status,
     }),
     postRestorePassword: builder.mutation({

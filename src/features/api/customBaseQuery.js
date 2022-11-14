@@ -1,7 +1,5 @@
 import Cookies from 'js-cookie';
 
-import { store } from '../../app/store';
-
 import { setAccessToken } from '../auth';
 import { setUser } from '../globalData';
 
@@ -24,7 +22,7 @@ const customBaseQuery = async (args, api, extraOptions) =>
         headers.set('Authorization', `Bearer ${auth.accessToken}`);
       }
       headers.set('Content-Type', 'application/json');
-      
+
       return headers;
     },
   })(args, api, extraOptions);
@@ -37,8 +35,8 @@ export const rtkBaseQuery = async (args, api, extraOptions) => {
 
   if (
     type !== baseUrlTypes.AUTH &&
-    result.error &&
-    result.error.status === 401
+    // result.error &&
+    result.error?.status === 401
   ) {
     console.log('Token no valido');
 
@@ -72,7 +70,6 @@ export const rtkBaseQuery = async (args, api, extraOptions) => {
       Cookies.remove('refreshToken');
     }
   }
-
 
   return result;
 };
