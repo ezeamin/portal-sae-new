@@ -144,6 +144,36 @@ const es = {
     DOWNLOAD: 'Descargar',
     FORMAT: 'Formato',
   },
+  MODULES: {
+    WRITINGS: {
+      NAME: 'Ingreso escritos',
+      DESC: 'Esto es un placeholder',
+    },
+    PROCEEDINGS: {
+      NAME: 'Consulta expedientes',
+      DESC: 'Esto es un placeholder',
+    },
+    PAYMENTS: {
+      NAME: 'Pagos judiciales',
+      DESC: 'Esto es un placeholder',
+    },
+    UNITS: {
+      NAME: 'Consulta unidades',
+      DESC: 'Esto es un placeholder',
+    },
+    JURISPRUDENCE: {
+      NAME: 'Jurisprudencia',
+      DESC: 'Esto es un placeholder',
+    },
+    NEW_PROCEEDINGS: {
+      NAME: 'Inicio expedientes',
+      DESC: 'Esto es un placeholder',
+    },
+    OGA: {
+      NAME: 'OGA',
+      DESC: 'Esto es un placeholder',
+    },
+  },
   STATE: {
     IN_PROGESS: 'En Curso',
     INCOMING: 'Nueva',

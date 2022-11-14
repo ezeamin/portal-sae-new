@@ -5,21 +5,31 @@ import { Tooltip } from '@mui/material';
 
 import { ButtonStyled } from './styled';
 
-import { setWritingsModalSearch } from '../../../features/modal/genericModalSlice';
+import { actionButtons } from '../../../constants/actionButtons';
+
+import { setModal } from '../../../features/modal/genericModalSlice';
+
+import es from '../../../lang/es';
 
 const ActionButton = (props) => {
   const { icon, name, color, path, delay, modal, moduleInfo } = props;
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const handleClick = () => {
-    if ( modal ) {
+    if (modal) {
       switch (moduleInfo) {
-        case 'Ingreso escritos search':
-          dispatch(setWritingsModalSearch({searchWritings: true}))
+        case `${es.MODULES.WRITINGS.NAME + actionButtons.SEARCH.name}`:
+          dispatch(
+            setModal({
+              modal: true,
+              name: es.MODULES.WRITINGS.NAME,
+              type: actionButtons.SEARCH.name,
+            })
+          );
           break;
-      
+
         default:
           break;
       }

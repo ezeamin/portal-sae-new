@@ -1,19 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  searchWritings: false,
+  value: {
+    modal: false,
+    name: '',
+    type: '',
+  }
 };
 
 const genericModalSlice = createSlice({
   name: 'modalState',
   initialState,
   reducers: {
-    setWritingsModalSearch: (state, action) => {
-      state.searchWritings = action.payload.searchWritings;
+    setModal: (state, action) => {
+      state.value = action.payload;
     },
   },
 });
 
-export const { setWritingsModalSearch } = genericModalSlice.actions;
+export const { setModal } = genericModalSlice.actions;
 
 export default genericModalSlice.reducer;
