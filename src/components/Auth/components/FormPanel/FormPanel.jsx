@@ -1,4 +1,7 @@
-import { Container } from '@mui/system';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Container, IconButton, Tooltip } from '@mui/material';
+import { DarkModeRounded, LightModeRounded } from '@mui/icons-material';
 
 import { AuthPaper } from './styled';
 
@@ -8,8 +11,16 @@ import Login from '../Login/Login';
 import ResetPassword from '../ResetPassword/ResetPassword';
 import RestorePassword from '../RestorePassword/RestorePassword';
 
+import themes from '../../../../constants/themes';
+import { setTheme } from '../../../../features/globalData';
+
+import es from '../../../../lang/es';
+
 const FormPanel = (props) => {
   const { view } = props;
+
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.globalData.theme);
 
   // Router propio, para mostrar el componente correspondiente
   let renderedComp;
@@ -34,8 +45,26 @@ const FormPanel = (props) => {
     }
   }
 
+  const handleChangeTheme = () => {
+    const newValue = theme === themes.LIGHT ? themes.DARK : themes.LIGHT;
+
+    dispatch(setTheme(newValue));
+  };
+
   return (
-    <AuthPaper square sx={{ backgroundColor: 'whiteDarkMode.main' }}>
+    <AuthPaper
+      square
+      sx={{ backgroundColor: 'whiteDarkMode.main', position: 'relative' }}
+    >
+      <Tooltip title={es.CHANGE_THEME}>
+        <IconButton
+          onClick={handleChangeTheme}
+          sx={{ position: 'absolute', right: '0.5rem', top: '0.5rem' }}
+        >
+          {theme === themes.LIGHT ? <DarkModeRounded /> : <LightModeRounded />}
+        </IconButton>
+      </Tooltip>
+
       <Container
         sx={{
           paddingY: '2.5rem',

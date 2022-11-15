@@ -25,8 +25,11 @@ import {
 import es from '../../../../../lang/es';
 
 import { RoundedButton } from '../../../../../styled';
+import { memo } from 'react';
 
-const LoginForm = () => {
+const LoginForm = memo((props) => {
+  const { handleNewUser } = props;
+
   const [errorCuil, setErrorCuil] = useState(false);
   const [errorPass, setErrorPass] = useState(false);
   const [backendError, setBackendError] = useState({ show: false, msg: '' });
@@ -69,15 +72,6 @@ const LoginForm = () => {
     if (!checkForErrors(cuil, password)) {
       setLoginAttemps((loginAttemps) => loginAttemps + 1);
       postLogin({ username: cuil, password });
-    } else {
-      /*
-      ! 8. Ingreso Fallido:
-      !   a. Si el usuario o la contraseña es incorrecta no debe permitir el ingreso al portal y presentar el mensaje: “Estas credenciales no coinciden con nuestros registros.” 
-      !   b. Al tercer intento fallido redireccionar al formulario para solicitar blanqueo de clave.
-    
-      manejar con un estado la cantidad de intentos
-      consultar si en el back hay un atributo indicando que esta bloqueado
-    */
     }
   };
 
@@ -93,7 +87,11 @@ const LoginForm = () => {
       dispatch(setUser(user));
       dispatch(setAccessToken(result.data.accessToken));
 
-      navigate(mainRoutes.MAIN.path);
+      if (user.newUser) {
+        // Mostrar TyC y cambiar contraseña
+        handleNewUser();
+      } 
+      else navigate(mainRoutes.MAIN.path);
     }
 
     if (result.isError) {
@@ -107,7 +105,7 @@ const LoginForm = () => {
           result?.error?.data?.message || 'Ocurrio un error. Revise los campos',
       });
     }
-  }, [result, navigate, dispatch, loginAttemps]);
+  }, [result, navigate, dispatch, loginAttemps, handleNewUser]);
 
   return (
     <form onSubmit={onSubmit}>
@@ -208,6 +206,6 @@ const LoginForm = () => {
       </RoundedButton>
     </form>
   );
-};
+});
 
 export default LoginForm;

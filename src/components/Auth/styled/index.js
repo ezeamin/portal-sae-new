@@ -49,16 +49,3 @@ export const IframeStyled = styled.iframe`
   align-self: stretch;
   height: 100%;
 `;
-
-export const ButtonWithIconStyled = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  p {
-    margin-left: 7px;
-    padding-top: 1px;
-  }
-`;

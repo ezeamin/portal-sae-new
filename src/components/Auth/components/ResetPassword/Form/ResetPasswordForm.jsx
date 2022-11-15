@@ -3,16 +3,12 @@ import { useRef, useState } from 'react';
 import { InputAdornment, Stack, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-import {
-  validateEmail,
-  validatePassword,
-  validatePasswordNumMinMax,
-} from '../../../../../helpers/validators';
+import { usePutTermsAndConditionsMutation } from '../../../../../features/api/userSlice';
 
 import es from '../../../../../lang/es';
-import validations from '../../../../../lang/validationsMsg';
 
 import { RoundedButton } from '../../../../../styled';
+import { validateFields } from '../helpers/validators';
 
 const errorsInitialState = {
   email: {
@@ -38,6 +34,8 @@ const ResetPasswordForm = () => {
   const mailRef = useRef();
   const passwordRef = useRef();
 
+  const [putTyC, response] = usePutTermsAndConditionsMutation();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -46,108 +44,28 @@ const ResetPasswordForm = () => {
     const password = passwordRef.current.value;
     const confirmPassword = confirmPasswordRef.current.value;
 
-    if (!validateEmail(email)) {
-      setErrors({
-        email: {
-          error: true,
-          msg: es.NOT_VALID_EMAIL,
-        },
-        password: errorsInitialState.password,
-        confirmPassword: errorsInitialState.confirmPassword,
-      });
+    if (
+      validateFields(
+        email,
+        password,
+        confirmPassword,
+        setErrors,
+        setLoading,
+        errorsInitialState
+      )
+    ) {
+      // cambiar contraseña
+      console.log('BLANQUEO PASS OK');
+
+      setErrors(errorsInitialState);
       setLoading(false);
-      return;
+
+      // Mandar al BE
+      putTyC();
+      // TODO: Enviar contraseña al BE
+
+      // redirect to home
     }
-
-    /* 
-        valida que tenga al menos 1 letra mayúscula, 1 letra
-        minuscula y 1 numero.
-      */
-    if (!validatePasswordNumMinMax(password)) {
-      setErrors({
-        email: errorsInitialState.email,
-        password: {
-          error: true,
-          msg: validations.PASS_VALIDATION_COMPLETE,
-        },
-        confirmPassword: errorsInitialState.confirmPassword,
-      });
-      setLoading(false);
-      return;
-    }
-
-    /* 
-      valida que las contraseñas tengan una cantidad minima
-      de 8 caracteres y maxima de 20 caracteres
-    */
-    if (!validatePassword(password)) {
-      setErrors({
-        email: errorsInitialState.email,
-        password: {
-          error: true,
-          msg: validations.PASSWORD_LENGTH,
-        },
-        confirmPassword: errorsInitialState.confirmPassword,
-      });
-      setLoading(false);
-      return;
-    }
-    if (!validatePassword(confirmPassword)) {
-      setErrors({
-        email: errorsInitialState.email,
-        password: errorsInitialState.password,
-        confirmPassword: {
-          error: true,
-          msg: validations.PASSWORD_LENGTH,
-        },
-      });
-      setLoading(false);
-      return;
-    }
-
-    // TODO: cambiar esta validacion - se la hace contra el back
-    /* 
-      valida que la contraseña nueva sea diferente a la
-      contraseña actual.
-    */
-    // if (password.toLowerCase() !== confirmPassword.toLowerCase()) {
-    //   setErrors({
-    //     email: errorsInitialState.email,
-    //     password: {
-    //       error: true,
-    //       msg: validations.NEW_PASS_DIFFERENT_FROM_THE_OLD_ONE,
-    //     },
-    //     confirmPassword: errorsInitialState.confirmPassword,
-    //   });
-    //   setLoading(false);
-    //   return;
-    // }
-
-    /* valida que la contraseña nueva y la validacion 
-      sean iguales.
-      */
-    if (password.toLowerCase() !== confirmPassword.toLowerCase()) {
-      setErrors({
-        email: errorsInitialState.email,
-        password: {
-          error: true,
-        },
-        confirmPassword: {
-          error: true,
-          msg: validations.NEW_PASS_EQUAL_TO_CONFIRM_PASS,
-        },
-      });
-      setLoading(false);
-      return;
-    }
-
-    // cambiar contraseña
-    console.log('BLANQUEO PASS OK');
-
-    setErrors(errorsInitialState);
-    setLoading(false);
-
-    // redirect to login
   };
 
   return (

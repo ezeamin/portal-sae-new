@@ -13,18 +13,20 @@ import {
 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-import {
-  ButtonWithIconStyled,
-  modalStyled,
-  PDFViewerStyled,
-} from './styled';
+import { logoutAction } from '../../../../../actions/logout';
+
+import { modalStyled, PDFViewerStyled } from '../../../styled';
 
 import PDFViewer from '../PDFViewer/PDFViewer';
+import { useNavigate } from 'react-router-dom';
+import { authRoutes } from '../../../../../constants/Routing/routes';
 
 const TermsAndConditionsModal = () => {
   const [checked, setChecked] = useState(false);
   const [disabledButton, setDisabledButton] = useState(true);
   const [open, setOpen] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (checked) setDisabledButton(false);
@@ -34,40 +36,36 @@ const TermsAndConditionsModal = () => {
   //   const handleOpen = () => setOpen(true);
 
   const handleClickBtnAceptar = (e) => {
-    // TODO: cambiar el estado en base de datos a chequeado
     e.preventDefault();
 
-    console.log("Aceptar");
     // cerrar el modal
     checked && setOpen(false);
+
+    // Crear contraseña (eliminar la temporal)
+    navigate(authRoutes.RESET_PASSWORD.path);
   };
 
   const handleClose = () => {
     setOpen(false);
+    logoutAction();
   };
 
   return (
-    <Modal
-      aria-describedby='modal-modal-description'
-      aria-labelledby='modal-modal-title'
-      onClose={handleClose}
-      open={open}
-    >
+    <Modal onClose={handleClose} open={open}>
       <Box sx={modalStyled}>
         <Stack
           alignItems={{
             xs: 'center',
-            // sm: 'center',
             md: 'stretch',
           }}
           direction='column'
-          justifyContent='space-evenly'
+          justifyContent='space-between'
           spacing={1}
           sx={{
             height: '100%',
           }}
         >
-          <Typography sx={{ fontSize: { xs: '1rem', md: '1.1rem' } }}>
+          <Typography sx={{ fontSize: '1.1rem' }}>
             Por favor lea y acepte los términos y condiciones.
           </Typography>
 
@@ -98,7 +96,7 @@ const TermsAndConditionsModal = () => {
               justifyContent='flex-end'
             >
               <Button
-                onClick={() => setOpen(false)}
+                onClick={handleClose}
                 type='button'
                 sx={{
                   paddingRight: '2rem',
@@ -115,13 +113,12 @@ const TermsAndConditionsModal = () => {
                 sx={{
                   ml: { md: 2 },
                   mt: { xs: 2, md: 0 },
+                  width: { xs: '100%', md: '160px' },
                 }}
                 variant='contained'
+                startIcon={<CheckCircleIcon />}
               >
-                <ButtonWithIconStyled>
-                  <CheckCircleIcon fontSize='small' />
-                  <p>Aceptar</p>
-                </ButtonWithIconStyled>
+                Aceptar
               </Button>
             </Stack>
           </form>

@@ -20,7 +20,7 @@ export const modulesAdapter = (modules) => {
       default:
         return '';
     }
-  });
+  }).filter(mod => mod !== '');
 };
 
 export const modulesAdapterIds = (modules) => {

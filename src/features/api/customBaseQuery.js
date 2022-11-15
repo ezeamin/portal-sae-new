@@ -21,7 +21,9 @@ const customBaseQuery = async (args, api, extraOptions) =>
       if (auth.accessToken) {
         headers.set('Authorization', `Bearer ${auth.accessToken}`);
       }
-      headers.set('Content-Type', 'application/json');
+      if (args.contentType) {
+        headers.set('Content-Type', args.contentType);
+      } else headers.set('Content-Type', 'application/json');
 
       return headers;
     },
@@ -32,7 +34,7 @@ export const rtkBaseQuery = async (args, api, extraOptions) => {
   baseUrl = baseUrlList[type];
 
   let result = await customBaseQuery(args, api, extraOptions);
-    
+
   if (
     type !== baseUrlTypes.AUTH &&
     // result.error &&

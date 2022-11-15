@@ -3,6 +3,8 @@ import { createApi } from '@reduxjs/toolkit/dist/query/react';
 import { baseUrlTypes } from '../../constants/api/urls';
 import { rtkBaseQuery } from './customBaseQuery';
 
+const type = baseUrlTypes.USERS;
+
 export const userSlice = createApi({
   baseQuery: rtkBaseQuery,
   endpoints: (builder) => ({
@@ -11,7 +13,7 @@ export const userSlice = createApi({
         url: `/update-user`,
         method: 'PUT',
         body: user,
-        type: baseUrlTypes.USERS,
+        type,
       }),
     }),
     putUpdatePassword: builder.mutation({
@@ -19,10 +21,30 @@ export const userSlice = createApi({
         url: `/update-password`,
         method: 'PUT',
         body: data,
-        type: baseUrlTypes.USERS,
+        type,
+      }),
+    }),
+    putTermsAndConditions: builder.mutation({
+      query: () => ({
+        url: `/accept-terms`,
+        method: 'PUT',
+        body: {},
+        type,
+      }),
+    }),
+    getTermsPdf: builder.query({
+      query: () => ({
+        url: `/terms-and-conditions`,
+        method: 'GET',
+        type,
       }),
     }),
   }),
 });
 
-export const { usePutUpdateUserMutation, usePutUpdatePasswordMutation } = userSlice;
+export const {
+  usePutUpdateUserMutation,
+  usePutUpdatePasswordMutation,
+  usePutTermsAndConditionsMutation,
+  useGetTermsPdfQuery,
+} = userSlice;

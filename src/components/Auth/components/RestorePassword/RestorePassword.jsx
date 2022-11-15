@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Alert, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 
 import RestorePasswordForm from './Form/RestorePasswordForm';
 
@@ -9,6 +9,7 @@ import { authRoutes } from '../../../../constants/Routing/routes';
 
 import es from '../../../../lang/es';
 
+import CustomAlert from '../../../Custom/CustomAlert/CustomAlert';
 import { FormSection, H2AuthPanel } from '../../styled';
 import { RoundedButton } from '../../../../styled';
 
@@ -26,7 +27,7 @@ const RestorePassword = () => {
   return (
     <FormSection>
       <H2AuthPanel className='animate-in-right-short'>{es.RESTORE_PASSWORD}</H2AuthPanel>
-      <Alert severity='info' className='animate-in-right-short' sx={{animationDelay: "150ms"}}>{es.RESTORE_PASSWORD_MSG}</Alert>
+      <CustomAlert severity='info' className='animate-in-right-short' sx={{animationDelay: "150ms"}}>{es.RESTORE_PASSWORD_MSG}</CustomAlert>
       <RestorePasswordForm />
       <Stack justifyContent={'center'}>
         <RoundedButton

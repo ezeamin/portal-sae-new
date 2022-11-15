@@ -1,32 +1,29 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-import { Alert, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 
 import ResetPasswordForm from './Form/ResetPasswordForm';
-
-import { authRoutes } from '../../../../constants/Routing/routes';
 
 import es from '../../../../lang/es';
 
 import { FormSection, H2AuthPanel } from '../../styled';
+import CustomAlert from '../../../Custom/CustomAlert/CustomAlert';
 import { RoundedButton } from '../../../../styled';
+import { logoutAction } from '../../../../actions/logout';
 
 const ResetPassword = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     document.title = `${es.RESET_PASSWORD} | ${es.PORTAL}`;
   }, []);
 
   const redirectHome = () => {
-    navigate(authRoutes.LOGIN.path);
+    logoutAction();
   };
 
   return (
     <FormSection>
-        <H2AuthPanel>{es.RESTORE_PASSWORD}</H2AuthPanel>
-        <Alert severity='info'>{es.RESET_PASSWORD_MSG}</Alert>
+      <H2AuthPanel>{es.RESTORE_PASSWORD}</H2AuthPanel>
+      <CustomAlert severity='info'>{es.RESET_PASSWORD_MSG}</CustomAlert>
       <ResetPasswordForm />
       <Stack justifyContent={'center'}>
         <RoundedButton

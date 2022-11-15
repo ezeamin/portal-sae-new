@@ -15,6 +15,7 @@ export const userAdapter = (APIInfo) => {
     email: APIInfo.email,
     number: APIInfo.username,
     activeModules: APIInfo.modules || [],
+    newUser: !APIInfo.accepted_terms,
     notifications: 2, // TODO: Traer del back
   };
 

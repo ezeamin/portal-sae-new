@@ -17,7 +17,6 @@ const PrivateRoute = (props) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  // const accessToken = useSelector((state) => state.auth.accessToken);
 
   const { modulesIds } = useAvailableModules();
 
@@ -34,16 +33,6 @@ const PrivateRoute = (props) => {
   }, [location, dispatch, navigate, auth, modulesIds, routeId]);
 
   // Suspense se usa para los componentes de carga lazy
-
-  if (auth) {
-    // rutas de login, etc
-    return (
-      <Suspense fallback={<LazyLoadingSpinner />}>
-        <Component {...args} />
-      </Suspense>
-    );
-  }
-
   return (
     <Suspense fallback={<LazyLoadingSpinner />}>
       <Component {...args} />

@@ -1,16 +1,17 @@
 import { useEffect, useLayoutEffect } from 'react';
+import Cookies from 'js-cookie';
 
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
 import { useDispatch } from 'react-redux';
-import { setIsPortrait, /*setTheme*/ } from './features/globalData';
+import { setIsPortrait, setTheme } from './features/globalData';
 
 import { Router } from './views';
 
 import { usePostRefreshMutation } from './features/api/authApiSlice';
 
-// import { themes } from './constants/constants';
+import themes from './constants/themes';
 import useTheme from './hooks/useTheme';
 import { authRoutes } from './constants/Routing/routes';
 
@@ -21,19 +22,11 @@ const App = () => {
 
   const [postRefresh, response] = usePostRefreshMutation();
 
-  // Resize & theme detection
+  // Resize detection
   useEffect(() => {
     window.addEventListener('resize', () => {
       dispatch(setIsPortrait(window.innerWidth < 600));
     });
-
-    // Theme detection
-    if (
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
-      // dispatch(setTheme(themes.DARK));
-    }
 
     return () => {
       window.removeEventListener('resize', () => {});
@@ -42,11 +35,19 @@ const App = () => {
 
   // No access token (refresh screen)
   useLayoutEffect(() => {
-    postRefresh();
-  }, [postRefresh]);
+    if (Cookies.get('refreshToken')) postRefresh();
+
+    // Theme detection
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) {
+      dispatch(setTheme(themes.DARK));
+    }
+  }, [postRefresh, dispatch]);
 
   useEffect(() => {
-    if (response.isError && !window.location.href.includes("auth")) {
+    if (response.isError && !window.location.href.includes('auth')) {
       window.location.replace(authRoutes.LOGIN.path);
     }
   }, [response]);

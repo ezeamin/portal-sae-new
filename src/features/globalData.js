@@ -12,7 +12,8 @@ const initialState = {
     email: '',
     number: 0,
     notifications: 0,
-    activeModules: []
+    activeModules: [],
+    newUser: false,
   },
   isPortrait: defaultPortraitValue,
   theme: themes.LIGHT,

@@ -21,7 +21,7 @@ import { actionButtons } from '../actionButtons';
 import loginViews from '../views/loginViews';
 import viewList from '../views/viewList';
 
-import logout from '../../actions/logout';
+import { logoutSwal } from '../../actions/logout';
 
 import es from '../../lang/es';
 
@@ -366,7 +366,7 @@ export const profileRoutes = {
     color: 'PROFILE_PASSWORD',
   },
   LOGOUT: {
-    action: logout,
+    action: logoutSwal,
     description: 'Salir de la sesión actual',
     id: 1003,
     name: es.LOGOUT,

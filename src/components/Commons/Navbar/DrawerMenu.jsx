@@ -1,6 +1,6 @@
 import { Container, Divider, Drawer, Stack } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import logout from '../../../actions/logout';
+import {logoutSwal} from '../../../actions/logout';
 import { setMainDrawerOpened } from '../../../features/surfaces';
 import es from '../../../lang/es';
 
@@ -22,7 +22,7 @@ const DrawerMenu = (props) => {
 
   const handleLogout = () => {
     dispatch(setMainDrawerOpened(false));
-    logout();
+    logoutSwal();
   };
 
   return (

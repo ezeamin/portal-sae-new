@@ -1,5 +1,5 @@
-import { useEffect,useLayoutEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { Box } from '@mui/material';
@@ -8,20 +8,17 @@ import { Background, FormPanel } from '../../components';
 
 import { mainRoutes } from '../../constants/Routing/routes';
 
-import { setTheme } from '../../features/globalData';
-import themes from '../../constants/themes';
-
 const minSize = 900;
 
 const MainAuth = (props) => {
   const { view } = props;
 
   const auth = useSelector((state) => state.auth);
+  const user = useSelector((state) => state.globalData.user);
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   // Resize handling: para mostrar u ocultar el fondo
   useEffect(() => {
@@ -29,15 +26,15 @@ const MainAuth = (props) => {
       setScreenWidth(window.innerWidth);
     };
 
-    if (auth.accessToken) navigate(mainRoutes.MAIN.path);
+    // no mostrar rutas de autenticacion cuando
+    // el usuario esté logueado (auth.accessToken), excepto
+    // cuando sea nuevo y esté firmando TyC
+    if (auth.accessToken && !user?.newUser)
+      navigate(mainRoutes.MAIN.path);
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [navigate, auth.accessToken]);
-
-  useLayoutEffect(() => {
-    dispatch(setTheme(themes.LIGHT));
-  }, [dispatch]);
+  }, [navigate, auth.accessToken, user?.newUser]);
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex' }}>

@@ -4,6 +4,8 @@ import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import ErrorPdfMessage from './Messages/ErrorPdfMessage';
 import LoadingPdfMessage from './Messages/LoadingPdfMessage';
 
+const fileUrl = process.env.REACT_APP_USERS_BASE_URL + '/terms-and-conditions';
+
 const PDFViewer = () => {
   const pageSize = window.innerWidth;
 
@@ -26,12 +28,10 @@ const PDFViewer = () => {
 
   return (
     <Document
-      file=
-      {'./static/sample.pdf'}
-      // {{ url: 'https://www.adobe.com/support/products/enterprise/knowledgecenter/media/c4611_sample_explain.pdf' }}
-      /* { url: 'http://example.com/sample.pdf', httpHeaders: { 'X-CustomHeader': '40359820958024350238508234' }, withCredentials: true } */
-      loading={LoadingPdfMessage} // mensaje mientras se carga el pdf
-      noData={<div>No PDF file specified.</div>} // mensaje en caso que no exista data
+      file={fileUrl}
+      loading={LoadingPdfMessage}
+      noData={ErrorPdfMessage}
+      error={ErrorPdfMessage}
       onLoadError={ErrorPdfMessage}
       onLoadSuccess={onDocumentLoadSuccess}
       onSourceError={ErrorPdfMessage}
@@ -39,7 +39,7 @@ const PDFViewer = () => {
       {array.map((__page, pageNumber) => (
         <div key={pageNumber} style={{ userSelect: 'none' }}>
           <Page
-            loading={'Cargando PDF MPP'}
+            loading={LoadingPdfMessage}
             pageIndex={pageNumber}
             width={width}
           />
