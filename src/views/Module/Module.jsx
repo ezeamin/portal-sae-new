@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import {
-  Container,
-  Dialog,
-} from '@mui/material';
-import { CustomAlert, BreadcrumbsList } from '../../components';
+import { Container, Dialog } from '@mui/material';
 
-import { flatModulesRoutes } from '../../helpers/flatRoutes';
+import { CustomAlert, BreadcrumbsList } from '../../components';
+import ModuleHeader from '../../components/Modules/Extra/ModuleHeader/ModuleHeader';
+
 import { actionButtons } from '../../constants/actionButtons';
 
-import ModuleHeader from '../../components/Modules/Extra/ModuleHeader/ModuleHeader';
+import { flatModulesRoutes } from '../../helpers/flatRoutes';
 
 const tempButtons = Object.values(actionButtons);
 
@@ -19,17 +17,18 @@ const Module = () => {
 
   const modulesList = flatModulesRoutes();
 
-  const [title, setTitle] = useState('');
-  const [subtitle, setSubtitle] = useState('');
-  const [component, setComponent] = useState(null);
   const [buttons, setButtons] = useState([]);
-  const [positions, setPositions] = useState([]);
+  const [component, setComponent] = useState(null);
   const [moduleHelp, setModuleHelp] = useState('');
+  const [positions, setPositions] = useState([]);
+  const [subtitle, setSubtitle] = useState('');
+  const [title, setTitle] = useState('');
 
-  const [modalOpened, setModalOpened] = useState(false);
+
+  const [infoModalOpened, setInfoModalOpened] = useState(false);
 
   const handleModal = (condition) => {
-    setModalOpened(condition);
+    setInfoModalOpened(condition);
   };
 
   useEffect(() => {
@@ -49,11 +48,16 @@ const Module = () => {
   return (
     <Container sx={{ mb: 10, mt: 12, overflowX: 'hidden' }}>
       <BreadcrumbsList positions={positions} />
-      <ModuleHeader title={title} subtitle={subtitle} buttons={buttons} handleModal={handleModal}/>
+      <ModuleHeader
+        buttons={buttons}
+        handleModal={handleModal}
+        subtitle={subtitle}
+        title={title}
+      />
 
       {component}
 
-      <Dialog open={modalOpened} onClose={()=>handleModal(false)}>
+      <Dialog open={infoModalOpened} onClose={() => handleModal(false)}>
         <CustomAlert severity='info'>{moduleHelp}</CustomAlert>
       </Dialog>
     </Container>

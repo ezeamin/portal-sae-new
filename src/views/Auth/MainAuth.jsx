@@ -1,11 +1,13 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect,useLayoutEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { Box } from '@mui/material';
 
 import { Background, FormPanel } from '../../components';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { mainRoutes } from '../../constants/Routing/routes';
-import { useNavigate } from 'react-router-dom';
+
 import { setTheme } from '../../features/globalData';
 import themes from '../../constants/themes';
 

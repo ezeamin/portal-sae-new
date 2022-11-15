@@ -1,8 +1,9 @@
 import { Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { /*Navigate,*/ useLocation, useNavigate } from 'react-router-dom';
+
 import { ids } from '../../constants/Routing/ids';
-import { authRoutes, mainRoutes } from '../../constants/Routing/routes';
+import { /*authRoutes,*/ mainRoutes } from '../../constants/Routing/routes';
 
 import { setCurrentPage } from '../../features/globalData';
 
@@ -13,11 +14,10 @@ import LazyLoadingSpinner from './Loading/LazyLoadingSpinner';
 const PrivateRoute = (props) => {
   const { component: Component, routeId, args, auth } = props;
 
+  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-
-  const dispatch = useDispatch();
-  const accessToken = useSelector((state) => state.auth.accessToken);
+  // const accessToken = useSelector((state) => state.auth.accessToken);
 
   const { modulesIds } = useAvailableModules();
 

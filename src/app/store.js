@@ -1,5 +1,4 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
 
 import { authApiSlice } from '../features/api/authApiSlice';
 import { userSlice } from '../features/api/userSlice';
@@ -7,9 +6,11 @@ import { writingsSlice } from '../features/api/writingsSlice';
 
 import authSlice from '../features/auth';
 import globalDataSlice from '../features/globalData';
+import genericModalSlice from '../features/modal/genericModalSlice';
 import surfacesSlice from '../features/surfaces';
 
 const rootReducer = combineReducers({
+  genericModal: genericModalSlice,
   globalData: globalDataSlice,
   surfaces: surfacesSlice,
   auth: authSlice,

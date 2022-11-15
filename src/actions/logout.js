@@ -1,13 +1,14 @@
-import { baseUrlList } from '../constants/api/urls';
-import customSwal from '../helpers/customSwal';
-
 import Cookies from 'js-cookie';
 
 import { store } from '../app/store';
-import { setUser } from '../features/globalData';
-import { setAccessToken } from '../features/auth';
 
+import { baseUrlList } from '../constants/api/urls';
 import { authRoutes } from '../constants/Routing/routes';
+
+import { setAccessToken } from '../features/auth';
+import { setUser } from '../features/globalData';
+
+import customSwal from '../helpers/customSwal';
 
 const logout = () => {
   customSwal({
