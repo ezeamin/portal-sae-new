@@ -46,7 +46,7 @@ const App = () => {
   }, [postRefresh]);
 
   useEffect(() => {
-    if (response.isError) {
+    if (response.isError && !window.location.href.includes("auth")) {
       window.location.replace(authRoutes.LOGIN.path);
     }
   }, [response]);

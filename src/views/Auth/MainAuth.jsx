@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 import { Box } from '@mui/material';
 
 import { Background, FormPanel } from '../../components';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { mainRoutes } from '../../constants/Routing/routes';
 import { useNavigate } from 'react-router-dom';
+import { setTheme } from '../../features/globalData';
+import themes from '../../constants/themes';
 
 const minSize = 900;
 
@@ -17,6 +19,7 @@ const MainAuth = (props) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // Resize handling: para mostrar u ocultar el fondo
   useEffect(() => {
@@ -29,6 +32,10 @@ const MainAuth = (props) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [navigate, auth.accessToken]);
+
+  useLayoutEffect(() => {
+    dispatch(setTheme(themes.LIGHT));
+  }, [dispatch]);
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex' }}>
