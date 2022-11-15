@@ -4,7 +4,7 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
 import { useDispatch } from 'react-redux';
-import { setIsPortrait, setTheme } from './features/globalData';
+import { setIsPortrait, /*setTheme*/ } from './features/globalData';
 
 import { Router } from './views';
 

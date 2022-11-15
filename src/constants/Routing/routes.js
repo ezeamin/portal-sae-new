@@ -16,11 +16,13 @@ import {
 
 import { paths } from './paths';
 
-import logout from '../../actions/logout';
+import { actionButtons } from '../actionButtons';
 
 import loginViews from '../views/loginViews';
 import viewList from '../views/viewList';
-import { actionButtons } from '../actionButtons';
+
+import logout from '../../actions/logout';
+
 import es from '../../lang/es';
 
 const Home = lazy(() => import('../../views/Home/Home'));
@@ -115,7 +117,14 @@ export const modulesRoutes = {
       path: paths.ESCRITOS.MAIN,
       routeInfo: {
         component: IngresoEscritos,
-        buttons: [actionButtons.SEARCH, actionButtons.NEW, actionButtons.CLOSE],
+        buttons: [
+          {
+            ...actionButtons.SEARCH,
+            moduleInfo: es.MODULES.WRITINGS.NAME + actionButtons.SEARCH.name,
+          },
+          actionButtons.NEW,
+          actionButtons.CLOSE,
+        ],
         description: 'Listado',
         positions: [
           {

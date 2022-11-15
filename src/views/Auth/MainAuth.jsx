@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { Box } from '@mui/material';
 
 import { Background, FormPanel } from '../../components';
-import { useSelector } from 'react-redux';
+
 import { mainRoutes } from '../../constants/Routing/routes';
-import { useNavigate } from 'react-router-dom';
 
 const minSize = 900;
 
