@@ -29,25 +29,7 @@ export const validateFields = (
   }
 
   /* 
-    valida que tenga al menos 1 letra mayúscula, 1 letra
-    minuscula y 1 numero.
-  */
-  if (!validatePasswordNumMinMax(password)) {
-    setErrors({
-      email: errorsInitialState.email,
-      password: {
-        error: true,
-        msg: validations.PASS_VALIDATION_COMPLETE,
-      },
-      confirmPassword: errorsInitialState.confirmPassword,
-    });
-    setLoading(false);
-    return false;
-  }
-
-  /* 
-    valida que las contraseñas tengan una cantidad minima
-    de 8 caracteres y maxima de 20 caracteres
+    valida que las contraseñas tengan el criterio establecido
   */
   if (!validatePassword(password)) {
     setErrors({
@@ -74,7 +56,8 @@ export const validateFields = (
     return false;
   }
 
-  if (password.toLowerCase() !== confirmPassword.toLowerCase()) {
+  // valida que las contraseñas sean iguales
+  if (password !== confirmPassword) {
     setErrors({
       email: errorsInitialState.email,
       password: {

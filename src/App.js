@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setIsPortrait, setTheme } from './features/globalData';
 
 import { Router } from './views';
@@ -21,6 +21,7 @@ const App = () => {
   const theme = useTheme();
 
   const [postRefresh, response] = usePostRefreshMutation();
+  const user = useSelector((state) => state.globalData.user);
 
   // Resize detection
   useEffect(() => {
@@ -35,7 +36,12 @@ const App = () => {
 
   // No access token (refresh screen)
   useLayoutEffect(() => {
+    // Conseguir nuevo Access Token
     if (Cookies.get('refreshToken')) postRefresh();
+
+    // Redireccionar a auth si no hay user
+    if (!user.number && !window.location.href.includes('auth'))
+      window.location.replace(authRoutes.LOGIN.path);
 
     // Theme detection
     if (
@@ -44,7 +50,7 @@ const App = () => {
     ) {
       dispatch(setTheme(themes.DARK));
     }
-  }, [postRefresh, dispatch]);
+  }, [postRefresh, dispatch, user.number]);
 
   useEffect(() => {
     if (response.isError && !window.location.href.includes('auth')) {

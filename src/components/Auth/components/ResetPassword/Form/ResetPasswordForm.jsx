@@ -1,14 +1,21 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { InputAdornment, Stack, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-import { usePutTermsAndConditionsMutation } from '../../../../../features/api/userSlice';
+import {
+  usePutTermsAndConditionsMutation,
+  usePutUpdatePasswordMutation,
+} from '../../../../../features/api/userSlice';
 
 import es from '../../../../../lang/es';
 
 import { RoundedButton } from '../../../../../styled';
 import { validateFields } from '../helpers/validators';
+import { mainRoutes } from '../../../../../constants/Routing/routes';
+import { useNavigate } from 'react-router-dom';
+import { updatePasswordAdapter } from '../../../../../adapters/profileAdapter';
+import { useSelector } from 'react-redux';
 
 const errorsInitialState = {
   email: {
@@ -34,7 +41,12 @@ const ResetPasswordForm = () => {
   const mailRef = useRef();
   const passwordRef = useRef();
 
-  const [putTyC, response] = usePutTermsAndConditionsMutation();
+  const navigate = useNavigate();
+
+  const tempPass = useSelector((state) => state.globalData.user.tempPass);
+
+  const [putTyC, responseTyC] = usePutTermsAndConditionsMutation();
+  const [putPassword, responsePass] = usePutUpdatePasswordMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,18 +67,37 @@ const ResetPasswordForm = () => {
       )
     ) {
       // cambiar contraseña
-      console.log('BLANQUEO PASS OK');
 
+      // resetear errores
       setErrors(errorsInitialState);
-      setLoading(false);
+
+      const data = {
+        currentPass: tempPass,
+        newPass: password,
+      }
+      console.log("🚀 ~ file: ResetPasswordForm.jsx ~ line 78 ~ handleSubmit ~ data", data)
+
+      
+
+      const dataToSend = updatePasswordAdapter(data);
 
       // Mandar al BE
-      putTyC();
-      // TODO: Enviar contraseña al BE
+      // putTyC();
 
-      // redirect to home
+      putPassword(dataToSend);
     }
   };
+
+  useEffect(() => {
+    if (responsePass.isSuccess && responseTyC.isSuccess) {
+      setLoading(false);
+      navigate(mainRoutes.MAIN.path);
+    }
+
+    if (responsePass.isError || responseTyC.isError) {
+      setLoading(false);
+    }
+  }, [responsePass, responseTyC, navigate]);
 
   return (
     <form onSubmit={handleSubmit}>

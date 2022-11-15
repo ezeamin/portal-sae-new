@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { usePostLoginMutation } from '../../../../../features/api/authApiSlice';
-import { setUser } from '../../../../../features/globalData';
+import { setTempPass, setUser } from '../../../../../features/globalData';
 import { setAccessToken } from '../../../../../features/auth';
 
 import { userAdapter } from '../../../../../adapters/authAdapter';
@@ -12,7 +12,6 @@ import {
   TextField,
   Link as MUILink,
   InputAdornment,
-  Alert,
 } from '@mui/material';
 
 import { Lock, Person, Visibility, VisibilityOff } from '@mui/icons-material';
@@ -25,7 +24,7 @@ import {
 import es from '../../../../../lang/es';
 
 import { RoundedButton } from '../../../../../styled';
-import { memo } from 'react';
+import CustomAlert from '../../../../Custom/CustomAlert/CustomAlert';
 
 const LoginForm = memo((props) => {
   const { handleNewUser } = props;
@@ -82,7 +81,9 @@ const LoginForm = memo((props) => {
         msg: '',
       });
 
-      const user = userAdapter(result.data.user);
+      const password = passRef.current.value;
+
+      const user = userAdapter(result.data.user,password);
 
       dispatch(setUser(user));
       dispatch(setAccessToken(result.data.accessToken));
@@ -90,8 +91,7 @@ const LoginForm = memo((props) => {
       if (user.newUser) {
         // Mostrar TyC y cambiar contraseña
         handleNewUser();
-      } 
-      else navigate(mainRoutes.MAIN.path);
+      } else navigate(mainRoutes.MAIN.path);
     }
 
     if (result.isError) {
@@ -110,28 +110,28 @@ const LoginForm = memo((props) => {
   return (
     <form onSubmit={onSubmit}>
       {backendError.show && (
-        <Alert severity='warning' sx={{ marginTop: '1rem' }}>
+        <CustomAlert severity='warning' sx={{ marginTop: '1rem' }}>
           {backendError.msg}
-        </Alert>
+        </CustomAlert>
       )}
 
       {errorCuil && (
-        <Alert severity='warning' sx={{ marginTop: '1rem' }}>
+        <CustomAlert severity='warning' sx={{ marginTop: '1rem' }}>
           {cuilRef.current.value.length === 0
             ? es.EMPTY_CUIL_CUIT
             : es.NOT_VALID_CUIL_CUIT}
-        </Alert>
+        </CustomAlert>
       )}
 
       {errorPass && (
-        <Alert
+        <CustomAlert
           severity='warning'
           sx={{ marginTop: errorCuil ? '0.5rem' : '1rem' }}
         >
           {passRef.current.value.length === 0
             ? es.EMPTY_PASSWORD
             : es.NOT_VALID_PASSWORD}
-        </Alert>
+        </CustomAlert>
       )}
 
       <TextField

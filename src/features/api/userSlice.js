@@ -32,13 +32,6 @@ export const userSlice = createApi({
         type,
       }),
     }),
-    getTermsPdf: builder.query({
-      query: () => ({
-        url: `/terms-and-conditions`,
-        method: 'GET',
-        type,
-      }),
-    }),
   }),
 });
 
@@ -46,5 +39,4 @@ export const {
   usePutUpdateUserMutation,
   usePutUpdatePasswordMutation,
   usePutTermsAndConditionsMutation,
-  useGetTermsPdfQuery,
 } = userSlice;

@@ -8,7 +8,7 @@ export const loginAdapter = (APIInfo) => {
   return formattedInfo;
 };
 
-export const userAdapter = (APIInfo) => {
+export const userAdapter = (APIInfo, pass) => {
   const formattedInfo = {
     name: APIInfo.firstName,
     lastname: APIInfo.lastName,
@@ -17,6 +17,7 @@ export const userAdapter = (APIInfo) => {
     activeModules: APIInfo.modules || [],
     newUser: !APIInfo.accepted_terms,
     notifications: 2, // TODO: Traer del back
+    tempPass: pass || undefined,
   };
 
   return formattedInfo;
