@@ -8,7 +8,12 @@ const useAvailableModules = () => {
     (state) => state.globalData.user?.activeModules
   );
 
-  if (!activeModules) return [];
+  if (!activeModules)
+    return {
+      modulesList: [],
+      modulesIds: [],
+      modules: [],
+    };
 
   const activeModulesAddapted = modulesAdapter(activeModules);
   const activeModulesIds = modulesAdapterIds(activeModules);

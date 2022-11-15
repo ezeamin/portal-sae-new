@@ -28,7 +28,7 @@ const MainAuth = (props) => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [navigate, auth.accessToken]);
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex' }}>

@@ -40,11 +40,9 @@ const App = () => {
     };
   }, [dispatch, postRefresh]);
 
-  // No access token (refresh)
+  // No access token (refresh screen)
   useLayoutEffect(() => {
-    if (!window.location.href.includes('auth')) {
-      postRefresh();
-    }
+    postRefresh();
   }, [postRefresh]);
 
   useEffect(() => {

@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
 import {
-  responseUpdateUserAdapter,
   updateUserAdapter,
 } from '../../../adapters/profileAdapter';
+import { userAdapter } from '../../../adapters/authAdapter';
 import { usePutUpdateUserMutation } from '../../../features/api/userSlice';
 import { setUser } from '../../../features/globalData';
 
@@ -50,7 +50,7 @@ const ProfileForm = () => {
         severity: 'error',
       });
     } else if (response.isSuccess) {
-      const user = responseUpdateUserAdapter(response.data.data);
+      const user = userAdapter(response.data.data);
       dispatch(setUser(user));
 
       setAlert({
