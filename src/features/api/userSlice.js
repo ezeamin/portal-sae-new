@@ -24,6 +24,14 @@ export const userSlice = createApi({
         type,
       }),
     }),
+    putResetPassword: builder.mutation({
+      query: (data) => ({
+        url: `/reset-password`,
+        method: 'PUT',
+        body: data,
+        type,
+      }),
+    }),
     putTermsAndConditions: builder.mutation({
       query: () => ({
         url: `/accept-terms`,
@@ -38,5 +46,6 @@ export const userSlice = createApi({
 export const {
   usePutUpdateUserMutation,
   usePutUpdatePasswordMutation,
+  usePutResetPasswordMutation,
   usePutTermsAndConditionsMutation,
 } = userSlice;

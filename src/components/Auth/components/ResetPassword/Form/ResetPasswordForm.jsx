@@ -1,22 +1,23 @@
 import { memo, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { InputAdornment, Stack, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-import { setTempPass } from '../../../../../features/globalData';
 import {
+  usePutResetPasswordMutation,
   usePutTermsAndConditionsMutation,
-  usePutUpdatePasswordMutation,
 } from '../../../../../features/api/userSlice';
 
 import { mainRoutes } from '../../../../../constants/Routing/routes';
 import { RoundedButton } from '../../../../../styled';
-import { updatePasswordAdapter } from '../../../../../adapters/profileAdapter';
+
 import { validateFields } from '../helpers/validators';
 
 import es from '../../../../../lang/es';
+import { setAccessToken } from '../../../../../features/auth';
+import { resetPasswordAdapter } from '../../../../../adapters/authAdapter';
 
 const errorsInitialState = {
   email: {
@@ -39,6 +40,7 @@ const ResetPasswordForm = memo((props) => {
   const [errors, setErrors] = useState(errorsInitialState);
   const [loading, setLoading] = useState(false);
   const [showPass, setShowPass] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   const confirmPasswordRef = useRef();
   const passwordRef = useRef();
@@ -46,10 +48,10 @@ const ResetPasswordForm = memo((props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const tempPass = useSelector((state) => state.globalData.tempPass);
+  const token = window.location.href.split('token=')[1];
 
   const [putTyC, responseTyC] = usePutTermsAndConditionsMutation();
-  const [putPassword, responsePass] = usePutUpdatePasswordMutation();
+  const [putResetPassword, responseResetPass] = usePutResetPasswordMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,29 +69,45 @@ const ResetPasswordForm = memo((props) => {
         errorsInitialState
       )
     ) {
-      // cambiar contraseña
+      //* cambiar contraseña *
 
       // resetear errores
       setErrors(errorsInitialState);
 
       const data = {
-        currentPass: tempPass,
-        newPass: password,
+        password,
       };
 
-      const dataToSend = updatePasswordAdapter(data);
+      const dataToSend = resetPasswordAdapter(data);
+
+      if (token) {
+        //* modificar contraseña desde el mail
+
+        dispatch(setAccessToken(token));
+      } else putTyC();
 
       // Mandar al BE
-      putTyC();
-
-      putPassword(dataToSend);
+      putResetPassword(dataToSend);
     }
   };
 
   useEffect(() => {
-    if (responsePass.isSuccess) {
+    //* Cambio de contraseña desde mail
+    if (token && responseResetPass.isSuccess) {
       setLoading(false);
-      dispatch(setTempPass(null));
+      setDisabled(true);
+      dispatch(setAccessToken(''));
+      setAlert({
+        show: true,
+        msg: 'Contraseña modificada correctamente',
+        severity: 'success',
+      });
+      return;
+    }
+
+    //* Cambio de contraseña en primer logueo
+    if (responseResetPass.isSuccess) {
+      setLoading(false);
       setAlert({
         show: false,
         msg: '',
@@ -98,17 +116,19 @@ const ResetPasswordForm = memo((props) => {
       navigate(mainRoutes.MAIN.path);
     }
 
-    if (responsePass.isError || responseTyC.isError) {
+    //* Error en cualquier caso
+    if (responseTyC.isError || responseResetPass.isError) {
       setLoading(false);
       setAlert({
         show: true,
         msg:
-          responsePass.error.data?.message || 'Ocurrio un error, por favor reintente',
+          responseResetPass.error?.data?.message ||
+          'Ocurrio un error, por favor reintente',
         severity: 'error',
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [responsePass, responseTyC, navigate, dispatch, setAlert]);
+  }, [responseResetPass, responseTyC, navigate, dispatch, setAlert, token]);
 
   return (
     <form onSubmit={handleSubmit} style={{ marginTop: '-1.5rem' }}>
@@ -165,6 +185,7 @@ const ResetPasswordForm = memo((props) => {
           variant='contained'
           type='submit'
           loading={loading}
+          disabled={disabled}
           sx={{ marginTop: '1.5rem' }}
         >
           {es.RESTORE_PASSWORD}

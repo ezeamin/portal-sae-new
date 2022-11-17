@@ -32,6 +32,7 @@
     "start": "env-cmd -f .env.development react-app-rewired start",
     "build": "env-cmd -f .env.test react-app-rewired build",
     "build:production": "env-cmd -f .env.master react-app-rewired build",
+    "build:develop": "env-cmd -f .env.master react-app-rewired build",
     "build:test": "env-cmd -f .env.test react-app-rewired build",
     "test": "env-cmd -f .env.test react-app-rewired test",
     "eject": "react-scripts eject"

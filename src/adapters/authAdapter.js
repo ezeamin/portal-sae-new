@@ -21,3 +21,11 @@ export const userAdapter = (APIInfo) => {
 
   return formattedInfo;
 };
+
+export const resetPasswordAdapter = (data) => {
+    const formattedInfo = {
+        newPassword: data.password,
+    };
+    
+    return formattedInfo;
+}

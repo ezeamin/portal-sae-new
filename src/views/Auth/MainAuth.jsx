@@ -8,6 +8,8 @@ import { Background, FormPanel } from '../../components';
 
 import { mainRoutes } from '../../constants/Routing/routes';
 
+import { isLoggedIn } from '../../helpers/isLoggedIn';
+
 const minSize = 900;
 
 const MainAuth = (props) => {
@@ -27,10 +29,9 @@ const MainAuth = (props) => {
     };
 
     // no mostrar rutas de autenticacion cuando
-    // el usuario esté logueado (auth.accessToken), excepto
+    // el usuario esté logueado, excepto
     // cuando sea nuevo y esté firmando TyC
-    if (auth.accessToken && !user?.newUser)
-      navigate(mainRoutes.MAIN.path);
+    if (isLoggedIn() && !user?.newUser) navigate(mainRoutes.MAIN.path);
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { usePostLoginMutation } from '../../../../../features/api/authApiSlice';
-import { setTempPass, setUser } from '../../../../../features/globalData';
+import { setUser } from '../../../../../features/globalData';
 import { setAccessToken } from '../../../../../features/auth';
 
 import { userAdapter } from '../../../../../adapters/authAdapter';
@@ -77,8 +77,6 @@ const LoginForm = memo((props) => {
         msg: '',
       });
 
-      const password = passRef.current.value;
-
       const user = userAdapter(result.data.user);
       
       dispatch(setUser(user));
@@ -86,7 +84,6 @@ const LoginForm = memo((props) => {
 
       if (user.newUser) {
         // Mostrar TyC y cambiar contraseña
-        dispatch(setTempPass(password));
         handleNewUser();
       } else {
         navigate(mainRoutes.MAIN.path);

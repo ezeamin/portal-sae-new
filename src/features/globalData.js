@@ -15,7 +15,6 @@ const initialState = {
     activeModules: [],
     newUser: false,
   },
-  tempPass: '',
   isPortrait: defaultPortraitValue,
   theme: themes.LIGHT,
 };
@@ -37,9 +36,6 @@ const globalDataSlice = createSlice({
       if (state.isPortrait !== action.payload)
         state.isPortrait = action.payload;
     },
-    setTempPass: (state, action) => {
-      state.tempPass = action.payload;
-    },
     setTheme: (state, action) => {
       switch (action.payload) {
         case themes.DARK:
@@ -60,7 +56,6 @@ export const {
   setUserNotifications,
   setCurrentPage,
   setIsPortrait,
-  setTempPass,
   setTheme,
 } = globalDataSlice.actions;
 
