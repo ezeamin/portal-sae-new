@@ -33,8 +33,6 @@ const TermsAndConditionsModal = () => {
     else setDisabledButton(true);
   }, [checked]);
 
-  //   const handleOpen = () => setOpen(true);
-
   const handleClickBtnAceptar = (e) => {
     e.preventDefault();
 

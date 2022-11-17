@@ -8,11 +8,7 @@ import { setAccessToken } from '../../../../../features/auth';
 
 import { userAdapter } from '../../../../../adapters/authAdapter';
 
-import {
-  TextField,
-  Link as MUILink,
-  InputAdornment,
-} from '@mui/material';
+import { TextField, Link as MUILink, InputAdornment } from '@mui/material';
 
 import { Lock, Person, Visibility, VisibilityOff } from '@mui/icons-material';
 
@@ -83,15 +79,18 @@ const LoginForm = memo((props) => {
 
       const password = passRef.current.value;
 
-      const user = userAdapter(result.data.user,password);
-
+      const user = userAdapter(result.data.user);
+      
       dispatch(setUser(user));
       dispatch(setAccessToken(result.data.accessToken));
 
       if (user.newUser) {
         // Mostrar TyC y cambiar contraseña
+        dispatch(setTempPass(password));
         handleNewUser();
-      } else navigate(mainRoutes.MAIN.path);
+      } else {
+        navigate(mainRoutes.MAIN.path);
+      }
     }
 
     if (result.isError) {

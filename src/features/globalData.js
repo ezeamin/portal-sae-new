@@ -14,8 +14,8 @@ const initialState = {
     notifications: 0,
     activeModules: [],
     newUser: false,
-    tempPass: '',
   },
+  tempPass: '',
   isPortrait: defaultPortraitValue,
   theme: themes.LIGHT,
 };
@@ -38,7 +38,7 @@ const globalDataSlice = createSlice({
         state.isPortrait = action.payload;
     },
     setTempPass: (state, action) => {
-      state.user.tempPass = action.payload;
+      state.tempPass = action.payload;
     },
     setTheme: (state, action) => {
       switch (action.payload) {

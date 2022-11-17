@@ -94,7 +94,7 @@ const es = {
   REMOVE: 'Remover',
   REPEAT_PASSWORD: 'Repetir contraseña',
   RESET_PASSWORD: 'Recuperar contraseña',
-  RESET_PASSWORD_MSG: `Ingrese su E-MAIL y luego una nueva CONTRASEÑA. Por último, CONFIRME la misma y presione botón BLANQUEAR CONTRASEÑA.`,
+  RESET_PASSWORD_MSG: `Ingrese una nueva CONTRASEÑA. Por último, CONFIRME la misma y presione botón BLANQUEAR CONTRASEÑA.`,
   RESTORE_PASSWORD: 'Blanquear contraseña',
   RESTORE_PASSWORD_MSG:
     'Ingrese el E-MAIL con el que se registró. Luego presione en el botón ENVIAR ENLACE. Si el mail está registrado, se le enviará un correo con los pasos a seguir.',

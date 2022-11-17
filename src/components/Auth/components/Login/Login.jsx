@@ -24,8 +24,6 @@ const Login = () => {
   const handleNewUser = useCallback(() => {
     // mostrar tyc
     setShowTyCModal(true);
-    // llamar al be para guardar el tyc
-    // cambiar contraseña
   }, []);
 
   return (

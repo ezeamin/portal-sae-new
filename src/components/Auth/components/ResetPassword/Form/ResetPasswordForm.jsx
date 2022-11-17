@@ -1,21 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { InputAdornment, Stack, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
+import { setTempPass } from '../../../../../features/globalData';
 import {
   usePutTermsAndConditionsMutation,
   usePutUpdatePasswordMutation,
 } from '../../../../../features/api/userSlice';
 
-import es from '../../../../../lang/es';
-
-import { RoundedButton } from '../../../../../styled';
-import { validateFields } from '../helpers/validators';
 import { mainRoutes } from '../../../../../constants/Routing/routes';
-import { useNavigate } from 'react-router-dom';
+import { RoundedButton } from '../../../../../styled';
 import { updatePasswordAdapter } from '../../../../../adapters/profileAdapter';
-import { useSelector } from 'react-redux';
+import { validateFields } from '../helpers/validators';
+
+import es from '../../../../../lang/es';
 
 const errorsInitialState = {
   email: {
@@ -32,18 +33,20 @@ const errorsInitialState = {
   },
 };
 
-const ResetPasswordForm = () => {
+const ResetPasswordForm = memo((props) => {
+  const { setAlert } = props;
+
   const [errors, setErrors] = useState(errorsInitialState);
   const [loading, setLoading] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
   const confirmPasswordRef = useRef();
-  const mailRef = useRef();
   const passwordRef = useRef();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const tempPass = useSelector((state) => state.globalData.user.tempPass);
+  const tempPass = useSelector((state) => state.globalData.tempPass);
 
   const [putTyC, responseTyC] = usePutTermsAndConditionsMutation();
   const [putPassword, responsePass] = usePutUpdatePasswordMutation();
@@ -52,13 +55,11 @@ const ResetPasswordForm = () => {
     e.preventDefault();
 
     setLoading(true);
-    const email = mailRef.current.value;
     const password = passwordRef.current.value;
     const confirmPassword = confirmPasswordRef.current.value;
 
     if (
       validateFields(
-        email,
         password,
         confirmPassword,
         setErrors,
@@ -74,44 +75,43 @@ const ResetPasswordForm = () => {
       const data = {
         currentPass: tempPass,
         newPass: password,
-      }
-      console.log("🚀 ~ file: ResetPasswordForm.jsx ~ line 78 ~ handleSubmit ~ data", data)
-
-      
+      };
 
       const dataToSend = updatePasswordAdapter(data);
 
       // Mandar al BE
-      // putTyC();
+      putTyC();
 
       putPassword(dataToSend);
     }
   };
 
   useEffect(() => {
-    if (responsePass.isSuccess && responseTyC.isSuccess) {
+    if (responsePass.isSuccess) {
       setLoading(false);
+      dispatch(setTempPass(null));
+      setAlert({
+        show: false,
+        msg: '',
+        severity: '',
+      });
       navigate(mainRoutes.MAIN.path);
     }
 
     if (responsePass.isError || responseTyC.isError) {
       setLoading(false);
+      setAlert({
+        show: true,
+        msg:
+          responsePass.error.data?.message || 'Ocurrio un error, por favor reintente',
+        severity: 'error',
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [responsePass, responseTyC, navigate]);
+  }, [responsePass, responseTyC, navigate, dispatch, setAlert]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <TextField
-        label='E-mail'
-        placeholder='Ingrese su E-mail'
-        fullWidth
-        type='email'
-        inputRef={mailRef}
-        inputProps={{ maxLength: 50, required: true }}
-        sx={{ marginTop: '1.5rem' }}
-        error={errors.email.error}
-        helperText={errors.email.msg}
-      />
+    <form onSubmit={handleSubmit} style={{ marginTop: '-1.5rem' }}>
       <TextField
         label={es.PASS}
         placeholder={es.NEW_PASS}
@@ -172,6 +172,6 @@ const ResetPasswordForm = () => {
       </Stack>
     </form>
   );
-};
+});
 
 export default ResetPasswordForm;
